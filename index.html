@@ -3126,10 +3126,16 @@ const Game = (() => {
   let best = +store.get('treeGameBest') || 0;
   let mosaic = shuffle(G.species.slice()).slice(0, 6).map(s => s.photos[0]);
 
+  // photos this browser has already been shown, so returning players see new ones first
+  let seen; try { seen = new Set(JSON.parse(store.get('treeGameSeen') || '[]')); } catch (e) { seen = new Set(); }
+  const fresh = s => s.photos.filter(p => !seen.has(p.f));
   function newGame(){
-    const keys = shuffle(G.species.map(s => s.key)).slice(0, ROUNDS);
+    if (G.species.every(s => !fresh(s).length)) seen.clear();   // all photos seen: start a new cycle
+    const withNew = shuffle(G.species.filter(s => fresh(s).length)), rest0 = shuffle(G.species.filter(s => !fresh(s).length));
+    const keys = withNew.concat(rest0).slice(0, ROUNDS).map(s => s.key);
+    shuffle(keys);
     st = {phase: 'play', i: 0, score: 0, streak: 0, q: keys.map(k => {
-      const s = sp(k), p = s.photos[Math.random() * s.photos.length | 0];
+      const s = sp(k), pool = fresh(s).length ? fresh(s) : s.photos, p = pool[Math.random() * pool.length | 0];
       const same = shuffle(G.species.filter(x => x.key !== k && x.zone === s.zone)).slice(0, 2);
       const rest = shuffle(G.species.filter(x => x.key !== k && !same.includes(x))).slice(0, 3 - same.length);
       return {k, p, opts: shuffle([k, ...same.map(x => x.key), ...rest.map(x => x.key)]), hint: false, pick: null};
@@ -3142,6 +3148,7 @@ const Game = (() => {
   function answer(k){
     const q = cur(); if (q.pick) return;
     q.pick = k;
+    seen.add(q.p.f); store.set('treeGameSeen', JSON.stringify([...seen]));
     if (k === q.k) { st.score += q.hint ? 1 : 2; st.streak++; } else st.streak = 0;
     render();
     const nx = box.querySelector('.g-next'); nx && nx.focus({preventScroll: true});
