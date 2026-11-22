@@ -578,7 +578,7 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 <!-- ============ CONTENT: text, research, work, photos and posts (English + Nepali) ============ -->
 <script type="application/json" id="data">
 {
- "formEndpoint": "",
+ "formEndpoint": "https://formspree.io/f/xrpqozqq",
  "email": "sailendraneupane057@gmail.com",
  "ui": {
   "nav_work": [
@@ -2026,7 +2026,7 @@ $('cform').addEventListener('submit', async e => {
   if (C.formEndpoint) {
     $('f-send').disabled = true; st.textContent = t('form_sending');
     try {
-      const r = await fetch(C.formEndpoint, {method:'POST', headers:{'Accept':'application/json','Content-Type':'application/json'}, body: JSON.stringify({name, email, message: msg})});
+      const r = await fetch(C.formEndpoint, {method:'POST', headers:{'Accept':'application/json','Content-Type':'application/json'}, body: JSON.stringify({name, email, message: msg, _subject: 'Website message from ' + name})});
       if (!r.ok) throw new Error(r.status);
       st.textContent = t('form_ok'); st.classList.add('ok'); $('cform').reset();
     } catch (err) { st.textContent = t('form_err'); st.classList.add('err'); }
