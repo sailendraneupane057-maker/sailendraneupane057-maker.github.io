@@ -382,6 +382,58 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 .share .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
 .share a,.share button{font-family:var(--mono);font-size:13px;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);text-decoration:none;cursor:pointer;transition:all .25s}
 .share a:hover,.share button:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+/* tree ID game */
+.game{margin-top:48px;border:1px solid var(--line);border-radius:18px;background:var(--surface);overflow:hidden;scroll-margin-top:80px}
+.g-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;padding:24px 28px 0}
+.g-head h3{font-size:26px}
+.g-head p{margin:6px 0 0;color:var(--muted);font-size:16px;max-width:60ch}
+.g-stats{display:flex;gap:18px;font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+.g-stats b{display:block;font-family:var(--display);font-size:22px;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1.1}
+.g-body{display:grid;grid-template-columns:1.15fr 1fr;gap:24px;padding:22px 28px 28px}
+.g-photo{position:relative;aspect-ratio:4/3;border-radius:14px;overflow:hidden;background:color-mix(in srgb,var(--ink) 88%,var(--accent))}
+.g-photo .bg{position:absolute;inset:-20px;width:calc(100% + 40px);height:calc(100% + 40px);object-fit:cover;filter:blur(18px) brightness(.55);transform:scale(1.05)}
+.g-photo .main{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity .45s ease}
+.g-photo .main.ok{opacity:1}
+.g-photo .wait{position:absolute;inset:0;display:grid;place-items:center;color:#e3ebe6;font-family:var(--mono);font-size:12.5px}
+.g-photo .qn{position:absolute;left:10px;top:10px;font-family:var(--mono);font-size:12px;background:rgba(0,0,0,.55);color:#fff;padding:3px 9px;border-radius:999px}
+.g-credit{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:8px;line-height:1.45;word-break:break-word}
+.g-credit a{color:inherit}
+.g-bar{height:4px;border-radius:4px;background:var(--line);overflow:hidden;margin-bottom:14px}
+.g-bar span{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--leaf-3));transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.g-opts{display:grid;gap:10px}
+.g-opt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:11px 14px;cursor:pointer;transition:border-color .2s,transform .2s,background .2s}
+.g-opt:hover:not(:disabled){border-color:var(--accent);transform:translateX(3px)}
+.g-opt:disabled{cursor:default}
+.g-opt .n{flex:none;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-family:var(--mono);font-size:12px;border:1px solid var(--line);color:var(--muted)}
+.g-opt strong{display:block;font-family:var(--display);font-weight:600;font-size:17px;line-height:1.2}
+.g-opt small{font-style:italic;color:var(--muted);font-size:13.5px}
+.g-opt.right{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 14%,var(--surface))}
+.g-opt.right .n{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.g-opt.wrong{border-color:#c0473f;background:color-mix(in srgb,#c0473f 12%,var(--surface))}
+.g-opt.wrong .n{background:#c0473f;border-color:#c0473f;color:#fff}
+.g-opt.dim{opacity:.5}
+.g-tools{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:14px}
+.g-hint{font-size:15.5px;margin:14px 0 0;padding:12px 14px;border-left:3px solid var(--accent-2);background:color-mix(in srgb,var(--accent-2) 10%,var(--surface));border-radius:0 10px 10px 0}
+.g-fb{margin-top:14px;font-size:15.5px;line-height:1.55}
+.g-fb h4{font-family:var(--display);font-size:19px;margin:0 0 4px}
+.g-fb h4.ok{color:var(--accent)}
+.g-fb h4.no{color:#c0473f}
+.g-fb p{margin:6px 0 0}
+.g-fb .also{color:var(--muted);font-size:14.5px}
+.game .btn:disabled{opacity:.45;cursor:default;transform:none}
+.g-key{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+.g-intro{display:grid;grid-template-columns:1.15fr 1fr;gap:24px;padding:22px 28px 28px;align-items:center}
+.g-mosaic{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.g-mosaic img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px;background:var(--line)}
+.g-intro ul{margin:0 0 18px;padding-left:20px;color:var(--muted);font-size:15.5px}
+.g-done{padding:22px 28px 28px}
+.g-big{font-family:var(--display);font-weight:800;font-size:clamp(44px,6vw,64px);color:var(--accent);line-height:1;font-variant-numeric:tabular-nums}
+.g-miss{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin:18px 0 22px;padding:0;list-style:none}
+.g-miss li{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:12px;padding:10px;background:var(--bg);font-size:14px;line-height:1.45}
+.g-miss img{width:64px;height:64px;object-fit:cover;border-radius:8px;flex:none;background:var(--line)}
+.g-miss strong{display:block;font-family:var(--display);font-size:15.5px}
+@media (max-width:860px){.g-body,.g-intro{grid-template-columns:1fr}.g-head,.g-body,.g-intro,.g-done{padding-left:18px;padding-right:18px}}
+@media (prefers-reduced-motion: reduce){.g-photo .main,.g-bar span,.g-opt{transition:none}}
 </style>
 </head>
 <body>
@@ -489,6 +541,7 @@ input[type=range]{width:100%;accent-color:var(--accent)}
     <div class="wrap">
       <div class="sec-head reveal"><div><div class="num">05</div><h2 data-t="trees_h"></h2></div><p data-t="trees_p"></p></div>
       <div class="species" id="species"></div>
+      <div class="game reveal" id="game" aria-live="polite"></div>
 
       <div class="calc reveal" id="calculator">
         <div class="inputs">
@@ -988,6 +1041,134 @@ input[type=range]{width:100%;accent-color:var(--accent)}
   "c_rho_avg": [
    "Average of the 21 species in Sharma & Pukkala (1990)",
    "शर्मा र पुक्काला (१९९०) का २१ प्रजातिको औसत"
+  ],
+  "g_kicker": [
+   "Game · 24 species",
+   "खेल · २४ प्रजाति"
+  ],
+  "game_h": [
+   "Guess the tree",
+   "रुख चिन्नुहोस्"
+  ],
+  "game_p": [
+   "A photo from a Nepali forest appears. Can you name the tree? Ten rounds, four choices each.",
+   "नेपाली वनको एउटा फोटो देखिन्छ। रुखको नाम भन्न सक्नुहुन्छ? दस चरण, हरेकमा चार विकल्प।"
+  ],
+  "g_rule1": [
+   "Leaves, flowers, fruit, bark or the whole tree — any part can show up.",
+   "पात, फूल, फल, बोक्रा वा पूरै रुख — जुनसुकै भाग देखिन सक्छ।"
+  ],
+  "g_rule2": [
+   "2 points for a correct answer, 1 if you used the hint.",
+   "सही उत्तरमा २ अङ्क, सङ्केत हेरेमा १ अङ्क।"
+  ],
+  "g_rule3": [
+   "After each answer you learn how to recognise the tree.",
+   "हरेक उत्तरपछि रुख कसरी चिन्ने भन्ने सिक्नुहुन्छ।"
+  ],
+  "g_start": [
+   "Start the game →",
+   "खेल सुरु गर्नुहोस् →"
+  ],
+  "g_again": [
+   "Play again ↻",
+   "फेरि खेल्नुहोस् ↻"
+  ],
+  "g_score": [
+   "Score",
+   "अङ्क"
+  ],
+  "g_streak": [
+   "Streak",
+   "लगातार"
+  ],
+  "g_best": [
+   "Best",
+   "उत्कृष्ट"
+  ],
+  "g_q": [
+   "Tree",
+   "रुख"
+  ],
+  "g_alt": [
+   "Photo of a tree to identify",
+   "चिन्नुपर्ने रुखको फोटो"
+  ],
+  "g_choose": [
+   "Choose the tree's name",
+   "रुखको नाम छान्नुहोस्"
+  ],
+  "g_hint": [
+   "Show a hint (1 point less)",
+   "सङ्केत हेर्नुहोस् (१ अङ्क कम)"
+  ],
+  "g_hint_l": [
+   "Hint:",
+   "सङ्केत:"
+  ],
+  "g_right": [
+   "Correct!",
+   "सही!"
+  ],
+  "g_wrong": [
+   "Not quite. This is",
+   "मिलेन। यो"
+  ],
+  "g_differs": [
+   "looks different:",
+   "फरक देखिन्छ:"
+  ],
+  "g_next": [
+   "Next tree →",
+   "अर्को रुख →"
+  ],
+  "g_finish": [
+   "See my result →",
+   "नतिजा हेर्नुहोस् →"
+  ],
+  "g_done_h": [
+   "Your score",
+   "तपाईंको अङ्क"
+  ],
+  "g_perfect": [
+   "A perfect round. You know your forests!",
+   "पूर्ण अङ्क! तपाईं वन राम्ररी चिन्नुहुन्छ।"
+  ],
+  "g_good": [
+   "Well done! A few more walks in the forest and you'll have them all.",
+   "राम्रो! अझ केही पटक वन घुम्नुभयो भने सबै चिन्नुहुनेछ।"
+  ],
+  "g_try": [
+   "A good start. Play again, since the photos change every round.",
+   "राम्रो सुरुवात! फेरि खेल्नुहोस्, हरेक पटक फोटो फेरिन्छन्।"
+  ],
+  "g_review": [
+   "Trees to look at again",
+   "फेरि हेर्नुपर्ने रुखहरू"
+  ],
+  "g_share": [
+   "Share my score",
+   "अङ्क सेयर गर्नुहोस्"
+  ],
+  "g_share_text": [
+   "I scored {s}/{m} on Guess the Tree, a quiz on Nepal's forest trees.",
+   "मैले 'रुख चिन्नुहोस्' खेलमा {s}/{m} अङ्क पाएँ।"
+  ],
+  "g_photo": [
+   "Photo",
+   "फोटो"
+  ],
+  "g_loading": [
+   "Loading photo…",
+   "फोटो खुल्दैछ…"
+  ],
+  "g_imgerr": [
+   "This photo couldn't load. Try the next tree.",
+   "फोटो खुलेन। अर्को रुखमा जानुहोस्।"
+  ],
+  "g_keys": [
+   "Keys: 1–4 to answer, Enter for next",
+   "कुञ्जी: उत्तरका लागि १–४, अर्कोका लागि Enter"
   ]
  },
  "research": [
@@ -1822,7 +2003,845 @@ input[type=range]{width:100%;accent-color:var(--accent)}
   }
  ],
  "goatcounter": "sailendraneupane",
- "testimonials": []
+ "testimonials": [],
+ "game": {
+  "species": [
+   {
+    "key": "sal",
+    "sci": "Shorea robusta",
+    "en": "Sal",
+    "ne": "साल (सखुवा)",
+    "zone": "terai",
+    "clue": [
+     "Broad, shiny leaves and small fruits with long papery wings. Forms whole forests in the Terai and Chure.",
+     "चौडा, टल्किने पात र लामा कागजजस्ता पखेटा भएका साना फल। तराई र चुरेमा पूरै वन बनाउँछ।"
+    ],
+    "fact": [
+     "Nepal's most valuable timber tree. Its leaves are stitched into plates (tapari) and its resin is burned as incense (dhup).",
+     "नेपालको सबैभन्दा मूल्यवान काठ दिने रुख। यसका पातबाट टपरी बनाइन्छ र खोटो धूपका रूपमा बालिन्छ।"
+    ],
+    "photos": [
+     {
+      "f": "Acharya Jagadish Chandra Bose Indian Botanic Garden - Howrah 2011-01-08 9797.JPG",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Acharya_Jagadish_Chandra_Bose_Indian_Botanic_Garden_-_Howrah_2011-01-08_9797.JPG/960px-Acharya_Jagadish_Chandra_Bose_Indian_Botanic_Garden_-_Howrah_2011-01-08_9797.JPG",
+      "l": "CC BY 3.0",
+      "a": "Biswarup Ganguly"
+     },
+     {
+      "f": "Fruit of Sal.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Fruit_of_Sal.jpg/960px-Fruit_of_Sal.jpg",
+      "l": "CC BY-SA 4.0",
+      "a": "Debuapriyo"
+     },
+     {
+      "f": "Village Road through Jungle.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Village_Road_through_Jungle.jpg/960px-Village_Road_through_Jungle.jpg",
+      "l": "CC0",
+      "a": "Tanmoy23"
+     }
+    ]
+   },
+   {
+    "key": "chilaune",
+    "sci": "Schima wallichii",
+    "en": "Chilaune",
+    "ne": "चिलाउने",
+    "zone": "hill",
+    "clue": [
+     "White five-petalled flowers with a yellow centre; new leaves are often reddish. Rough, dark bark.",
+     "पहेँलो बीच भएका सेता पाँचपत्रे फूल; नयाँ पात प्रायः रातो। खस्रो, कालो बोक्रा।"
+    ],
+    "fact": [
+     "A workhorse of mid-hill community forests, usually growing with katus. Its bark makes the skin itch, which gives it its name.",
+     "मध्यपहाडका सामुदायिक वनको भरोसिलो रुख, प्रायः कटुससँग पाइन्छ। बोक्राले छाला चिलाउने भएकाले यो नाम।"
+    ],
+    "photos": [
+     {
+      "f": "Schim walli 081205-4283 F stgd.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Schim_walli_081205-4283_F_stgd.jpg/960px-Schim_walli_081205-4283_F_stgd.jpg",
+      "l": "CC BY-SA 3.0",
+      "a": "Wibowo Djatmiko (Wie146)"
+     },
+     {
+      "f": "Schim walli 101106-9001 H lap.JPG",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Schim_walli_101106-9001_H_lap.JPG/960px-Schim_walli_101106-9001_H_lap.JPG",
+      "l": "CC BY-SA 3.0",
+      "a": "Wibowo Djatmiko (Wie146)"
+     },
+     {
+      "f": "Schim walli 101104-8696 Bk lap.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Schim_walli_101104-8696_Bk_lap.jpg/960px-Schim_walli_101104-8696_Bk_lap.jpg",
+      "l": "CC BY-SA 3.0",
+      "a": "Wibowo Djatmiko (Wie146)"
+     }
+    ]
+   },
+   {
+    "key": "katus",
+    "sci": "Castanopsis indica",
+    "en": "Katus",
+    "ne": "कटुस",
+    "zone": "hill",
+    "clue": [
+     "Long, stiff leaves with toothed edges, pale underneath. Spiny burs hold small nuts.",
+     "किनारमा दाँती भएका लामा, कडा पात, तलपट्टि फिक्का। काँडेदार खोलभित्र साना फल।"
+    ],
+    "fact": [
+     "Grows with chilaune in the mid-hills. Its nuts are roasted and eaten in autumn.",
+     "मध्यपहाडमा चिलाउनेसँगै पाइन्छ। शरद ऋतुमा यसका फल पोलेर खाइन्छ।"
+    ],
+    "photos": [
+     {
+      "f": "Castanopsis indica Dẻ gai Ấn Độ.JPG",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Castanopsis_indica_D%E1%BA%BB_gai_%E1%BA%A4n_%C4%90%E1%BB%99.JPG/960px-Castanopsis_indica_D%E1%BA%BB_gai_%E1%BA%A4n_%C4%90%E1%BB%99.JPG",
+      "l": "CC BY-SA 3.0",
+      "a": "Hungda"
+     },
+     {
+      "f": "Castanopsis indica north Bengal AJTJ.JPG",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Castanopsis_indica_north_Bengal_AJTJ.JPG/960px-Castanopsis_indica_north_Bengal_AJTJ.JPG",
+      "l": "CC BY-SA 3.0",
+      "a": "A. J. T. Johnsingh, WWF-India and NCF"
+     }
+    ]
+   },
+   {
+    "key": "utis",
+    "sci": "Alnus nepalensis",
+    "en": "Utis",
+    "ne": "उत्तिस",
+    "zone": "hill",
+    "clue": [
+     "Long hanging catkins like little tails, and small cone-like fruits. Often the first tree on a fresh landslide.",
+     "पुच्छरजस्ता झुन्डिने लामा फूलका झुप्पा र साना कोनजस्ता फल। नयाँ पहिरोमा प्रायः पहिले उम्रने रुख।"
+    ],
+    "fact": [
+     "A fast-growing pioneer that fixes nitrogen, improving the soil for crops and other trees.",
+     "छिटो बढ्ने अग्रणी रुख; माटोमा नाइट्रोजन थपेर बाली र अन्य रुखका लागि माटो सुधार्छ।"
+    ],
+    "photos": [
+     {
+      "f": "Alnus nepalensis (6364114913).jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Alnus_nepalensis_%286364114913%29.jpg/960px-Alnus_nepalensis_%286364114913%29.jpg",
+      "l": "CC BY-SA 2.0",
+      "a": "Dinesh Valke"
+     },
+     {
+      "f": "Alnus nepalensis (6364096551).jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Alnus_nepalensis_%286364096551%29.jpg/960px-Alnus_nepalensis_%286364096551%29.jpg",
+      "l": "CC BY-SA 2.0",
+      "a": "Dinesh Valke"
+     },
+     {
+      "f": "Alnus nepalensis in Hackfalls Arboretum (2).jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Alnus_nepalensis_in_Hackfalls_Arboretum_%282%29.jpg/960px-Alnus_nepalensis_in_Hackfalls_Arboretum_%282%29.jpg",
+      "l": "CC BY-SA 4.0",
+      "a": "Krzysztof Golik"
+     }
+    ]
+   },
+   {
+    "key": "khote",
+    "sci": "Pinus roxburghii",
+    "en": "Khote salla",
+    "ne": "खोटे सल्ला",
+    "zone": "hill",
+    "clue": [
+     "Long needles in bundles of three, thick plated bark, and hard woody cones. Likes dry, sunny slopes.",
+     "तीनको झुप्पामा लामा सियो, बाक्लो पत्रेदार बोक्रा र कडा काठे कोन। सुक्खा, घमाइलो भिरालो मन पराउँछ।"
+    ],
+    "fact": [
+     "Tapped for resin (khoto), which is refined into turpentine and rosin. Widely planted in the hills.",
+     "यसको खोटोबाट तार्पिन र रोजिन बनाइन्छ। पहाडमा धेरै ठाउँमा रोपिएको छ।"
+    ],
+    "photos": [
+     {
+      "f": "Nagarjun- shivapuri national park 20190316 135803.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Nagarjun-_shivapuri_national_park_20190316_135803.jpg/960px-Nagarjun-_shivapuri_national_park_20190316_135803.jpg",
+      "l": "CC BY-SA 4.0",
+      "a": "Ricky Partel"
+     },
+     {
+      "f": "Branches of pine tree.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Branches_of_pine_tree.jpg/960px-Branches_of_pine_tree.jpg",
+      "l": "CC BY-SA 4.0",
+      "a": "Janak Poudel"
+     },
+     {
+      "f": "Our mother nature.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Our_mother_nature.jpg/960px-Our_mother_nature.jpg",
+      "l": "CC BY-SA 4.0",
+      "a": "Yuthika pant"
+     }
+    ]
+   },
+   {
+    "key": "asna",
+    "sci": "Terminalia elliptica",
+    "en": "Asna",
+    "ne": "साज (असना)",
+    "zone": "terai",
+    "clue": [
+     "Bark cracked into deep blocks like crocodile skin; fruits have five papery wings.",
+     "गोहीको छालाजस्तो गहिरो चिरा परेको बोक्रा; फलमा पाँचवटा कागजजस्ता पखेटा।"
+    ],
+    "fact": [
+     "Sal's constant companion in the Terai and Chure, with hard, heavy timber.",
+     "तराई र चुरेमा सालको साथी; कडा र गह्रौँ काठ।"
+    ],
+    "photos": [
+     {
+      "f": "Crocodile Bark tree (817017095).jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Crocodile_Bark_tree_%28817017095%29.jpg/960px-Crocodile_Bark_tree_%28817017095%29.jpg",
+      "l": "CC BY-SA 2.0",
+      "a": "Dinesh Valke"
+     },
+     {
+      "f": "Asana (Hindi- असना or आसन) (817738076).jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Asana_%28Hindi-_%E0%A4%85%E0%A4%B8%E0%A4%A8%E0%A4%BE_or_%E0%A4%86%E0%A4%B8%E0%A4%A8%29_%28817738076%29.jpg/960px-Asana_%28Hindi-_%E0%A4%85%E0%A4%B8%E0%A4%A8%E0%A4%BE_or_%E0%A4%86%E0%A4%B8%E0%A4%A8%29_%28817738076%29.jpg",
+      "l": "CC BY-SA 2.0",
+      "a": "Dinesh Valke"
+     },
+     {
+      "f": "Terminalia elliptica - Begur, Wayanad 05.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Terminalia_elliptica_-_Begur%2C_Wayanad_05.jpg/960px-Terminalia_elliptica_-_Begur%2C_Wayanad_05.jpg",
+      "l": "CC BY-SA 4.0",
+      "a": "Vinayaraj"
+     }
+    ]
+   },
+   {
+    "key": "khair",
+    "sci": "Senegalia catechu",
+    "en": "Khair",
+    "ne": "खयर",
+    "zone": "terai",
+    "clue": [
+     "Feathery leaves made of many tiny leaflets, small hooked thorns, and spikes of creamy flowers.",
+     "धेरै साना पत्रक भएका प्वाँखजस्ता पात, साना बाङ्गा काँडा र क्रिम रङका फूलका डाँठ।"
+    ],
+    "fact": [
+     "Found on Terai and Chure riverbanks. Its heartwood is boiled to make katha, eaten with paan.",
+     "तराई र चुरेका खोला किनारमा पाइन्छ। यसको अन्तःकाष्ठ उमालेर कत्था बनाइन्छ, जुन पानसँग खाइन्छ।"
+    ],
+    "photos": [
+     {
+      "f": "Khayer (Bengali- খয়ের) (3870533060).jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Khayer_%28Bengali-_%E0%A6%96%E0%A6%AF%E0%A6%BC%E0%A7%87%E0%A6%B0%29_%283870533060%29.jpg/960px-Khayer_%28Bengali-_%E0%A6%96%E0%A6%AF%E0%A6%BC%E0%A7%87%E0%A6%B0%29_%283870533060%29.jpg",
+      "l": "CC BY-SA 2.0",
+      "a": "Dinesh Valke"
+     },
+     {
+      "f": "Senegalia catechu.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Senegalia_catechu.jpg/960px-Senegalia_catechu.jpg",
+      "l": "CC BY-SA 4.0",
+      "a": "Shaik Jaber Al-Shihab"
+     },
+     {
+      "f": "Kaggali (Kannada- ಕಗ್ಗಲಿ) (3624134353).jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Kaggali_%28Kannada-_%E0%B2%95%E0%B2%97%E0%B3%8D%E0%B2%97%E0%B2%B2%E0%B2%BF%29_%283624134353%29.jpg/960px-Kaggali_%28Kannada-_%E0%B2%95%E0%B2%97%E0%B3%8D%E0%B2%97%E0%B2%B2%E0%B2%BF%29_%283624134353%29.jpg",
+      "l": "CC BY-SA 2.0",
+      "a": "Dinesh Valke"
+     }
+    ]
+   },
+   {
+    "key": "gurans",
+    "sci": "Rhododendron arboreum",
+    "en": "Laliguras",
+    "ne": "लालीगुराँस",
+    "zone": "high",
+    "clue": [
+     "Tight clusters of bright red, bell-shaped flowers in spring; leathery leaves, rusty or silvery beneath.",
+     "वसन्तमा चम्किलो रातो घण्टीजस्ता फूलका गुच्छा; छालाजस्ता पात, तलपट्टि खैरो वा चाँदीजस्तो।"
+    ],
+    "fact": [
+     "Nepal's national flower. It turns the higher hills red in spring; the flowers are made into juice and pickle.",
+     "नेपालको राष्ट्रिय फूल। वसन्तमा उच्च पहाड रातो बनाउँछ; फूलबाट जुस र अचार बनाइन्छ।"
+    ],
+    "photos": [
+     {
+      "f": "Rhododendron arboreum flowers.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Rhododendron_arboreum_flowers.jpg/960px-Rhododendron_arboreum_flowers.jpg",
+      "l": "CC BY-SA 4.0",
+      "a": "R.M.S. Ratnayake"
+     },
+     {
+      "f": "Rhododendron in full bloom! (8620051426).jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Rhododendron_in_full_bloom%21_%288620051426%29.jpg/960px-Rhododendron_in_full_bloom%21_%288620051426%29.jpg",
+      "l": "CC BY 2.0",
+      "a": "Abhijit Kar Gupta"
+     },
+     {
+      "f": "Gurans Ghorepaani 4.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Gurans_Ghorepaani_4.jpg/960px-Gurans_Ghorepaani_4.jpg",
+      "l": "CC BY-SA 4.0",
+      "a": "Pratap Baniya"
+     }
+    ]
+   },
+   {
+    "key": "sisau",
+    "sci": "Dalbergia sissoo",
+    "en": "Sisau",
+    "ne": "सिसौ",
+    "zone": "terai",
+    "clue": [
+     "Rounded leaflets with a pointed tip, set in a zig-zag along the stalk; flat, papery pods.",
+     "टुप्पो चुच्चो भएका गोला पत्रक, डाँठमा घुमाउरो क्रममा; चेप्टा, कागजजस्ता कोसा।"
+    ],
+    "fact": [
+     "A Terai riverbank tree, often planted along roads. Its strong timber is prized for furniture.",
+     "तराईका खोला किनारको रुख, प्रायः सडक छेउ रोपिन्छ। यसको बलियो काठ फर्निचरका लागि रुचाइन्छ।"
+    ],
+    "photos": [
+     {
+      "f": "Starr-120606-6800-Dalbergia sissoo-leaves-Kahanu Garden NTBG Hana-Maui (25026103592).jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Starr-120606-6800-Dalbergia_sissoo-leaves-Kahanu_Garden_NTBG_Hana-Maui_%2825026103592%29.jpg/960px-Starr-120606-6800-Dalbergia_sissoo-leaves-Kahanu_Garden_NTBG_Hana-Maui_%2825026103592%29.jpg",
+      "l": "CC BY 3.0",
+      "a": "Forest and Kim Starr"
+     },
+     {
+      "f": "Dalbergia sissoo.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Dalbergia_sissoo.jpg/960px-Dalbergia_sissoo.jpg",
+      "l": "CC BY-SA 3.0",
+      "a": "Khalid Mahmood"
+     },
+     {
+      "f": "Dalbergia-sissoo-20080401-2.JPG",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Dalbergia-sissoo-20080401-2.JPG/960px-Dalbergia-sissoo-20080401-2.JPG",
+      "l": "CC BY-SA 4.0",
+      "a": "Miwasatoshi"
+     }
+    ]
+   },
+   {
+    "key": "simal",
+    "sci": "Bombax ceiba",
+    "en": "Simal",
+    "ne": "सिमल",
+    "zone": "terai",
+    "clue": [
+     "Large red flowers on bare branches in late winter; young trunks are covered in sharp prickles.",
+     "हिउँदको अन्त्यतिर नाङ्गा हाँगामा ठूला राता फूल; जवान काण्डमा तिखा काँडा।"
+    ],
+    "fact": [
+     "Its pods burst with silky cotton used to stuff pillows and mattresses.",
+     "यसको कोसाबाट निस्कने रेशमी भुवा सिरानी र डसना भर्न प्रयोग हुन्छ।"
+    ],
+    "photos": [
+     {
+      "f": "Bombax ceiba 254977631.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Bombax_ceiba_254977631.jpg/960px-Bombax_ceiba_254977631.jpg",
+      "l": "CC BY 4.0",
+      "a": "Ben Costamagna"
+     },
+     {
+      "f": "Bombax ceiba 354528589.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Bombax_ceiba_354528589.jpg/960px-Bombax_ceiba_354528589.jpg",
+      "l": "CC BY 4.0",
+      "a": "Malaika Mathew Chawla"
+     },
+     {
+      "f": "Bombax ceiba 256587522.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Bombax_ceiba_256587522.jpg/960px-Bombax_ceiba_256587522.jpg",
+      "l": "CC BY-SA 4.0",
+      "a": "Dinesh Valke"
+     }
+    ]
+   },
+   {
+    "key": "peepal",
+    "sci": "Ficus religiosa",
+    "en": "Peepal",
+    "ne": "पिपल",
+    "zone": "terai",
+    "clue": [
+     "Heart-shaped leaves ending in a long, thin 'drip tip'; leaves flutter in the slightest breeze.",
+     "लामो, पातलो टुप्पो भएका मुटुआकारका पात; सानो हावामै पात हल्लिन्छन्।"
+    ],
+    "fact": [
+     "Sacred to Hindus and Buddhists. It is planted on chautaris, often paired with a bar tree.",
+     "हिन्दु र बौद्ध दुवैका लागि पवित्र। चौतारीमा प्रायः बरसँगै रोपिन्छ।"
+    ],
+    "photos": [
+     {
+      "f": "Leaf 1 web.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Leaf_1_web.jpg/960px-Leaf_1_web.jpg",
+      "l": "Public domain",
+      "a": "Jon Sullivan"
+     },
+     {
+      "f": "Pippal tree 2.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Pippal_tree_2.jpg/960px-Pippal_tree_2.jpg",
+      "l": "CC BY-SA 3.0",
+      "a": "Mokkie"
+     },
+     {
+      "f": "Ficus religiosa, TamilNadu407.JPG",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Ficus_religiosa%2C_TamilNadu407.JPG/960px-Ficus_religiosa%2C_TamilNadu407.JPG",
+      "l": "CC BY-SA 3.0",
+      "a": "தகவலுழவன்"
+     }
+    ]
+   },
+   {
+    "key": "bar",
+    "sci": "Ficus benghalensis",
+    "en": "Bar",
+    "ne": "बर",
+    "zone": "terai",
+    "clue": [
+     "Aerial roots hang from the branches and grow into new trunks; big, oval, leathery leaves.",
+     "हाँगाबाट झुन्डिएका जराहरू नयाँ काण्ड बन्छन्; ठूला, अण्डाकार, बाक्ला पात।"
+    ],
+    "fact": [
+     "The classic shade tree of the chautari, where travellers rest, often beside a peepal.",
+     "चौतारीको परम्परागत छहारी दिने रुख, जहाँ यात्रु बिसाउँछन्; प्रायः पिपलसँगै।"
+    ],
+    "photos": [
+     {
+      "f": "Ficus benghalensis 413747758.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Ficus_benghalensis_413747758.jpg/960px-Ficus_benghalensis_413747758.jpg",
+      "l": "CC BY 4.0",
+      "a": "Ram Dayal Vaishnav"
+     },
+     {
+      "f": "Ficus benghalensis 280260261.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Ficus_benghalensis_280260261.jpg/960px-Ficus_benghalensis_280260261.jpg",
+      "l": "CC0",
+      "a": "Felix E. Klee"
+     },
+     {
+      "f": "Ficus benghalensis 279697585.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Ficus_benghalensis_279697585.jpg/960px-Ficus_benghalensis_279697585.jpg",
+      "l": "CC0",
+      "a": "Quentin Groom"
+     }
+    ]
+   },
+   {
+    "key": "lapsi",
+    "sci": "Choerospondias axillaris",
+    "en": "Lapsi",
+    "ne": "लप्सी",
+    "zone": "hill",
+    "clue": [
+     "Small yellow-green, sour fruits; the hard stone has five little 'eyes' at one end.",
+     "साना पहेँला-हरिया, अमिला फल; कडा बियाँको एक छेउमा पाँचवटा साना 'आँखा'।"
+    ],
+    "fact": [
+     "The fruit is made into lapsi candy and achar, a favourite taste of the mid-hills.",
+     "फलबाट लप्सीको मिठाई (पाउ) र अचार बनाइन्छ, पहाडको प्रिय स्वाद।"
+    ],
+    "photos": [
+     {
+      "f": "Anacardiaceae- Choerospondias axillaris (hog plum, sour jujube) 2.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Anacardiaceae-_Choerospondias_axillaris_%28hog_plum%2C_sour_jujube%29_2.jpg/960px-Anacardiaceae-_Choerospondias_axillaris_%28hog_plum%2C_sour_jujube%29_2.jpg",
+      "l": "CC BY 2.0",
+      "a": "Kristof Zyskowski & Yulia Bereshpolova"
+     },
+     {
+      "f": "Anacardiaceae- Choerospondias axillaris (hog plum, sour jujube) 4.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Anacardiaceae-_Choerospondias_axillaris_%28hog_plum%2C_sour_jujube%29_4.jpg/960px-Anacardiaceae-_Choerospondias_axillaris_%28hog_plum%2C_sour_jujube%29_4.jpg",
+      "l": "CC BY 2.0",
+      "a": "Kristof Zyskowski & Yulia Bereshpolova"
+     },
+     {
+      "f": "Choerospondias axillaris (Anacardiaceae) at Sim's Park, Coonoor.JPG",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Choerospondias_axillaris_%28Anacardiaceae%29_at_Sim%27s_Park%2C_Coonoor.JPG/960px-Choerospondias_axillaris_%28Anacardiaceae%29_at_Sim%27s_Park%2C_Coonoor.JPG",
+      "l": "CC BY-SA 3.0",
+      "a": "Gauri Wur Sem"
+     }
+    ]
+   },
+   {
+    "key": "kafal",
+    "sci": "Myrica esculenta",
+    "en": "Kafal",
+    "ne": "काफल",
+    "zone": "hill",
+    "clue": [
+     "Small, bumpy berries that turn deep red in early summer (Baisakh–Jestha); narrow dark-green leaves.",
+     "गर्मीको सुरुतिर (बैशाख–जेठ) गाढा रातो हुने साना, खस्रा दाना; साँघुरा गाढा हरिया पात।"
+    ],
+    "fact": [
+     "Its sweet-sour berries are sold in leaf cones along hill roads every summer.",
+     "यसका गुलियो-अमिलो दाना हरेक गर्मीमा पहाडी सडक छेउ टपरीमा बेचिन्छन्।"
+    ],
+    "photos": [
+     {
+      "f": "Unripe and half ripe fruits of Myrica esculenta Box myrtle tree JEG5546.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Unripe_and_half_ripe_fruits_of_Myrica_esculenta_Box_myrtle_tree_JEG5546.jpg/960px-Unripe_and_half_ripe_fruits_of_Myrica_esculenta_Box_myrtle_tree_JEG5546.jpg",
+      "l": "CC BY-SA 4.0",
+      "a": "PJeganathan"
+     },
+     {
+      "f": "Myrica esculenta.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Myrica_esculenta.jpg/960px-Myrica_esculenta.jpg",
+      "l": "CC BY-SA 4.0",
+      "a": "Gaurav Dhwaj Khadka"
+     },
+     {
+      "f": "Kaphal.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Kaphal.jpg/960px-Kaphal.jpg",
+      "l": "CC BY-SA 4.0",
+      "a": "L. Shyamal"
+     }
+    ]
+   },
+   {
+    "key": "gobre",
+    "sci": "Pinus wallichiana",
+    "en": "Gobre salla",
+    "ne": "गोब्रे सल्ला",
+    "zone": "high",
+    "clue": [
+     "Soft, drooping blue-green needles in bundles of five; long, hanging, resin-sticky cones.",
+     "पाँचको झुप्पामा नरम, झुकेका निलो-हरिया सियो; लामा, झुन्डिने, खोटो टाँसिने कोन।"
+    ],
+    "fact": [
+     "The blue pine of the higher hills, above the zone of khote salla.",
+     "खोटे सल्लाभन्दा माथिल्लो उच्च पहाडको निलो सल्ला।"
+    ],
+    "photos": [
+     {
+      "f": "Pinus wallichiana cone.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Pinus_wallichiana_cone.jpg/960px-Pinus_wallichiana_cone.jpg",
+      "l": "CC BY 2.0",
+      "a": "Robin Abraham"
+     },
+     {
+      "f": "Blue Pine (Pinus wallichiana) at Bhandakthathaatch (8000 ft) I IMG 7363.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Blue_Pine_%28Pinus_wallichiana%29_at_Bhandakthathaatch_%288000_ft%29_I_IMG_7363.jpg",
+      "l": "CC BY-SA 3.0",
+      "a": "J.M.Garg"
+     },
+     {
+      "f": "Pinus wallichiana Manali 2.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Pinus_wallichiana_Manali_2.jpg/960px-Pinus_wallichiana_Manali_2.jpg",
+      "l": "CC BY 2.0",
+      "a": "Michael Douglas Bramwell"
+     }
+    ]
+   },
+   {
+    "key": "bhojpatra",
+    "sci": "Betula utilis",
+    "en": "Bhojpatra",
+    "ne": "भोजपत्र",
+    "zone": "high",
+    "clue": [
+     "Papery bark that peels off in thin pinkish-white sheets. Grows near the treeline.",
+     "पातलो गुलाबी-सेतो पत्रमा उप्किने कागजजस्तो बोक्रा। रुख-रेखा नजिक पाइन्छ।"
+    ],
+    "fact": [
+     "Its bark was once used as paper for writing manuscripts.",
+     "यसको बोक्रा पहिले हस्तलिखित ग्रन्थ लेख्ने कागजका रूपमा प्रयोग हुन्थ्यो।"
+    ],
+    "photos": [
+     {
+      "f": "Betula utilis - Bhoj Patra Tree on way from Gangria to Hemkund at Valley of Flowers National Park - during LGFC - VOF 2019 (4).jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Betula_utilis_-_Bhoj_Patra_Tree_on_way_from_Gangria_to_Hemkund_at_Valley_of_Flowers_National_Park_-_during_LGFC_-_VOF_2019_%284%29.jpg/960px-Betula_utilis_-_Bhoj_Patra_Tree_on_way_from_Gangria_to_Hemkund_at_Valley_of_Flowers_National_Park_-_during_LGFC_-_VOF_2019_%284%29.jpg",
+      "l": "CC BY-SA 4.0",
+      "a": "Vinayaraj"
+     },
+     {
+      "f": "Betula utilis - Bhoj Patra Tree on way from Gangria to Hemkund at Valley of Flowers National Park - during LGFC - VOF 2019 (3).jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Betula_utilis_-_Bhoj_Patra_Tree_on_way_from_Gangria_to_Hemkund_at_Valley_of_Flowers_National_Park_-_during_LGFC_-_VOF_2019_%283%29.jpg/960px-Betula_utilis_-_Bhoj_Patra_Tree_on_way_from_Gangria_to_Hemkund_at_Valley_of_Flowers_National_Park_-_during_LGFC_-_VOF_2019_%283%29.jpg",
+      "l": "CC BY-SA 4.0",
+      "a": "Vinayaraj"
+     },
+     {
+      "f": "Betula utilis - Bhoj Patra Tree on way from Gangria to Valley of Flowers National Park - during LGFC - VOF 2019 (3).jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Betula_utilis_-_Bhoj_Patra_Tree_on_way_from_Gangria_to_Valley_of_Flowers_National_Park_-_during_LGFC_-_VOF_2019_%283%29.jpg/960px-Betula_utilis_-_Bhoj_Patra_Tree_on_way_from_Gangria_to_Valley_of_Flowers_National_Park_-_during_LGFC_-_VOF_2019_%283%29.jpg",
+      "l": "CC BY-SA 4.0",
+      "a": "Vinayaraj"
+     }
+    ]
+   },
+   {
+    "key": "deodar",
+    "sci": "Cedrus deodara",
+    "en": "Deodar",
+    "ne": "देवदार",
+    "zone": "high",
+    "clue": [
+     "Short needles in tufts on short shoots, drooping branch tips, and barrel-shaped cones sitting upright.",
+     "छोटा हाँगामा झुप्पामा छोटा सियो, झुकेका हाँगाका टुप्पा र ठाडो बस्ने पिपाजस्ता कोन।"
+    ],
+    "fact": [
+     "Native to far-western Nepal. Its name means 'timber of the gods', and the wood is very durable.",
+     "सुदूरपश्चिम नेपालको रैथाने रुख। नामको अर्थ 'देवताको काठ'; काठ निकै टिकाउ हुन्छ।"
+    ],
+    "photos": [
+     {
+      "f": "Cedrus deodara Manali 2.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Cedrus_deodara_Manali_2.jpg/960px-Cedrus_deodara_Manali_2.jpg",
+      "l": "CC BY 2.0",
+      "a": "Paul Evans"
+     },
+     {
+      "f": "Cedrus deodara India02.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Cedrus_deodara_India02.jpg/960px-Cedrus_deodara_India02.jpg",
+      "l": "CC BY-SA 4.0",
+      "a": "Gv3101992"
+     },
+     {
+      "f": "Cedrus deodara India01.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Cedrus_deodara_India01.jpg/960px-Cedrus_deodara_India01.jpg",
+      "l": "CC BY-SA 4.0",
+      "a": "Gv3101992"
+     }
+    ]
+   },
+   {
+    "key": "neem",
+    "sci": "Azadirachta indica",
+    "en": "Neem",
+    "ne": "नीम",
+    "zone": "terai",
+    "clue": [
+     "Leaflets are curved like a sickle with saw-toothed edges; very bitter taste; small olive-like fruits.",
+     "हँसियाजस्तो बाङ्गा, आरीजस्तो किनार भएका पत्रक; निकै तितो; साना जैतुनजस्ता फल।"
+    ],
+    "fact": [
+     "Its twigs are used as datiwan (tooth-sticks), and its leaves and seeds as a natural pesticide.",
+     "यसको हाँगो दतिवनका रूपमा, र पात तथा बियाँ प्राकृतिक कीटनाशकका रूपमा प्रयोग हुन्छन्।"
+    ],
+    "photos": [
+     {
+      "f": "ആര്യവേപ്പ്.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/%E0%B4%86%E0%B4%B0%E0%B5%8D%E0%B4%AF%E0%B4%B5%E0%B5%87%E0%B4%AA%E0%B5%8D%E0%B4%AA%E0%B5%8D.jpg/960px-%E0%B4%86%E0%B4%B0%E0%B5%8D%E0%B4%AF%E0%B4%B5%E0%B5%87%E0%B4%AA%E0%B5%8D%E0%B4%AA%E0%B5%8D.jpg",
+      "l": "CC BY-SA 2.5",
+      "a": "Challiyan"
+     },
+     {
+      "f": "Azadirachta indica - Neem at Tenkasi 2014 (5).jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Azadirachta_indica_-_Neem_at_Tenkasi_2014_%285%29.jpg/960px-Azadirachta_indica_-_Neem_at_Tenkasi_2014_%285%29.jpg",
+      "l": "CC BY-SA 4.0",
+      "a": "Vinayaraj"
+     },
+     {
+      "f": "Azadirachta indica-Neem tree.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Azadirachta_indica-Neem_tree.jpg/960px-Azadirachta_indica-Neem_tree.jpg",
+      "l": "CC BY-SA 4.0",
+      "a": "Kwameghana (Bright Kwame Ayisi)"
+     }
+    ]
+   },
+   {
+    "key": "amala",
+    "sci": "Phyllanthus emblica",
+    "en": "Amala",
+    "ne": "अमला",
+    "zone": "terai",
+    "clue": [
+     "Tiny leaflets in two neat rows, so each twig looks like a feather; round, pale-green sour fruits.",
+     "दुई लहरमा मिलेका साना पत्रक, त्यसैले हाँगो प्वाँखजस्तो देखिन्छ; गोला, फिक्का हरिया अमिला फल।"
+    ],
+    "fact": [
+     "The fruit is very rich in vitamin C and is one of the three fruits in triphala.",
+     "फलमा प्रशस्त भिटामिन सी हुन्छ र यो त्रिफलाका तीन फलमध्ये एक हो।"
+    ],
+    "photos": [
+     {
+      "f": "Amla in Bangladesh 6.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Amla_in_Bangladesh_6.jpg/960px-Amla_in_Bangladesh_6.jpg",
+      "l": "CC BY-SA 3.0",
+      "a": "Salim Khandoker"
+     },
+     {
+      "f": "Phyllanthus emblica 273835181.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Phyllanthus_emblica_273835181.jpg/960px-Phyllanthus_emblica_273835181.jpg",
+      "l": "CC BY 4.0",
+      "a": "Sus scrofa"
+     },
+     {
+      "f": "YosriPokokMelaka.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/YosriPokokMelaka.jpg/960px-YosriPokokMelaka.jpg",
+      "l": "GFDL",
+      "a": "Yosri"
+     }
+    ]
+   },
+   {
+    "key": "chiuri",
+    "sci": "Diploknema butyracea",
+    "en": "Chiuri",
+    "ne": "चिउरी",
+    "zone": "hill",
+    "clue": [
+     "Large leaves crowded at the branch tips; creamy flower clusters that birds and bees love.",
+     "हाँगाका टुप्पामा खाँदिएका ठूला पात; चरा र मौरीले मन पराउने क्रिम रङका फूलका गुच्छा।"
+    ],
+    "fact": [
+     "Its seeds give chiuri ghee (a butter-like fat), and its flowers are a rich source of nectar for honey.",
+     "यसका बियाँबाट चिउरीको घिउ निस्कन्छ, र फूल मह बनाउन रसको राम्रो स्रोत हो।"
+    ],
+    "photos": [
+     {
+      "f": "चिउरीको बोट१.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/%E0%A4%9A%E0%A4%BF%E0%A4%89%E0%A4%B0%E0%A5%80%E0%A4%95%E0%A5%8B_%E0%A4%AC%E0%A5%8B%E0%A4%9F%E0%A5%A7.jpg/960px-%E0%A4%9A%E0%A4%BF%E0%A4%89%E0%A4%B0%E0%A5%80%E0%A4%95%E0%A5%8B_%E0%A4%AC%E0%A5%8B%E0%A4%9F%E0%A5%A7.jpg",
+      "l": "CC BY-SA 4.0",
+      "a": "Janak Bhatta"
+     },
+     {
+      "f": "Chiuri Fruit.JPG",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Chiuri_Fruit.JPG/960px-Chiuri_Fruit.JPG",
+      "l": "CC BY-SA 3.0",
+      "a": "Krish Dulal"
+     },
+     {
+      "f": "Aethopyga siparaja seheriae Panchkhal.JPG",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Aethopyga_siparaja_seheriae_Panchkhal.JPG/960px-Aethopyga_siparaja_seheriae_Panchkhal.JPG",
+      "l": "CC BY-SA 3.0",
+      "a": "Nirmal Dulal"
+     }
+    ]
+   },
+   {
+    "key": "khasru",
+    "sci": "Quercus semecarpifolia",
+    "en": "Khasru",
+    "ne": "खस्रु",
+    "zone": "high",
+    "clue": [
+     "Tough, leathery oak leaves, rounded and dark green, with spiny edges on young trees; furry beneath.",
+     "कडा, छालाजस्ता बाँझका पात, गोलाकार र गाढा हरिया, जवान रुखमा काँडेदार किनार; तलपट्टि रौँ।"
+    ],
+    "fact": [
+     "An oak of the high hills, important for fodder and firewood.",
+     "उच्च पहाडको बाँझ प्रजाति, घाँस र दाउराका लागि महत्त्वपूर्ण।"
+    ],
+    "photos": [
+     {
+      "f": "Quercus semecarpifolia kz03.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Quercus_semecarpifolia_kz03.jpg/960px-Quercus_semecarpifolia_kz03.jpg",
+      "l": "CC BY-SA 4.0",
+      "a": "Krzysztof Ziarnek, Kenraiz"
+     },
+     {
+      "f": "Quercus semecarpifolia kz04.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Quercus_semecarpifolia_kz04.jpg/960px-Quercus_semecarpifolia_kz04.jpg",
+      "l": "CC BY-SA 4.0",
+      "a": "Krzysztof Ziarnek, Kenraiz"
+     },
+     {
+      "f": "Quercus semecarpifolia 09.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Quercus_semecarpifolia_09.jpg/960px-Quercus_semecarpifolia_09.jpg",
+      "l": "CC0",
+      "a": "Forestowlet"
+     }
+    ]
+   },
+   {
+    "key": "tooni",
+    "sci": "Toona ciliata",
+    "en": "Tooni",
+    "ne": "तुनी",
+    "zone": "hill",
+    "clue": [
+     "Long leaves with many paired leaflets; drooping sprays of small, white, fragrant flowers.",
+     "धेरै जोडी पत्रक भएका लामा पात; साना, सेता, सुगन्धित फूलका झुकेका झुप्पा।"
+    ],
+    "fact": [
+     "Its reddish timber is easy to work and is prized for doors, windows and furniture.",
+     "यसको रातो काठ सजिलै काम गर्न मिल्ने हुन्छ, ढोका, झ्याल र फर्निचरका लागि रुचाइन्छ।"
+    ],
+    "photos": [
+     {
+      "f": "Starr 020803-0078 Toona ciliata.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Starr_020803-0078_Toona_ciliata.jpg/960px-Starr_020803-0078_Toona_ciliata.jpg",
+      "l": "CC BY 3.0",
+      "a": "Forest & Kim Starr"
+     },
+     {
+      "f": "Toona-ciliata-SF23302-03.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Toona-ciliata-SF23302-03.jpg/960px-Toona-ciliata-SF23302-03.jpg",
+      "l": "CC BY-SA 4.0",
+      "a": "Steve Fitzgerald"
+     },
+     {
+      "f": "Toona ciliata Bunya Mountains National Park Queensland 1980s IMG 0032.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Toona_ciliata_Bunya_Mountains_National_Park_Queensland_1980s_IMG_0032.jpg/960px-Toona_ciliata_Bunya_Mountains_National_Park_Queensland_1980s_IMG_0032.jpg",
+      "l": "CC BY-SA 4.0",
+      "a": "John Robert McPherson"
+     }
+    ]
+   },
+   {
+    "key": "karma",
+    "sci": "Haldina cordifolia",
+    "en": "Karma",
+    "ne": "कर्मा (हल्दु)",
+    "zone": "terai",
+    "clue": [
+     "Big heart-shaped leaves and small round flower heads like yellow balls.",
+     "ठूला मुटुआकारका पात र पहेँला बलजस्ता साना गोला फूलका गुच्छा।"
+    ],
+    "fact": [
+     "A tall tree of Terai and Chure forests with yellowish timber.",
+     "तराई र चुरेका वनको अग्लो रुख; काठ पहेँलो रङको।"
+    ],
+    "photos": [
+     {
+      "f": "Haldina cordifolia plant.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Haldina_cordifolia_plant.jpg/960px-Haldina_cordifolia_plant.jpg",
+      "l": "CC BY-SA 3.0",
+      "a": "Vinayaraj"
+     },
+     {
+      "f": "Haldina cordifolia (Haldu) in Ananthagiri forest, AP W IMG 9367.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Haldina_cordifolia_%28Haldu%29_in_Ananthagiri_forest%2C_AP_W_IMG_9367.jpg",
+      "l": "CC BY 3.0",
+      "a": "J.M.Garg"
+     },
+     {
+      "f": "Adina cordifolia 7zz.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Adina_cordifolia_7zz.jpg/960px-Adina_cordifolia_7zz.jpg",
+      "l": "CC BY-SA 4.0",
+      "a": "David J. Stang"
+     }
+    ]
+   },
+   {
+    "key": "talis",
+    "sci": "Abies spectabilis",
+    "en": "Talispatra",
+    "ne": "तालिसपत्र",
+    "zone": "high",
+    "clue": [
+     "Flat needles with silvery-white stripes underneath; dark violet-blue cones stand upright on the branches.",
+     "तलपट्टि चाँदीजस्ता सेता धर्सा भएका चेप्टा सियो; गाढा बैजनी-निलो कोन हाँगामा ठाडो उभिन्छन्।"
+    ],
+    "fact": [
+     "The Himalayan fir that forms dark forests up near the treeline.",
+     "रुख-रेखा नजिकसम्म गाढा वन बनाउने हिमाली सल्ला।"
+    ],
+    "photos": [
+     {
+      "f": "Abies spectabilis Namche Bazaar.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Abies_spectabilis_Namche_Bazaar.jpg/960px-Abies_spectabilis_Namche_Bazaar.jpg",
+      "l": "CC BY 2.0",
+      "a": "Mckaysavage"
+     },
+     {
+      "f": "Abies spectabilis, Shigatse, Jilong, Tibet 1.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Abies_spectabilis%2C_Shigatse%2C_Jilong%2C_Tibet_1.jpg/960px-Abies_spectabilis%2C_Shigatse%2C_Jilong%2C_Tibet_1.jpg",
+      "l": "CC0",
+      "a": "gbno"
+     },
+     {
+      "f": "Abies spectabilis, Shigatse, Jilong, Tibet 3.jpg",
+      "u": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Abies_spectabilis%2C_Shigatse%2C_Jilong%2C_Tibet_3.jpg/960px-Abies_spectabilis%2C_Shigatse%2C_Jilong%2C_Tibet_3.jpg",
+      "l": "CC0",
+      "a": "gbno"
+     }
+    ]
+   }
+  ]
+ }
 }
 </script>
 <!-- ============ END CONTENT ============ -->
@@ -2095,8 +3114,133 @@ if (C.goatcounter && /(^|\.)sailendraneupane\.com\.np$|github\.io$/.test(locatio
 }
 
 /* ---------- render all ---------- */
+/* ---------- tree identification game ---------- */
+const Game = (() => {
+  const G = C.game, ROUNDS = Math.min(10, C.game.species.length), box = document.getElementById('game');
+  const sp = k => G.species.find(s => s.key === k);
+  const nm = s => lang === 'ne' ? s.ne : s.en;
+  const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.random() * (i + 1) | 0; [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  const fileURL = (f, w) => 'https://commons.wikimedia.org/wiki/Special:FilePath/' + encodeURIComponent(f) + (w ? '?width=' + w : '');
+  const pageURL = f => 'https://commons.wikimedia.org/wiki/File:' + encodeURIComponent(f.replace(/ /g, '_'));
+  let st = {phase: 'intro'};
+  let best = +store.get('treeGameBest') || 0;
+  let mosaic = shuffle(G.species.slice()).slice(0, 6).map(s => s.photos[0]);
+
+  function newGame(){
+    const keys = shuffle(G.species.map(s => s.key)).slice(0, ROUNDS);
+    st = {phase: 'play', i: 0, score: 0, streak: 0, q: keys.map(k => {
+      const s = sp(k), p = s.photos[Math.random() * s.photos.length | 0];
+      const same = shuffle(G.species.filter(x => x.key !== k && x.zone === s.zone)).slice(0, 2);
+      const rest = shuffle(G.species.filter(x => x.key !== k && !same.includes(x))).slice(0, 3 - same.length);
+      return {k, p, opts: shuffle([k, ...same.map(x => x.key), ...rest.map(x => x.key)]), hint: false, pick: null};
+    })};
+    render(); preload(1);
+    box.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block: 'start'});
+  }
+  function preload(i){ const q = st.q && st.q[i]; if (q) { const im = new Image(); im.src = q.p.u; } }
+  function cur(){ return st.q[st.i]; }
+  function answer(k){
+    const q = cur(); if (q.pick) return;
+    q.pick = k;
+    if (k === q.k) { st.score += q.hint ? 1 : 2; st.streak++; } else st.streak = 0;
+    render();
+    const nx = box.querySelector('.g-next'); nx && nx.focus({preventScroll: true});
+  }
+  function next(){
+    if (st.i < ROUNDS - 1) { st.i++; render(); preload(st.i + 1); const o = box.querySelector('.g-opt'); o && o.focus({preventScroll: true}); }
+    else { st.phase = 'done'; if (st.score > best) { best = st.score; store.set('treeGameBest', best); } render(); box.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block: 'start'}); const a = box.querySelector('.g-start'); a && a.focus({preventScroll: true}); }
+  }
+  function stats(){
+    return `<div class="g-stats">
+      ${st.phase === 'play' ? `<span>${esc(t('g_score'))}<b>${num(st.score)}</b></span><span>${esc(t('g_streak'))}<b>${num(st.streak)}</b></span>` : ''}
+      <span>${esc(t('g_best'))}<b>${num(best)}/${num(ROUNDS * 2)}</b></span></div>`;
+  }
+  function credit(p){
+    return `${esc(t('g_photo'))}: ${esc(p.a)} · ${esc(p.l)} · <a href="${pageURL(p.f)}" target="_blank" rel="noopener">Wikimedia Commons ↗</a>`;
+  }
+  function render(){
+    if (!box) return;
+    const head = `<div class="g-head"><div><div class="label">${esc(t('g_kicker'))}</div><h3>${esc(t('game_h'))}</h3><p>${esc(t('game_p'))}</p></div>${stats()}</div>`;
+    if (st.phase === 'intro') {
+      box.innerHTML = head + `<div class="g-intro">
+        <div class="g-mosaic" aria-hidden="true">${mosaic.map(p => `<img src="${esc(p.u)}" alt="" loading="lazy" onerror="this.onerror=null;this.src='${fileURL(p.f, 330)}'">`).join('')}</div>
+        <div><ul><li>${esc(t('g_rule1'))}</li><li>${esc(t('g_rule2'))}</li><li>${esc(t('g_rule3'))}</li></ul>
+        <button type="button" class="btn primary g-start">${esc(t('g_start'))}</button></div></div>`;
+      return;
+    }
+    if (st.phase === 'done') {
+      const missed = st.q.filter(q => q.pick !== q.k);
+      const max = ROUNDS * 2, msg = st.score === max ? 'g_perfect' : st.score >= max * .6 ? 'g_good' : 'g_try';
+      box.innerHTML = head + `<div class="g-done">
+        <div class="label">${esc(t('g_done_h'))}</div>
+        <div class="g-big">${num(st.score)}<span style="font-size:.45em;color:var(--muted)">/${num(max)}</span></div>
+        <p style="margin:8px 0 0">${esc(t(msg))}</p>
+        ${missed.length ? `<div class="label" style="margin-top:22px">${esc(t('g_review'))}</div>
+        <ul class="g-miss">${missed.map(q => { const s = sp(q.k); return `<li><img src="${esc(q.p.u)}" alt="${esc(nm(s))}" loading="lazy" onerror="this.onerror=null;this.src='${fileURL(q.p.f, 330)}'"><div><strong>${esc(nm(s))}</strong><em style="color:var(--muted)">${esc(s.sci)}</em><br>${esc(pick(s.clue))}</div></li>`; }).join('')}</ul>` : ''}
+        <div class="links" style="margin-top:18px"><button type="button" class="btn primary g-start">${esc(t('g_again'))}</button><button type="button" class="btn g-share">${esc(t('g_share'))}</button></div></div>`;
+      return;
+    }
+    const q = cur(), s = sp(q.k), done = !!q.pick, ok = q.pick === q.k;
+    const picked = done && !ok ? sp(q.pick) : null;
+    box.innerHTML = head + `<div class="g-body">
+      <div>
+        <div class="g-photo">
+          <img class="bg" src="${esc(q.p.u)}" alt="" aria-hidden="true">
+          <span class="wait">${esc(t('g_loading'))}</span>
+          <img class="main" src="${esc(q.p.u)}" alt="${esc(done ? nm(s) : t('g_alt'))}">
+          <span class="qn">${esc(t('g_q'))} ${num(st.i + 1)}/${num(ROUNDS)}</span>
+        </div>
+        <div class="g-credit">${credit(q.p)}</div>
+      </div>
+      <div>
+        <div class="g-bar" aria-hidden="true"><span style="width:${(st.i + (done ? 1 : 0)) / ROUNDS * 100}%"></span></div>
+        <div class="g-opts" role="group" aria-label="${esc(t('g_choose'))}">${q.opts.map((k, i) => { const o = sp(k);
+          const cls = !done ? '' : k === q.k ? 'right' : k === q.pick ? 'wrong' : 'dim';
+          return `<button type="button" class="g-opt ${cls}" data-k="${k}" ${done ? 'disabled' : ''}><span class="n">${num(i + 1)}</span><span><strong>${esc(nm(o))}</strong>${done ? `<small>${esc(o.sci)}</small>` : ''}</span></button>`; }).join('')}</div>
+        ${!done && q.hint ? `<p class="g-hint"><strong>${esc(t('g_hint_l'))}</strong> ${esc(pick(s.clue))}</p>` : ''}
+        ${done ? `<div class="g-fb">
+          <h4 class="${ok ? 'ok' : 'no'}">${ok ? esc(t('g_right')) + (q.hint ? '' : ' +' + num(2)) : esc(t('g_wrong')) + ' ' + esc(nm(s))}</h4>
+          <p><em>${esc(s.sci)}</em> — ${esc(pick(s.clue))}</p>
+          <p>${esc(pick(s.fact))}</p>
+          ${picked ? `<p class="also"><strong>${esc(nm(picked))}</strong> ${esc(t('g_differs'))} ${esc(pick(picked.clue))}</p>` : ''}
+        </div>` : ''}
+        <div class="g-tools">
+          ${done ? `<button type="button" class="btn primary g-next">${esc(t(st.i < ROUNDS - 1 ? 'g_next' : 'g_finish'))}</button>`
+                 : `<button type="button" class="btn g-hintbtn" ${q.hint ? 'disabled' : ''}>${esc(t('g_hint'))}</button>`}
+          <span class="g-key">${esc(t('g_keys'))}</span>
+        </div>
+      </div></div>`;
+    const main = box.querySelector('.g-photo .main'), bg = box.querySelector('.g-photo .bg'), wait = box.querySelector('.g-photo .wait');
+    const shown = () => { main.classList.add('ok'); wait.hidden = true; };
+    main.addEventListener('load', shown);
+    main.addEventListener('error', () => { if (!main.dataset.fb) { main.dataset.fb = 1; main.src = bg.src = fileURL(q.p.f, 960); } else wait.textContent = t('g_imgerr'); });
+    if (main.complete && main.naturalWidth) shown();
+  }
+  box && box.addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    if (b.classList.contains('g-start')) newGame();
+    else if (b.classList.contains('g-opt')) answer(b.dataset.k);
+    else if (b.classList.contains('g-hintbtn')) { cur().hint = true; render(); }
+    else if (b.classList.contains('g-next')) next();
+    else if (b.classList.contains('g-share')) {
+      const text = t('g_share_text').replace('{s}', num(st.score)).replace('{m}', num(ROUNDS * 2));
+      const url = location.origin + location.pathname + '#game';
+      if (navigator.share) navigator.share({title: t('game_h'), text, url}).catch(() => {});
+      else navigator.clipboard && navigator.clipboard.writeText(text + ' ' + url).then(() => { b.textContent = t('copied'); });
+    }
+  });
+  addEventListener('keydown', e => {
+    if (st.phase !== 'play' || e.altKey || e.ctrlKey || e.metaKey || /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) return;
+    const r = box.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return;
+    const q = cur();
+    if (!q.pick && /^[1-4]$/.test(e.key)) { e.preventDefault(); answer(q.opts[+e.key - 1]); }
+    else if (q.pick && (e.key === 'Enter' || e.key === 'ArrowRight') && !document.activeElement.closest('.g-next')) { e.preventDefault(); next(); }
+  });
+  return {render};
+})();
+
 function renderAll(){
-  renderStatic(); renderSeasons(); renderQuotes(); renderResearch(); renderWork(); renderWriting(); renderGallery(); renderSpecies(); renderCalcSelect(); renderMapPanel(); applyTheme();
+  renderStatic(); renderSeasons(); renderQuotes(); renderResearch(); renderWork(); renderWriting(); renderGallery(); renderSpecies(); renderCalcSelect(); renderMapPanel(); Game.render(); applyTheme();
   setRho();
   calc();
   if (document.body.classList.contains('reading')) route();
