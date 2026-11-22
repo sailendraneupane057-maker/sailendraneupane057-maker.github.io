@@ -1,0 +1,2335 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sailendra Neupane</title>
+<meta name="description" content="Sailendra Neupane — forester from Nepal working on community forestry, forest inventory and GIS. Research, field work, articles and tools.">
+<link rel="canonical" href="https://sailendraneupane.com.np/">
+<meta name="author" content="Sailendra Neupane">
+<meta name="keywords" content="Sailendra Neupane, forester Nepal, community forest operational plan, forest inventory, GIS, QGIS, forestry consultant Nepal">
+<meta name="theme-color" content="#1f6b4a">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231f6b4a'/%3E%3Cpath d='M32 10c11 8 16 16 16 24a16 16 0 0 1-32 0c0-8 5-16 16-24z' fill='%23cfe8d8'/%3E%3Cpath d='M32 56V30' stroke='%231f6b4a' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="images/icon-180.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Sailendra Neupane", "alternateName": "शैलेन्द्र न्यौपाने", "url": "https://sailendraneupane.com.np/", "image": "https://sailendraneupane.com.np/images/portrait.jpg", "jobTitle": "Forester", "description": "Forester from Nepal working on community forest operational plans, forest inventory and GIS.", "email": "mailto:sailendraneupane057@gmail.com", "nationality": "Nepal", "address": {"@type": "PostalAddress", "addressCountry": "NP"}, "alumniOf": {"@type": "CollegeOrUniversity", "name": "Purbanchal University College of Environment and Forestry"}, "knowsAbout": ["Community forestry", "Forest inventory", "Forest operational plans", "GIS", "QGIS", "ArcGIS", "R", "KoboToolbox", "Forest carbon"], "sameAs": ["https://orcid.org/0009-0008-0363-6246"]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&family=Mukta:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+
+/* Layout idea: a living field notebook. One orchestrated moment: a tree grows
+   in the hero and sways in the wind. Everything else stays quiet and precise. */
+:root{
+  --bg:#f1f4ee;
+  --surface:#ffffff;
+  --ink:#13221b;
+  --muted:#55655c;
+  --line:#d3dcd4;
+  --accent:#1f6b4a;
+  --accent-2:#b5892b;
+  --leaf-3:#6fae6a;
+  --bark:#3b2f25;
+  --contour:rgba(31,107,74,.14);
+  --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0d1612; --surface:#14201a; --ink:#e3ebe6; --muted:#9bb0a5; --line:#24352d;
+    --accent:#6cc497; --accent-2:#dcb45c; --leaf-3:#3f8f5f; --bark:#a8957f;
+    --contour:rgba(108,196,151,.13); color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0d1612; --surface:#14201a; --ink:#e3ebe6; --muted:#9bb0a5; --line:#24352d;
+  --accent:#6cc497; --accent-2:#dcb45c; --leaf-3:#3f8f5f; --bark:#a8957f;
+  --contour:rgba(108,196,151,.13); color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.6;overflow-x:hidden}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible,canvas:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+h1,h2,h3{font-family:var(--display);line-height:1.1;text-wrap:balance;margin:0}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+.label{font-family:var(--mono);font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+
+.intro{display:flex;align-items:center;gap:20px}
+.portrait{position:relative;margin:0;width:112px;height:112px;flex:none;animation:pop .8s cubic-bezier(.2,.8,.2,1) both}
+.portrait img{position:absolute;inset:8px;width:calc(100% - 16px);height:calc(100% - 16px);border-radius:50%;object-fit:cover;object-position:50% 30%;background:var(--surface)}
+.portrait .ring{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,var(--accent),var(--leaf-3),var(--accent-2),var(--accent));animation:spin 9s linear infinite;will-change:transform;-webkit-mask:radial-gradient(circle,transparent 52px,#000 53px);mask:radial-gradient(circle,transparent 52px,#000 53px)}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pop{from{transform:scale(.6)}to{transform:none}}
+@media (max-width:480px){.portrait{width:92px;height:92px}.portrait .ring{-webkit-mask:radial-gradient(circle,transparent 42px,#000 43px);mask:radial-gradient(circle,transparent 42px,#000 43px)}}
+/* scroll progress: a thin growing stem */
+#progress{position:fixed;top:0;left:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--accent),var(--leaf-3),var(--accent-2));z-index:20}
+
+/* nav */
+header.top{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 96%,transparent);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:62px}
+.brand{font-family:var(--display);font-weight:800;font-size:18px;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:10px}
+.brand svg{width:22px;height:22px}
+nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0}
+nav a{font-family:var(--mono);font-size:13px;color:var(--muted);text-decoration:none;position:relative;padding:4px 0}
+nav a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .35s ease}
+nav a:hover,nav a.active{color:var(--ink)}
+nav a:hover::after,nav a.active::after{transform:scaleX(1)}
+@media (max-width:720px){nav ul{gap:16px} .brand span{display:none}}
+
+/* hero */
+.hero{position:relative;overflow:hidden}
+#contours{position:absolute;inset:0;width:100%;height:100%}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.15fr 1fr;gap:24px;align-items:center;min-height:560px;padding-top:40px;padding-bottom:24px}
+.kicker{display:flex;gap:12px;align-items:center}
+.kicker .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 var(--accent);animation:pulse 2.4s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 60%,transparent)}70%{box-shadow:0 0 0 10px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.name{font-size:clamp(52px,8.4vw,112px);font-weight:800;letter-spacing:-.035em;line-height:.92;margin-top:18px}
+.name .ln{display:block;overflow:hidden;padding-bottom:.06em}
+.name .ln span{display:inline-block;animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+.name .ln:nth-child(2) span{animation-delay:.12s;color:var(--accent)}
+@keyframes rise{from{transform:translateY(105%)}to{transform:none}}
+.rotator{font-family:var(--display);font-size:clamp(20px,2.4vw,26px);font-weight:600;margin-top:22px;display:flex;gap:.4em;flex-wrap:wrap}
+.rotator .words{display:inline-grid;color:var(--accent);height:1.3em;overflow:hidden}
+.rotator .words b{grid-area:1/1;font-weight:600;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.hero p.bio{max-width:54ch;margin:18px 0 0;color:var(--ink)}
+.fade-in{animation:fadeUp .9s .35s cubic-bezier(.2,.8,.2,1) both}
+@keyframes fadeUp{from{transform:translateY(14px)}to{transform:none}}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.btn{font-family:var(--mono);font-size:13.5px;padding:10px 16px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink);text-decoration:none;display:inline-flex;gap:8px;align-items:center;transition:transform .25s,border-color .25s,color .25s}
+.btn:hover{transform:translateY(-2px);border-color:var(--accent);color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.btn.primary:hover{color:var(--bg);box-shadow:0 8px 24px -10px var(--accent)}
+.tree-box{position:relative;height:100%;min-height:520px}
+#tree{position:absolute;inset:0;width:100%;height:100%;cursor:pointer}
+.tree-hint{position:absolute;right:8px;bottom:6px;font-family:var(--mono);font-size:11.5px;color:var(--muted);background:color-mix(in srgb,var(--bg) 80%,transparent);padding:3px 8px;border-radius:999px}
+@media (max-width:860px){
+  .hero .wrap{grid-template-columns:1fr;min-height:0;padding-top:28px}
+  .tree-box{min-height:340px;order:-1}
+}
+
+/* stats band */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);padding:0 max(0px,calc((100% - 1140px)/2));border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface)}
+.stat{padding:26px 24px;border-left:1px solid var(--line)}
+.stat:first-child{border-left:0}
+.stat b{display:block;font-family:var(--display);font-weight:800;font-size:clamp(36px,4.6vw,54px);line-height:1;font-variant-numeric:tabular-nums;color:var(--accent)}
+.stat span{display:block;margin-top:8px;font-size:15.5px;color:var(--muted);max-width:32ch}
+@media (max-width:720px){.stats{grid-template-columns:1fr}.stat{border-left:0;border-top:1px solid var(--line)}.stat:first-child{border-top:0}}
+
+/* sections */
+section.block{padding:88px 0;border-bottom:1px solid var(--line)}
+.sec-head{display:grid;grid-template-columns:240px 1fr;gap:32px;margin-bottom:36px;align-items:end}
+.sec-head .num{font-family:var(--display);font-weight:800;font-size:64px;line-height:.8;color:transparent;-webkit-text-stroke:1.5px var(--line)}
+.sec-head h2{font-size:40px;letter-spacing:-.02em;margin-top:8px}
+.sec-head p{margin:0;color:var(--muted);max-width:58ch}
+@media (max-width:860px){.sec-head{grid-template-columns:1fr;gap:10px}}
+
+.reveal{transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.reveal.pending{transform:translateY(22px)}
+
+.grid3{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+@media (max-width:900px){.grid3{grid-template-columns:1fr}}
+.card{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:26px;display:flex;flex-direction:column;gap:12px;overflow:hidden;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s,border-color .35s}
+.card::before{content:"";position:absolute;left:0;top:0;height:3px;width:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.card:hover{transform:translateY(-6px);border-color:color-mix(in srgb,var(--accent) 40%,var(--line));box-shadow:0 18px 40px -24px color-mix(in srgb,var(--accent) 70%,transparent)}
+.card:hover::before{transform:scaleX(1)}
+.card h3{font-size:21px}
+.card p{margin:0;font-size:16.5px}
+.card .rings{position:absolute;right:-40px;bottom:-40px;width:140px;height:140px;opacity:.5;transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
+.card:hover .rings{transform:rotate(40deg) scale(1.1)}
+.meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.pill{font-family:var(--mono);font-size:11.5px;letter-spacing:.03em;padding:3px 9px;border-radius:999px;border:1px solid var(--line);color:var(--muted);text-transform:uppercase}
+.pill.on{border-color:var(--accent);color:var(--accent)}
+.pill.plan{border-color:var(--accent-2);color:var(--accent-2)}
+
+
+/* mountain banner */
+.banner{position:relative;height:clamp(320px,52vw,520px);overflow:hidden;border-bottom:1px solid var(--line);background:#0e1a24}
+.banner img{position:absolute;left:0;top:-12%;width:100%;height:124%;object-fit:cover;will-change:transform;transform:translateZ(0)}
+.banner::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,14,20,.05) 30%,rgba(6,14,20,.72))}
+.banner .wrap{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:40px;color:#f3f6f2}
+.banner blockquote{margin:0;font-family:var(--display);font-weight:600;font-size:clamp(24px,3.4vw,42px);line-height:1.15;letter-spacing:-.015em;max-width:24ch;text-wrap:balance}
+.banner .label{color:rgba(243,246,242,.75);margin-top:14px}
+
+/* field gallery */
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;grid-auto-flow:dense;gap:12px}
+.gallery figure{position:relative;margin:0;overflow:hidden;border-radius:12px;background:var(--line);cursor:zoom-in}
+.gallery figure.w{grid-column:span 2}
+.gallery figure.t{grid-row:span 2}
+.gallery figure.b{grid-column:span 2;grid-row:span 2}
+.gallery img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.1s cubic-bezier(.2,.8,.2,1),filter .6s}
+.gallery figure:hover img,.gallery figure:focus-visible img{transform:scale(1.06)}
+.gallery figcaption{position:absolute;left:0;right:0;bottom:0;padding:28px 14px 12px;color:#f3f6f2;font-size:14.5px;line-height:1.35;background:linear-gradient(180deg,transparent,rgba(6,14,10,.78));transform:translateY(30%);opacity:.0;transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .45s}
+.gallery figcaption small{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;opacity:.8;margin-top:3px}
+.gallery figure:hover figcaption,.gallery figure:focus-visible figcaption{transform:none;opacity:1}
+@media (hover:none){.gallery figcaption{transform:none;opacity:1}}
+@media (max-width:860px){.gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px}}
+@media (max-width:480px){.gallery figure.b{grid-row:span 1}}
+
+/* lightbox */
+.lightbox{position:fixed;inset:0;z-index:50;background:rgba(5,10,8,.92);display:none;align-items:center;justify-content:center;padding:24px}
+.lightbox.open{display:flex;animation:lbIn .3s ease both}
+@keyframes lbIn{from{opacity:0}to{opacity:1}}
+.lightbox figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:12px;max-width:100%}
+.lightbox img{max-width:min(1200px,100%);max-height:80vh;border-radius:8px;object-fit:contain}
+.lightbox figcaption{color:#e3ebe6;font-size:16px;text-align:center;max-width:70ch}
+.lightbox figcaption small{display:block;font-family:var(--mono);font-size:12px;color:#9bb0a5;text-transform:uppercase;letter-spacing:.05em;margin-top:4px}
+.lightbox button{position:absolute;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:#fff;width:46px;height:46px;border-radius:50%;font-size:20px;cursor:pointer}
+.lightbox button:hover{background:rgba(255,255,255,.18)}
+.lb-close{top:18px;right:18px}.lb-prev{left:18px;top:50%;transform:translateY(-50%)}.lb-next{right:18px;top:50%;transform:translateY(-50%)}
+@media (max-width:600px){.lb-prev,.lb-next{top:auto;bottom:18px;transform:none}}
+
+/* timeline */
+.timeline{position:relative;list-style:none;margin:0;padding:0 0 0 34px}
+.timeline::before,.timeline .fill{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.timeline .fill{background:var(--accent);transform-origin:top;transform:scaleY(0);bottom:6px}
+.timeline li{position:relative;display:grid;grid-template-columns:200px 1fr;gap:28px;padding:0 0 34px}
+.timeline li::before{content:"";position:absolute;left:-33px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:2px solid var(--line);transition:border-color .4s,background .4s,transform .4s}
+.timeline li.lit::before{border-color:var(--accent);background:var(--accent);transform:scale(1.1)}
+.timeline .when{font-family:var(--mono);font-size:13px;color:var(--muted);padding-top:3px}
+.timeline h3{font-size:21px}
+.timeline .org{color:var(--accent);font-size:16px;margin:2px 0 6px}
+.timeline p{margin:0;font-size:16.5px}
+@media (max-width:860px){.timeline li{grid-template-columns:1fr;gap:4px}}
+
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px}
+.skills div{border-top:2px solid var(--accent);padding-top:12px;font-size:16px;transition:border-color .3s}
+.skills div:hover{border-color:var(--accent-2)}
+.skills strong{display:block;font-family:var(--display);font-size:17px;margin-bottom:4px}
+@media (max-width:860px){.skills{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.skills{grid-template-columns:1fr}}
+
+/* writing */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.filters button{font-family:var(--mono);font-size:12.5px;padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--muted);cursor:pointer;transition:all .25s}
+.filters button:hover{border-color:var(--accent);color:var(--accent)}
+.filters button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.list li{border-bottom:1px solid var(--line)}
+.list a.row{position:relative;display:grid;grid-template-columns:170px 1fr auto;gap:24px;padding:22px 8px;text-decoration:none;color:var(--ink);align-items:baseline;transition:padding .35s cubic-bezier(.2,.8,.2,1),background .35s}
+.list a.row:hover{padding-left:20px;background:color-mix(in srgb,var(--accent) 6%,transparent)}
+.list a.row:hover h3{color:var(--accent)}
+.list .row h3{font-size:21px;font-weight:600;transition:color .25s}
+.list .row p{margin:4px 0 0;color:var(--muted);font-size:16px}
+.list .row .where{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+.list .row .arrow{font-family:var(--mono);color:var(--accent);transition:transform .35s}
+.list a.row:hover .arrow{transform:translateX(6px)}
+@media (max-width:720px){.list a.row{grid-template-columns:1fr;gap:4px}}
+
+/* contact */
+.contact{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:start}
+.contact .big{font-family:var(--display);font-weight:800;font-size:clamp(30px,4.4vw,52px);letter-spacing:-.02em;line-height:1.05;margin:0 0 22px}
+.contact .big a{color:var(--ink);text-decoration:none;background:linear-gradient(var(--accent),var(--accent)) 0 100%/0 3px no-repeat;transition:background-size .5s}
+.contact .big a:hover{background-size:100% 3px}
+.contact dl{margin:0;display:grid;grid-template-columns:110px 1fr;gap:10px 16px;font-size:16.5px}
+.contact dt{font-family:var(--mono);font-size:12.5px;color:var(--muted);text-transform:uppercase;padding-top:3px}
+.contact dd{margin:0;overflow-wrap:anywhere}
+@media (max-width:860px){.contact{grid-template-columns:1fr}}
+
+footer{padding:32px 0 48px;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* post view */
+#post-view{display:none;padding:56px 0 80px}
+body.reading #post-view{display:block}
+body.reading main{display:none}
+.post{max-width:68ch;margin:0 auto;animation:fadeUp .6s cubic-bezier(.2,.8,.2,1) both}
+.post h1{font-size:clamp(34px,5vw,52px);letter-spacing:-.02em;margin:12px 0 10px}
+.post .deck{font-size:20px;color:var(--muted);margin:0 0 28px}
+.post .body p{margin:0 0 1.1em}
+.post .body h2{font-size:25px;margin:1.6em 0 .5em}
+.post .back{font-family:var(--mono);font-size:13px;text-decoration:none}
+.note{font-family:var(--mono);font-size:12.5px;color:var(--accent-2);border:1px dashed var(--accent-2);border-radius:6px;padding:8px 12px;margin-bottom:24px}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  .reveal.pending{transform:none}
+}
+
+
+/* ===== additions ===== */
+:root[lang="ne"]{--display:"Mukta","Bricolage Grotesque",system-ui,sans-serif;--body:"Mukta","Source Serif 4",Georgia,serif}
+:root[lang="ne"] body{font-size:18.5px}
+:root[lang="ne"] .name{letter-spacing:0;line-height:1.05}
+
+/* header controls */
+header.top .wrap{gap:20px}
+nav{flex:1;display:flex;justify-content:flex-end;min-width:0}
+nav ul{overflow-x:auto;scrollbar-width:none}
+nav ul::-webkit-scrollbar{display:none}
+nav a{white-space:nowrap}
+.ctrls{display:flex;gap:8px;flex:none}
+.ctrl{font-family:var(--mono);font-size:12.5px;height:34px;min-width:34px;padding:0 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;transition:border-color .25s,transform .25s}
+.ctrl:hover{border-color:var(--accent);transform:translateY(-1px)}
+.ctrl .ne-font{font-family:"Mukta",sans-serif;font-size:14px}
+@media (max-width:720px){header.top .wrap{gap:10px}nav ul{gap:14px;padding-right:22px;-webkit-mask-image:linear-gradient(90deg,#000 80%,transparent);mask-image:linear-gradient(90deg,#000 80%,transparent)}.brand span{display:none}
+  .seasons button{padding:4px 8px;font-size:11px}}
+@media (max-width:860px){.hero .wrap .tree-box{order:0;min-height:360px}}
+
+/* banner night swap */
+.banner img{transition:opacity 1s}
+.banner img.night{opacity:0}
+:root[data-theme="dark"] .banner img.night{opacity:1}
+:root[data-theme="dark"] .banner img.day{opacity:0}
+
+/* map */
+.map-wrap{display:grid;grid-template-columns:1.7fr 1fr;gap:28px;align-items:start}
+.map-box{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px}
+.map-box svg{width:100%;height:auto;display:block}
+.map-box .dist{fill:color-mix(in srgb,var(--line) 55%,var(--bg));stroke:var(--surface);stroke-width:.8;transition:fill .3s}
+.map-box .dist.on{fill:var(--accent);cursor:pointer;opacity:.82;animation:distIn .8s cubic-bezier(.2,.8,.2,1) both}
+.map-box .dist.on:hover,.map-box .dist.on.sel,.map-box .dist.on:focus-visible{fill:var(--accent-2);opacity:1;outline:none}
+@keyframes distIn{from{opacity:0}to{opacity:.82}}
+.map-box .outline{fill:none;stroke:var(--muted);stroke-width:1.2;opacity:.6}
+.map-box .pin{fill:var(--surface);stroke:var(--accent);stroke-width:2;pointer-events:none}
+.map-box .pulse{fill:none;stroke:var(--accent-2);stroke-width:2;pointer-events:none;transform-box:fill-box;transform-origin:center;animation:ping 2.2s infinite}
+@keyframes ping{0%{transform:scale(.4);opacity:1}100%{transform:scale(2.4);opacity:0}}
+.map-box .dlabel{font-family:var(--mono);font-size:13px;fill:var(--ink);paint-order:stroke;stroke:var(--surface);stroke-width:4px;pointer-events:none}
+:root[lang="ne"] .map-box .dlabel{font-family:"Mukta",sans-serif;font-size:15px}
+.map-panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px;min-height:220px}
+.map-panel h3{font-size:28px;margin:6px 0 12px;color:var(--accent)}
+.map-panel ul{margin:0;padding-left:18px}
+.map-panel li{margin:6px 0;font-size:16.5px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.chips button{font-family:var(--mono);font-size:12px;padding:6px 11px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--muted);cursor:pointer;transition:all .25s}
+:root[lang="ne"] .chips button{font-family:"Mukta",sans-serif;font-size:14px}
+.chips button:hover,.chips button.sel{border-color:var(--accent);background:var(--accent);color:var(--bg)}
+@media (max-width:900px){.map-wrap{grid-template-columns:1fr}}
+
+/* flip cards */
+.species{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+@media (max-width:980px){.species{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:480px){.species{grid-template-columns:1fr}}
+.flip{display:block;width:100%;perspective:1000px;height:270px;cursor:pointer;background:none;border:0;padding:0;text-align:left;font:inherit;color:inherit}
+.flip-inner{display:block;position:relative;width:100%;height:100%;transition:transform .8s cubic-bezier(.2,.8,.2,1);transform-style:preserve-3d}
+.flip.flipped .flip-inner{transform:rotateY(180deg)}
+.flip:hover .flip-inner{box-shadow:0 18px 40px -26px var(--accent)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:16px;border:1px solid var(--line);background:var(--surface);padding:20px;display:flex;flex-direction:column;overflow:hidden}
+.face.front .leafart{position:absolute;right:-20px;top:-20px;width:150px;height:150px;opacity:.9;transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
+.flip:hover .leafart{transform:rotate(-14deg) scale(1.06)}
+.face span{display:block}
+.face.front .local{font-family:var(--display);font-weight:800;font-size:30px;line-height:1.05;margin-top:auto}
+.face.front .sci{font-style:italic;color:var(--muted);font-size:15.5px}
+.face.front .tag{font-size:15px;margin-top:8px}
+.face.front .hint{font-family:var(--mono);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-top:12px}
+:root[lang="ne"] .face.front .hint{font-family:"Mukta",sans-serif;font-size:13px;text-transform:none;letter-spacing:0}
+.face.back{transform:rotateY(180deg);background:var(--accent);color:var(--bg);border-color:var(--accent);justify-content:center;gap:10px}
+.face.back strong{font-family:var(--display);font-size:20px}
+.face.back p{margin:0;font-size:15.5px;line-height:1.5}
+
+/* calculator */
+.calc{margin-top:48px;display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--surface)}
+.calc .inputs{padding:28px;display:grid;gap:18px;border-right:1px solid var(--line)}
+.calc h3{font-size:26px}
+.calc .intro{margin:6px 0 0;color:var(--muted);font-size:16px}
+.field label{display:block;font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin-bottom:6px}
+:root[lang="ne"] .field label{font-family:"Mukta",sans-serif;font-size:14.5px;text-transform:none;letter-spacing:0}
+.field select,.field input[type=number],.cform input,.cform textarea{width:100%;font:inherit;font-size:16px;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.field select:focus,.field input:focus,.cform input:focus,.cform textarea:focus{outline:2px solid var(--accent);outline-offset:1px}
+.range-row{display:grid;grid-template-columns:1fr 92px;gap:12px;align-items:center}
+input[type=range]{width:100%;accent-color:var(--accent)}
+.calc .outputs{padding:28px;display:grid;grid-template-columns:1fr 1fr;gap:14px;align-content:start;background:color-mix(in srgb,var(--accent) 6%,var(--surface))}
+.out{border-radius:12px;background:var(--surface);border:1px solid var(--line);padding:16px}
+.out b{display:block;font-family:var(--display);font-weight:800;font-size:30px;line-height:1.1;color:var(--accent);font-variant-numeric:tabular-nums}
+.out span{font-size:14.5px;color:var(--muted)}
+.out small{display:block;font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:4px}
+.calc .cnote{grid-column:1/-1;font-size:13.5px;color:var(--muted);margin:4px 0 0;line-height:1.5}
+.mini-tree{grid-column:1/-1;display:flex;justify-content:center;align-items:flex-end;height:130px;overflow:hidden}
+.mini-tree svg{height:100%;transition:transform .5s cubic-bezier(.2,.8,.2,1);transform-origin:bottom center}
+@media (max-width:860px){.calc{grid-template-columns:1fr}.calc .inputs{border-right:0;border-bottom:1px solid var(--line)}}
+
+/* season switcher */
+.tree-ctl{position:absolute;left:0;right:0;bottom:0;display:flex;flex-direction:column;align-items:flex-end;gap:6px;pointer-events:none}
+.seasons{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;pointer-events:auto}
+.seasons button{font-family:var(--mono);font-size:11.5px;padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:color-mix(in srgb,var(--bg) 85%,transparent);color:var(--muted);cursor:pointer;transition:all .25s}
+:root[lang="ne"] .seasons button{font-family:"Mukta",sans-serif;font-size:13.5px}
+.seasons button:hover{border-color:var(--accent);color:var(--accent)}
+.seasons button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.tree-hint2{font-family:var(--mono);font-size:11.5px;color:var(--muted);background:color-mix(in srgb,var(--bg) 80%,transparent);padding:3px 8px;border-radius:999px}
+:root[lang="ne"] .tree-hint2{font-family:"Mukta",sans-serif;font-size:13px}
+.tree-box{padding-bottom:60px}
+#tree{bottom:auto;height:calc(100% - 60px)}
+
+/* testimonials */
+.quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.quote{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:26px;display:flex;flex-direction:column;gap:16px;position:relative}
+.quote::before{content:"“";position:absolute;top:-6px;left:18px;font-family:var(--display);font-size:90px;line-height:1;color:var(--accent);opacity:.25}
+.quote blockquote{margin:0;font-size:17.5px;line-height:1.6;position:relative}
+.quote figcaption{font-size:15px;color:var(--muted)}
+.quote figcaption strong{display:block;color:var(--ink);font-family:var(--display);font-size:16.5px}
+
+.rho-box{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;padding:10px 14px;border-radius:10px;border:1px dashed var(--line);background:var(--bg)}
+.rho-box output{font-family:var(--display);font-weight:800;font-size:22px;color:var(--accent);font-variant-numeric:tabular-nums}
+.rho-box small{font-size:13.5px;color:var(--muted)}
+
+/* contact form */
+.cform{display:grid;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px}
+.cform .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:600px){.cform .row2{grid-template-columns:1fr}}
+.cform textarea{min-height:130px;resize:vertical}
+.cform .status{font-size:15px;min-height:1.4em;margin:0}
+.cform .status.ok{color:var(--accent)}.cform .status.err{color:#b23a48}
+.cform button{justify-self:start;cursor:pointer}
+.cv-box{margin-top:26px;padding:18px 20px;border:1px dashed var(--accent);border-radius:12px;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.cv-box p{margin:0}
+
+.post .body mark{background:color-mix(in srgb,var(--accent-2) 28%,transparent);color:var(--ink);padding:0 4px;border-radius:4px;font-family:var(--mono);font-size:.85em}
+/* share */
+.share{margin-top:36px;padding-top:20px;border-top:1px solid var(--line)}
+.share .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.share a,.share button{font-family:var(--mono);font-size:13px;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);text-decoration:none;cursor:pointer;transition:all .25s}
+.share a:hover,.share button:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+</style>
+</head>
+<body>
+<div id="progress" aria-hidden="true"></div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22V11" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/><path d="M12 3c4 3 6 6 6 9a6 6 0 0 1-12 0c0-3 2-6 6-9z" fill="var(--accent)" opacity=".85"/></svg>
+      <span data-t="brand">Sailendra Neupane</span>
+    </a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#work" data-t="nav_work">Work</a></li>
+        <li><a href="#map" data-t="nav_map">Map</a></li>
+        <li><a href="#field" data-t="nav_field">Field</a></li>
+        <li><a href="#trees" data-t="nav_trees">Trees</a></li>
+        <li><a href="#writing" data-t="nav_writing">Writing</a></li>
+        <li><a href="#contact" data-t="nav_contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="ctrls">
+      <button class="ctrl" id="lang-btn" type="button" aria-label="Switch language"></button>
+      <button class="ctrl" id="theme-btn" type="button"></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <canvas id="contours" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <div>
+        <div class="intro">
+          <figure class="portrait"><span class="ring" aria-hidden="true"></span><img src="data:image/jpeg;base64,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" alt="Portrait of Sailendra Neupane" width="360" height="360"></figure>
+          <div class="kicker"><span class="dot"></span><span class="label" data-t="kicker">Forester · Nepal</span></div>
+        </div>
+        <h1 class="name"><span class="ln"><span data-t="first">Sailendra</span></span><span class="ln"><span data-t="last">Neupane</span></span></h1>
+        <div class="rotator fade-in">
+          <span data-t="working_in">Working in</span>
+          <span class="words" id="rot-words" aria-live="off"></span>
+        </div>
+        <p class="bio fade-in" data-t="bio"></p>
+        <div class="links fade-in">
+          <a class="btn primary" href="#writing" data-t="btn_writing">Read my writing →</a>
+          <a class="btn" href="Sailendra-Neupane-CV.pdf" download data-t="btn_cv">Download CV ↓</a>
+          <a class="btn" href="https://orcid.org/0009-0008-0363-6246">ORCID ↗</a>
+        </div>
+      </div>
+      <div class="tree-box">
+        <canvas id="tree" tabindex="0" role="img" aria-label="An animated tree growing and swaying in the wind. Click or press Enter to grow a new one."></canvas>
+        <div class="tree-ctl"><div class="seasons" id="seasons" role="group" aria-label="Season"></div><span class="tree-hint2" id="tree-hint"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><b data-count="50" data-suffix="+">50+</b><span data-t="stat1"></span></div>
+    <div class="stat"><b data-count="7">7</b><span data-t="stat2"></span></div>
+    <div class="stat"><b data-count="4" data-suffix="yrs">4 yrs</b><span data-t="stat3"></span></div>
+  </div>
+
+  <div class="banner">
+    <img class="day" id="banner-img" src="images/himalaya.jpg" alt="Snow peaks of the Himalaya rising above forested mid-hills at sunrise">
+    <img class="night" id="banner-night" src="images/evening.jpg" alt="Sunset glow over forested hills" loading="lazy">
+    <div class="wrap">
+      <blockquote id="banner-quote"></blockquote>
+      <div class="label" id="banner-label"></div>
+    </div>
+  </div>
+
+  <section class="block" id="research">
+    <div class="wrap">
+      <div class="sec-head reveal"><div><div class="num">01</div><h2 data-t="research_h"></h2></div><p data-t="research_p"></p></div>
+      <div class="grid3" id="research-list"></div>
+    </div>
+  </section>
+
+  <section class="block" id="work">
+    <div class="wrap">
+      <div class="sec-head reveal"><div><div class="num">02</div><h2 data-t="work_h"></h2></div><p data-t="work_p"></p></div>
+      <ul class="timeline" id="work-list"></ul>
+      <div class="skills reveal" id="skills"></div>
+    </div>
+  </section>
+
+  <section class="block" id="map">
+    <div class="wrap">
+      <div class="sec-head reveal"><div><div class="num">03</div><h2 data-t="map_h"></h2></div><p data-t="map_p"></p></div>
+      <div class="map-wrap">
+        <div class="map-box"><svg id="nepal" role="group" aria-label="Map of Nepal's districts"></svg></div>
+        <div class="map-panel" id="map-panel" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="field">
+    <div class="wrap">
+      <div class="sec-head reveal"><div><div class="num">04</div><h2 data-t="field_h"></h2></div><p data-t="field_p"></p></div>
+      <div class="gallery" id="gallery"></div>
+    </div>
+  </section>
+
+  <section class="block" id="trees">
+    <div class="wrap">
+      <div class="sec-head reveal"><div><div class="num">05</div><h2 data-t="trees_h"></h2></div><p data-t="trees_p"></p></div>
+      <div class="species" id="species"></div>
+
+      <div class="calc reveal" id="calculator">
+        <div class="inputs">
+          <div><h3 data-t="calc_h"></h3><p class="intro" data-t="calc_p"></p></div>
+          <div class="field"><label for="c-sp" data-t="c_species"></label><select id="c-sp"></select></div>
+          <div class="field"><label for="c-d" data-t="c_dbh"></label>
+            <div class="range-row"><input type="range" id="c-dr" min="5" max="150" step="1" value="40" aria-label="Diameter slider"><input type="number" id="c-d" min="1" max="300" step="0.1" value="40"></div></div>
+          <div class="field"><label for="c-h" data-t="c_h"></label>
+            <div class="range-row"><input type="range" id="c-hr" min="2" max="50" step="0.5" value="22" aria-label="Height slider"><input type="number" id="c-h" min="1" max="80" step="0.1" value="22"></div></div>
+          <div class="field"><label for="c-rho" data-t="c_rho"></label><div class="rho-box"><output id="c-rho-out" for="c-sp">–</output><small id="c-rho-src"></small></div><input type="hidden" id="c-rho"></div>
+        </div>
+        <div class="outputs">
+          <div class="mini-tree" aria-hidden="true"><svg id="mini" viewBox="0 0 100 120"><rect x="46" y="70" width="8" height="50" rx="2" fill="var(--bark)"/><ellipse cx="50" cy="52" rx="34" ry="40" fill="var(--accent)" opacity=".85"/><ellipse cx="38" cy="44" rx="16" ry="18" fill="var(--leaf-3)" opacity=".7"/></svg></div>
+          <div class="out"><span data-t="c_vol"></span><b id="o-vol">–</b><small id="o-cft"></small></div>
+          <div class="out"><span data-t="c_bio"></span><b id="o-bio">–</b></div>
+          <div class="out"><span data-t="c_c"></span><b id="o-c">–</b></div>
+          <div class="out"><span data-t="c_co2"></span><b id="o-co2">–</b></div>
+          <p class="cnote" data-t="c_note"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="writing">
+    <div class="wrap">
+      <div class="sec-head reveal"><div><div class="num">06</div><h2 data-t="writing_h"></h2></div><p data-t="writing_p"></p></div>
+      <div class="filters" role="group" aria-label="Filter writing">
+        <button type="button" data-f="all" aria-pressed="true" data-t="f_all"></button>
+        <button type="button" data-f="Article" aria-pressed="false" data-t="f_article"></button>
+        <button type="button" data-f="Blog" aria-pressed="false" data-t="f_blog"></button>
+      </div>
+      <ul class="list" id="writing-list"></ul>
+    </div>
+  </section>
+
+  <section class="block" id="testimonials" hidden>
+    <div class="wrap">
+      <div class="sec-head reveal"><div><div class="num">“</div><h2 data-t="quotes_h"></h2></div><p data-t="quotes_p"></p></div>
+      <div class="quotes" id="quotes"></div>
+    </div>
+  </section>
+
+  <section class="block" id="contact">
+    <div class="wrap">
+      <div class="sec-head reveal"><div><div class="num">07</div><h2 data-t="contact_h"></h2></div><p data-t="contact_p"></p></div>
+      <div class="contact">
+        <form class="cform reveal" id="cform" novalidate>
+          <div class="row2">
+            <div class="field"><label for="f-name" data-t="form_name"></label><input id="f-name" name="name" autocomplete="name" required></div>
+            <div class="field"><label for="f-email" data-t="form_email"></label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+          </div>
+          <div class="field"><label for="f-msg" data-t="form_msg"></label><textarea id="f-msg" name="message" required></textarea></div>
+          <button class="btn primary" type="submit" id="f-send" data-t="form_send"></button>
+          <p class="status" id="f-status" role="status"></p>
+        </form>
+        <div class="reveal">
+          <dl>
+            <dt data-t="lbl_email"></dt><dd><a href="mailto:sailendraneupane057@gmail.com">sailendraneupane057@gmail.com</a></dd>
+            <dt data-t="lbl_orcid"></dt><dd><a href="https://orcid.org/0009-0008-0363-6246">0009-0008-0363-6246</a></dd>
+            <dt data-t="lbl_based"></dt><dd data-t="nepal"></dd>
+          </dl>
+          <div class="label" style="margin:26px 0 8px" data-t="edu"></div>
+          <p style="margin:0" data-th="edu_deg"></p>
+          <div class="cv-box"><p data-t="cv_box"></p><a class="btn primary" href="Sailendra-Neupane-CV.pdf" download data-t="btn_cv"></a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="lb-close" type="button" aria-label="Close">✕</button>
+  <button class="lb-prev" type="button" aria-label="Previous photo">←</button>
+  <figure><img id="lb-img" alt=""><figcaption id="lb-cap"></figcaption></figure>
+  <button class="lb-next" type="button" aria-label="Next photo">→</button>
+</div>
+
+<div id="post-view"><div class="wrap"><article class="post" id="post"></article></div></div>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr"></span> <span data-t="brand">Sailendra Neupane</span></span>
+    <a href="#top" data-t="top"></a>
+  </div>
+</footer>
+
+<!-- ============ CONTENT: text, research, work, photos and posts (English + Nepali) ============ -->
+<script type="application/json" id="data">
+{
+ "formEndpoint": "",
+ "email": "sailendraneupane057@gmail.com",
+ "ui": {
+  "nav_work": [
+   "Work",
+   "काम"
+  ],
+  "nav_map": [
+   "Map",
+   "नक्सा"
+  ],
+  "nav_field": [
+   "Field",
+   "फिल्ड"
+  ],
+  "nav_trees": [
+   "Trees",
+   "रुख"
+  ],
+  "nav_writing": [
+   "Writing",
+   "लेख"
+  ],
+  "nav_contact": [
+   "Contact",
+   "सम्पर्क"
+  ],
+  "kicker": [
+   "Forester · Nepal",
+   "वनविद् · नेपाल"
+  ],
+  "first": [
+   "Sailendra",
+   "शैलेन्द्र"
+  ],
+  "last": [
+   "Neupane",
+   "न्यौपाने"
+  ],
+  "working_in": [
+   "Working in",
+   "मेरो काम:"
+  ],
+  "r1": [
+   "community forestry",
+   "सामुदायिक वन"
+  ],
+  "r2": [
+   "forest inventory",
+   "वन सर्वेक्षण"
+  ],
+  "r3": [
+   "GIS & mapping",
+   "GIS र नक्साङ्कन"
+  ],
+  "r4": [
+   "field research",
+   "फिल्ड अनुसन्धान"
+  ],
+  "bio": [
+   "I prepare community forest operational plans with forest user groups across Nepal, and I research how communities manage and depend on their forests, from the Chure hills to the mid-hills of Ramechhap. I turn field data into maps, analysis and plans that communities can actually use.",
+   "म नेपालभरका वन उपभोक्ता समूहसँग मिलेर सामुदायिक वनको कार्ययोजना तयार गर्छु, र चुरे क्षेत्रदेखि रामेछापका पहाडसम्म समुदायले वनको व्यवस्थापन कसरी गर्छन् र वनमा कसरी निर्भर छन् भन्ने विषयमा अनुसन्धान गर्छु। फिल्डको तथ्याङ्कलाई समुदायले साँच्चै प्रयोग गर्न सक्ने नक्सा, विश्लेषण र योजनामा बदल्नु मेरो काम हो।"
+  ],
+  "btn_writing": [
+   "Read my writing →",
+   "मेरा लेख पढ्नुहोस् →"
+  ],
+  "btn_cv": [
+   "Download CV ↓",
+   "CV डाउनलोड ↓"
+  ],
+  "tree_hint": [
+   "click the tree to grow a new one",
+   "नयाँ रुख उमार्न रुखमा क्लिक गर्नुहोस्"
+  ],
+  "stat1": [
+   "community forest operational plans prepared or revised",
+   "सामुदायिक वन कार्ययोजना तयार वा परिमार्जन"
+  ],
+  "stat2": [
+   "districts, from Kailali in the far west to Morang in the east",
+   "जिल्ला, सुदूरपश्चिमको कैलालीदेखि पूर्वको मोरङसम्म"
+  ],
+  "stat3": [
+   "in the field as surveyor, coordinator, technician and researcher",
+   "सर्वेक्षक, संयोजक, प्राविधिक र अनुसन्धाताका रूपमा फिल्डमा"
+  ],
+  "yrs": [
+   " yrs",
+   " वर्ष"
+  ],
+  "quote_day": [
+   "From the sal forests of the Terai to the foothills of the Himalaya, I work where people and forests meet.",
+   "तराईका साल वनदेखि हिमालको फेदीसम्म, म मानिस र वन भेटिने ठाउँमा काम गर्छु।"
+  ],
+  "label_day": [
+   "The Himalaya over the mid-hills · Nepal",
+   "पहाडमाथि हिमशृङ्खला · नेपाल"
+  ],
+  "quote_night": [
+   "Every plan starts with a long day in the forest, and ends at dusk with the numbers.",
+   "हरेक योजना वनमा बिताएको लामो दिनबाट सुरु हुन्छ, र साँझ अङ्कहरूसँग टुङ्गिन्छ।"
+  ],
+  "label_night": [
+   "Evening in the hills · Nepal",
+   "पहाडको साँझ · नेपाल"
+  ],
+  "research_h": [
+   "Research",
+   "अनुसन्धान"
+  ],
+  "research_p": [
+   "Studies I have led or contributed to in community forestry and natural resource management.",
+   "सामुदायिक वन र प्राकृतिक स्रोत व्यवस्थापनमा मैले नेतृत्व गरेका वा योगदान दिएका अध्ययनहरू।"
+  ],
+  "work_h": [
+   "Work",
+   "कार्य अनुभव"
+  ],
+  "work_p": [
+   "Field and project experience in community forestry, inventory and natural resource surveys.",
+   "सामुदायिक वन, वन सर्वेक्षण र प्राकृतिक स्रोत सर्वेक्षणमा फिल्ड तथा परियोजना अनुभव।"
+  ],
+  "map_h": [
+   "Where I've worked",
+   "मैले काम गरेका जिल्ला"
+  ],
+  "map_p": [
+   "Seven districts across Nepal, from the far-western Terai to the eastern plains. Point at or tap a green district to see what I did there.",
+   "सुदूरपश्चिमको तराईदेखि पूर्वी मैदानसम्म नेपालका सात जिल्ला। त्यहाँ गरेको काम हेर्न हरियो जिल्लामा माउस लैजानुहोस् वा थिच्नुहोस्।"
+  ],
+  "map_pick": [
+   "Select a green district",
+   "हरियो जिल्ला छान्नुहोस्"
+  ],
+  "map_hint": [
+   "The highlighted districts are the ones I have worked in.",
+   "हाइलाइट गरिएका जिल्लामा मैले काम गरेको छु।"
+  ],
+  "field_h": [
+   "From the field",
+   "फिल्डबाट"
+  ],
+  "field_p": [
+   "Sample plots, household surveys and user-group meetings: the days behind the plans and the data. Click a photo to see it larger.",
+   "नमुना प्लट, घरधुरी सर्वेक्षण र उपभोक्ता समूहका बैठक: योजना र तथ्याङ्कपछाडिका दिनहरू। ठूलो हेर्न फोटोमा क्लिक गर्नुहोस्।"
+  ],
+  "trees_h": [
+   "Trees I work with",
+   "मैले काम गर्ने रुखहरू"
+  ],
+  "trees_p": [
+   "Species I meet in almost every inventory. Tap a card to flip it.",
+   "लगभग हरेक वन सर्वेक्षणमा भेटिने प्रजातिहरू। कार्ड पल्टाउन थिच्नुहोस्।"
+  ],
+  "flip": [
+   "Tap to flip ↻",
+   "पल्टाउन थिच्नुहोस् ↻"
+  ],
+  "calc_h": [
+   "Tree volume & carbon calculator",
+   "रुखको आयतन र कार्बन क्याल्कुलेटर"
+  ],
+  "calc_p": [
+   "The same stem volume equations used in Nepal's forest inventories (Sharma & Pukkala, 1990). Enter a tree's diameter and height to estimate its timber volume, biomass and carbon.",
+   "नेपालको वन सर्वेक्षणमा प्रयोग हुने आयतन समीकरण (शर्मा र पुक्काला, १९९०)। रुखको व्यास र उचाइ हालेर काठको आयतन, जैविक पिण्ड र कार्बन अनुमान गर्नुहोस्।"
+  ],
+  "c_species": [
+   "Species",
+   "प्रजाति"
+  ],
+  "c_dbh": [
+   "Diameter at breast height (cm)",
+   "छाती उचाइको व्यास (से.मि.)"
+  ],
+  "c_h": [
+   "Total height (m)",
+   "कुल उचाइ (मि.)"
+  ],
+  "c_rho": [
+   "Wood density (set automatically)",
+   "काठको घनत्व (स्वतः)"
+  ],
+  "c_vol": [
+   "Stem volume",
+   "काण्डको आयतन"
+  ],
+  "c_cft": [
+   "in cubic feet",
+   "घनफिटमा"
+  ],
+  "c_bio": [
+   "Stem biomass",
+   "काण्डको जैविक पिण्ड"
+  ],
+  "c_c": [
+   "Carbon stored",
+   "सञ्चित कार्बन"
+  ],
+  "c_co2": [
+   "CO₂ equivalent",
+   "CO₂ बराबर"
+  ],
+  "c_note": [
+   "Estimates for the main stem over bark: volume = exp(a + b·ln D + c·ln H) ÷ 1000; biomass = volume × wood density; carbon = 47% of biomass; CO₂ = carbon × 44/12. Branches, leaves and roots are not included.",
+   "बोक्रासहित मुख्य काण्डको अनुमान: आयतन = exp(a + b·ln D + c·ln H) ÷ १०००; जैविक पिण्ड = आयतन × घनत्व; कार्बन = जैविक पिण्डको ४७%; CO₂ = कार्बन × ४४/१२। हाँगा, पात र जरा समावेश छैनन्।"
+  ],
+  "c_need_rho": [
+   "Enter a wood density to estimate carbon",
+   "कार्बन अनुमान गर्न काठको घनत्व हाल्नुहोस्"
+  ],
+  "writing_h": [
+   "Writing",
+   "लेखहरू"
+  ],
+  "writing_p": [
+   "Published articles, blog posts and field notes on forests, conservation and the communities who manage them.",
+   "वन, संरक्षण र वन व्यवस्थापन गर्ने समुदायबारे प्रकाशित लेख, ब्लग र फिल्ड नोटहरू।"
+  ],
+  "f_all": [
+   "All",
+   "सबै"
+  ],
+  "f_article": [
+   "Articles",
+   "लेख"
+  ],
+  "f_blog": [
+   "Blog",
+   "ब्लग"
+  ],
+  "type_Article": [
+   "Article",
+   "लेख"
+  ],
+  "type_Blog": [
+   "Blog",
+   "ब्लग"
+  ],
+  "draft": [
+   "Draft",
+   "मस्यौदा"
+  ],
+  "back": [
+   "← All writing",
+   "← सबै लेख"
+  ],
+  "draft_note": [
+   "Draft starter post. Edit or replace before sharing.",
+   "मस्यौदा लेख। सेयर गर्नुअघि सम्पादन गर्नुहोस् वा बदल्नुहोस्।"
+  ],
+  "share": [
+   "Share this post",
+   "यो लेख सेयर गर्नुहोस्"
+  ],
+  "copy": [
+   "Copy link",
+   "लिङ्क कपी"
+  ],
+  "copied": [
+   "Link copied",
+   "लिङ्क कपी भयो"
+  ],
+  "contact_h": [
+   "Contact",
+   "सम्पर्क"
+  ],
+  "contact_p": [
+   "Open to research collaborations, consultancy on community forest operational plans, and conservation projects.",
+   "अनुसन्धान सहकार्य, सामुदायिक वन कार्ययोजना परामर्श र संरक्षण परियोजनाका लागि सम्पर्क गर्नुहोस्।"
+  ],
+  "form_name": [
+   "Your name",
+   "तपाईंको नाम"
+  ],
+  "form_email": [
+   "Your email",
+   "तपाईंको इमेल"
+  ],
+  "form_msg": [
+   "Message",
+   "सन्देश"
+  ],
+  "form_send": [
+   "Send message",
+   "सन्देश पठाउनुहोस्"
+  ],
+  "form_sending": [
+   "Sending…",
+   "पठाउँदै…"
+  ],
+  "form_ok": [
+   "Thank you! Your message has been sent. I'll reply by email.",
+   "धन्यवाद! तपाईंको सन्देश पठाइयो। म इमेलबाट जवाफ दिनेछु।"
+  ],
+  "form_err": [
+   "The message could not be sent. Please email me directly at sailendraneupane057@gmail.com.",
+   "सन्देश पठाउन सकिएन। कृपया sailendraneupane057@gmail.com मा सिधै इमेल गर्नुहोस्।"
+  ],
+  "form_mail": [
+   "Your email app has opened with the message filled in. Press send there to reach me.",
+   "सन्देशसहित तपाईंको इमेल एप खुलेको छ। मसम्म पुर्‍याउन त्यहाँ Send थिच्नुहोस्।"
+  ],
+  "form_missing": [
+   "Please fill in your name, email and message.",
+   "कृपया नाम, इमेल र सन्देश भर्नुहोस्।"
+  ],
+  "lbl_email": [
+   "Email",
+   "इमेल"
+  ],
+  "lbl_orcid": [
+   "ORCID",
+   "ORCID"
+  ],
+  "lbl_based": [
+   "Based in",
+   "बसोबास"
+  ],
+  "nepal": [
+   "Nepal",
+   "नेपाल"
+  ],
+  "edu": [
+   "Education",
+   "शिक्षा"
+  ],
+  "edu_deg": [
+   "<strong>BSc Forestry Science</strong>, First Division (CGPA 3.48/4.0)<br>Purbanchal University College of Environment and Forestry, Gothgaun, Morang · 2023",
+   "<strong>बी.एस्सी. वन विज्ञान</strong>, प्रथम श्रेणी (CGPA ३.४८/४.०)<br>पूर्वाञ्चल विश्वविद्यालय वातावरण तथा वन कलेज, गोठगाउँ, मोरङ · २०२३"
+  ],
+  "cv_box": [
+   "Need my full CV? Download it as a PDF.",
+   "पूरा CV चाहिन्छ? PDF डाउनलोड गर्नुहोस्।"
+  ],
+  "top": [
+   "Back to top ↑",
+   "माथि जानुहोस् ↑"
+  ],
+  "theme_day": [
+   "Switch to night mode",
+   "रात्रि मोडमा जानुहोस्"
+  ],
+  "theme_night": [
+   "Switch to day mode",
+   "दिन मोडमा जानुहोस्"
+  ],
+  "nothing": [
+   "Nothing here yet.",
+   "अहिलेसम्म केही छैन।"
+  ],
+  "s_spring": [
+   "Spring",
+   "वसन्त"
+  ],
+  "s_summer": [
+   "Pre-monsoon",
+   "ग्रीष्म"
+  ],
+  "s_monsoon": [
+   "Monsoon",
+   "वर्षा"
+  ],
+  "s_autumn": [
+   "Autumn",
+   "शरद"
+  ],
+  "s_winter": [
+   "Winter",
+   "हिउँद"
+  ],
+  "s_spring_d": [
+   "laliguras in bloom",
+   "लालीगुराँस फुलेको"
+  ],
+  "s_summer_d": [
+   "dry leaves before the rains",
+   "वर्षाअघि पात झर्ने बेला"
+  ],
+  "s_monsoon_d": [
+   "the forest in the rains",
+   "वर्षामा हरियो वन"
+  ],
+  "s_autumn_d": [
+   "clear skies and golden leaves",
+   "सफा आकाश र सुनौला पात"
+  ],
+  "s_winter_d": [
+   "bare branches in the cold",
+   "जाडोमा नाङ्गा हाँगा"
+  ],
+  "s_now": [
+   "Now in Nepal:",
+   "अहिले नेपालमा:"
+  ],
+  "quotes_h": [
+   "Kind words",
+   "सहकर्मीका भनाइ"
+  ],
+  "quotes_p": [
+   "What people I have worked with say.",
+   "मसँग काम गरेकाहरूका भनाइ।"
+  ],
+  "c_rho_src": [
+   "Air-dry density from Sharma & Pukkala (1990)",
+   "शर्मा र पुक्काला (१९९०) अनुसार हावामा सुकेको काठको घनत्व"
+  ],
+  "c_rho_avg": [
+   "Average of the 21 species in Sharma & Pukkala (1990)",
+   "शर्मा र पुक्काला (१९९०) का २१ प्रजातिको औसत"
+  ]
+ },
+ "research": [
+  {
+   "title": [
+    "Simplifying community forest operational plans",
+    "सामुदायिक वन कार्ययोजना सरलीकरण"
+   ],
+   "status": [
+    "Pilot project",
+    "पाइलट परियोजना"
+   ],
+   "year": "2024–25",
+   "summary": [
+    "A pilot with FECOFUN Ramechhap, in coordination with SIAS, testing simpler OP formats and processes that user groups can prepare and follow more easily.",
+    "SIAS सँगको समन्वयमा फेकोफन रामेछापसँग गरिएको पाइलट, जसले उपभोक्ता समूहले सजिलै तयार गर्न र पालना गर्न सक्ने सरल कार्ययोजना ढाँचा र प्रक्रिया परीक्षण गर्‍यो।"
+   ],
+   "tags": [
+    [
+     "Community forestry",
+     "Ramechhap",
+     "Policy"
+    ],
+    [
+     "सामुदायिक वन",
+     "रामेछाप",
+     "नीति"
+    ]
+   ]
+  },
+  {
+   "title": [
+    "DMRS II: community forestry and natural resource management",
+    "DMRS II: सामुदायिक वन र प्राकृतिक स्रोत व्यवस्थापन"
+   ],
+   "status": [
+    "Research assistant",
+    "अनुसन्धान सहायक"
+   ],
+   "year": "2025",
+   "summary": [
+    "Field data collection and analysis in R, SPSS and Excel for the DMRS II project at the South Asia Institute of Advanced Studies.",
+    "साउथ एसिया इन्स्टिच्युट अफ एडभान्स्ड स्टडिज (SIAS) को DMRS II परियोजनाका लागि फिल्ड तथ्याङ्क सङ्कलन र R, SPSS तथा Excel मा विश्लेषण।"
+   ],
+   "tags": [
+    [
+     "SIAS",
+     "Field research",
+     "Data analysis"
+    ],
+    [
+     "SIAS",
+     "फिल्ड अनुसन्धान",
+     "तथ्याङ्क विश्लेषण"
+    ]
+   ]
+  }
+ ],
+ "work": [
+  {
+   "when": [
+    "Dec 2025 – present",
+    "डिसेम्बर २०२५ – हालसम्म"
+   ],
+   "role": [
+    "Freelance Forestry Consultant",
+    "स्वतन्त्र वन परामर्शदाता"
+   ],
+   "org": [
+    "Community forest operational plans · 7 districts",
+    "सामुदायिक वन कार्ययोजना · ७ जिल्ला"
+   ],
+   "text": [
+    "Preparing and revising operational plans for community forest user groups: forest inventory, growth and stock assessment, and block mapping in QGIS/ArcGIS, coordinated with Division Forest Offices.",
+    "सामुदायिक वन उपभोक्ता समूहका लागि कार्ययोजना तयारी र परिमार्जन: डिभिजन वन कार्यालयसँगको समन्वयमा वन सर्वेक्षण, वृद्धि र मौज्दात मूल्याङ्कन, तथा QGIS/ArcGIS मा ब्लक नक्साङ्कन।"
+   ]
+  },
+  {
+   "when": [
+    "Apr – Nov 2025",
+    "अप्रिल – नोभेम्बर २०२५"
+   ],
+   "role": [
+    "Research Assistant, DMRS II Project",
+    "अनुसन्धान सहायक, DMRS II परियोजना"
+   ],
+   "org": [
+    "South Asia Institute of Advanced Studies (SIAS)",
+    "साउथ एसिया इन्स्टिच्युट अफ एडभान्स्ड स्टडिज (SIAS)"
+   ],
+   "text": [
+    "Collected and analysed field data on community forestry and natural resource management for project outputs and reporting.",
+    "परियोजनाका नतिजा र प्रतिवेदनका लागि सामुदायिक वन र प्राकृतिक स्रोत व्यवस्थापनसम्बन्धी फिल्ड तथ्याङ्क सङ्कलन र विश्लेषण।"
+   ]
+  },
+  {
+   "when": [
+    "Oct 2024 – Jan 2025",
+    "अक्टोबर २०२४ – जनवरी २०२५"
+   ],
+   "role": [
+    "Forest Technician",
+    "वन प्राविधिक"
+   ],
+   "org": [
+    "FECOFUN, Ramechhap",
+    "फेकोफन, रामेछाप"
+   ],
+   "text": [
+    "Led a pilot on simplifying operational plans with SIAS; carried out inventories, analysis and mapping with QGIS, ArcGIS and KoboToolbox.",
+    "SIAS सँग मिलेर कार्ययोजना सरलीकरण पाइलटको नेतृत्व; QGIS, ArcGIS र KoboToolbox प्रयोग गरी वन सर्वेक्षण, विश्लेषण र नक्साङ्कन।"
+   ]
+  },
+  {
+   "when": [
+    "Apr 2024",
+    "अप्रिल २०२४"
+   ],
+   "role": [
+    "Field Surveyor, BRCRN",
+    "फिल्ड सर्वेक्षक, BRCRN"
+   ],
+   "org": [
+    "PEES Consultancy, Morang",
+    "PEES कन्सल्टेन्सी, मोरङ"
+   ],
+   "text": [
+    "Social surveys and forest inventory in community forests of the Chure region for the Building a Resilient Churia Region in Nepal project.",
+    "उत्थानशील चुरे क्षेत्र निर्माण (BRCRN) परियोजनाका लागि चुरे क्षेत्रका सामुदायिक वनमा सामाजिक सर्वेक्षण र वन सर्वेक्षण।"
+   ]
+  },
+  {
+   "when": [
+    "Sep 2023 – Feb 2024",
+    "सेप्टेम्बर २०२३ – फेब्रुअरी २०२४"
+   ],
+   "role": [
+    "District Coordinator & Field Manager",
+    "जिल्ला संयोजक तथा फिल्ड व्यवस्थापक"
+   ],
+   "org": [
+    "Purwanchal Geo Solution, Sindhuli",
+    "पूर्वाञ्चल जियो सोलुसन, सिन्धुली"
+   ],
+   "text": [
+    "Managed district field operations, inventory and mapping for community forestry activities.",
+    "सामुदायिक वन कार्यक्रमका लागि जिल्लास्तरीय फिल्ड सञ्चालन, वन सर्वेक्षण र नक्साङ्कन व्यवस्थापन।"
+   ]
+  },
+  {
+   "when": [
+    "Dec 2022 – Aug 2023",
+    "डिसेम्बर २०२२ – अगस्ट २०२३"
+   ],
+   "role": [
+    "District Coordinator & Field Manager",
+    "जिल्ला संयोजक तथा फिल्ड व्यवस्थापक"
+   ],
+   "org": [
+    "Kubir Fit, Sindhuli",
+    "कुबिर फिट, सिन्धुली"
+   ],
+   "text": [
+    "Led field inventory and data collection for community forestry projects and coordinated with local stakeholders.",
+    "सामुदायिक वन परियोजनाका लागि फिल्ड सर्वेक्षण र तथ्याङ्क सङ्कलनको नेतृत्व तथा स्थानीय सरोकारवालासँग समन्वय।"
+   ]
+  }
+ ],
+ "skills": [
+  [
+   [
+    "Forest management",
+    "Inventory and growth assessment, species identification, OP preparation and revision, regulatory compliance"
+   ],
+   [
+    "वन व्यवस्थापन",
+    "वन सर्वेक्षण र वृद्धि मूल्याङ्कन, प्रजाति पहिचान, कार्ययोजना तयारी र परिमार्जन, कानुनी अनुपालन"
+   ]
+  ],
+  [
+   [
+    "GIS & mapping",
+    "QGIS and ArcGIS for forest boundary, block and resource maps"
+   ],
+   [
+    "GIS र नक्साङ्कन",
+    "वनको सिमाना, ब्लक र स्रोत नक्साका लागि QGIS र ArcGIS"
+   ]
+  ],
+  [
+   [
+    "Data & analysis",
+    "R, SPSS and Excel for cleaning, statistics and visualisation"
+   ],
+   [
+    "तथ्याङ्क र विश्लेषण",
+    "तथ्याङ्क शुद्धीकरण, तथ्याङ्कशास्त्र र चित्रणका लागि R, SPSS र Excel"
+   ]
+  ],
+  [
+   [
+    "Field data",
+    "KoboToolbox survey design, deployment and data management"
+   ],
+   [
+    "फिल्ड तथ्याङ्क",
+    "KoboToolbox मा सर्वेक्षण फारम निर्माण, प्रयोग र तथ्याङ्क व्यवस्थापन"
+   ]
+  ],
+  [
+   [
+    "People",
+    "Household and social surveys, field teams, CFUG and stakeholder liaison"
+   ],
+   [
+    "समुदाय",
+    "घरधुरी र सामाजिक सर्वेक्षण, फिल्ड टोली, उपभोक्ता समूह र सरोकारवालासँग समन्वय"
+   ]
+  ],
+  [
+   [
+    "Writing",
+    "Technical reports, research papers and opinion pieces"
+   ],
+   [
+    "लेखन",
+    "प्राविधिक प्रतिवेदन, अनुसन्धान लेख र विचार लेख"
+   ]
+  ]
+ ],
+ "districts": {
+  "Kailali": {
+   "ne": "कैलाली",
+   "items": [
+    [
+     "Community forest operational plans (freelance)",
+     "सामुदायिक वन कार्ययोजना (स्वतन्त्र परामर्श)"
+    ]
+   ]
+  },
+  "Makwanpur": {
+   "ne": "मकवानपुर",
+   "items": [
+    [
+     "Community forest operational plans around Hetauda (freelance)",
+     "हेटौँडा क्षेत्रका सामुदायिक वन कार्ययोजना (स्वतन्त्र परामर्श)"
+    ]
+   ]
+  },
+  "Morang": {
+   "ne": "मोरङ",
+   "items": [
+    [
+     "Community forest operational plans (freelance)",
+     "सामुदायिक वन कार्ययोजना (स्वतन्त्र परामर्श)"
+    ],
+    [
+     "Field surveyor for the BRCRN project, PEES Consultancy (2024)",
+     "BRCRN परियोजनाका फिल्ड सर्वेक्षक, PEES कन्सल्टेन्सी (२०२४)"
+    ],
+    [
+     "BSc Forestry at Gothgaun (2023)",
+     "गोठगाउँमा बी.एस्सी. वन विज्ञान (२०२३)"
+    ]
+   ]
+  },
+  "Sindhuli": {
+   "ne": "सिन्धुली",
+   "items": [
+    [
+     "Community forest operational plans (freelance)",
+     "सामुदायिक वन कार्ययोजना (स्वतन्त्र परामर्श)"
+    ],
+    [
+     "District coordinator, Purwanchal Geo Solution (2023–24)",
+     "जिल्ला संयोजक, पूर्वाञ्चल जियो सोलुसन (२०२३–२४)"
+    ],
+    [
+     "District coordinator, Kubir Fit (2022–23)",
+     "जिल्ला संयोजक, कुबिर फिट (२०२२–२३)"
+    ]
+   ]
+  },
+  "Kavre": {
+   "ne": "काभ्रे",
+   "items": [
+    [
+     "Community forest operational plans and revisions (freelance)",
+     "सामुदायिक वन कार्ययोजना तयारी र परिमार्जन (स्वतन्त्र परामर्श)"
+    ]
+   ]
+  },
+  "Dolakha": {
+   "ne": "दोलखा",
+   "items": [
+    [
+     "Community forest operational plans (freelance)",
+     "सामुदायिक वन कार्ययोजना (स्वतन्त्र परामर्श)"
+    ]
+   ]
+  },
+  "Ramechhap": {
+   "ne": "रामेछाप",
+   "items": [
+    [
+     "Forest technician, FECOFUN Ramechhap (2024–25)",
+     "वन प्राविधिक, फेकोफन रामेछाप (२०२४–२५)"
+    ],
+    [
+     "Pilot on simplifying operational plans with SIAS",
+     "SIAS सँग कार्ययोजना सरलीकरण पाइलट"
+    ],
+    [
+     "Community forest operational plans (freelance)",
+     "सामुदायिक वन कार्ययोजना (स्वतन्त्र परामर्श)"
+    ]
+   ]
+  }
+ },
+ "species": [
+  {
+   "en": "Sal",
+   "ne": "साल (सखुवा)",
+   "sci": "Shorea robusta",
+   "leaf": "#1f6b4a",
+   "front": [
+    "The king of the Terai forests",
+    "तराईका वनको राजा"
+   ],
+   "back": [
+    "Grows in the Terai, Chure and inner Terai. Nepal's most valuable timber, and its leaves are stitched into plates (tapari) and its resin burned as incense (dhup).",
+    "तराई, चुरे र भित्री मधेसमा पाइन्छ। नेपालको सबैभन्दा मूल्यवान काठ; यसका पातबाट टपरी बन्छ र खोटो धूपका रूपमा बालिन्छ।"
+   ]
+  },
+  {
+   "en": "Chilaune",
+   "ne": "चिलाउने",
+   "sci": "Schima wallichii",
+   "leaf": "#4f8f4a",
+   "front": [
+    "The mid-hill workhorse",
+    "मध्यपहाडको भरोसिलो रुख"
+   ],
+   "back": [
+    "Common across mid-hill community forests, often with katus. Valued for poles and firewood and fairly fire-resistant. Its bark makes the skin itch, hence the name.",
+    "मध्यपहाडका सामुदायिक वनमा प्रायः कटुससँगै पाइन्छ। खाँबो र दाउराका लागि उपयोगी र आगलागी केही हदसम्म सहन सक्ने। बोक्राले छाला चिलाउने भएकाले यो नाम।"
+   ]
+  },
+  {
+   "en": "Katus",
+   "ne": "कटुस",
+   "sci": "Castanopsis indica",
+   "leaf": "#6a8f3a",
+   "front": [
+    "Spiny nuts in the mid-hills",
+    "काँडेदार फल भएको पहाडी रुख"
+   ],
+   "back": [
+    "Grows with chilaune in the mid-hills. Its small nuts are roasted and eaten in autumn, and the wood is used for timber and fuel.",
+    "मध्यपहाडमा चिलाउनेसँगै पाइन्छ। शरद ऋतुमा यसका साना फल पोलेर खाइन्छ, र काठ निर्माण तथा दाउरामा प्रयोग हुन्छ।"
+   ]
+  },
+  {
+   "en": "Utis",
+   "ne": "उत्तिस",
+   "sci": "Alnus nepalensis",
+   "leaf": "#3e7d5a",
+   "front": [
+    "The landslide healer",
+    "पहिरो रोक्ने रुख"
+   ],
+   "back": [
+    "A fast-growing pioneer on landslides and riverbanks. It fixes nitrogen in the soil, improving it for crops and other trees. Light wood used for furniture and boxes.",
+    "पहिरो र खोला किनारमा छिटो उम्रने अग्रणी रुख। माटोमा नाइट्रोजन थपेर बाली र अन्य रुखका लागि माटो सुधार्छ। हलुका काठ फर्निचर र बाकसमा प्रयोग हुन्छ।"
+   ]
+  },
+  {
+   "en": "Khote salla",
+   "ne": "खोटे सल्ला",
+   "sci": "Pinus roxburghii",
+   "leaf": "#2f6b3a",
+   "front": [
+    "The resin pine",
+    "खोटो दिने सल्ला"
+   ],
+   "back": [
+    "Grows on dry, sunny mid-hill slopes and is widely planted. Tapped for resin (khoto), which is refined into turpentine and rosin.",
+    "सुक्खा, घाम लाग्ने पहाडी भिरालोमा पाइन्छ र धेरै ठाउँमा रोपिएको छ। यसको खोटोबाट तार्पिन र रोजिन बनाइन्छ।"
+   ]
+  },
+  {
+   "en": "Asna",
+   "ne": "साज (असना)",
+   "sci": "Terminalia alata",
+   "leaf": "#5d7f2e",
+   "front": [
+    "Sal's constant companion",
+    "सालको साथी"
+   ],
+   "back": [
+    "Grows alongside sal in the Terai and Chure. Hard, heavy timber, and its deeply cracked bark looks like crocodile skin.",
+    "तराई र चुरेमा सालसँगै पाइन्छ। कडा र गह्रौँ काठ; गहिरो चिरा परेको बोक्रा गोहीको छालाजस्तो देखिन्छ।"
+   ]
+  },
+  {
+   "en": "Khair",
+   "ne": "खयर",
+   "sci": "Senegalia catechu",
+   "leaf": "#7a8a2a",
+   "front": [
+    "The katha tree",
+    "कत्था दिने रुख"
+   ],
+   "back": [
+    "Found on riverbanks of the Terai and Chure. Its heartwood is boiled to make katha (cutch), chewed with paan and used for dyeing.",
+    "तराई र चुरेका खोला किनारमा पाइन्छ। यसको अन्तःकाष्ठ उमालेर कत्था बनाइन्छ, जुन पानसँग खाइन्छ र रङ्गाउन प्रयोग हुन्छ।"
+   ]
+  },
+  {
+   "en": "Laliguras",
+   "ne": "लालीगुराँस",
+   "sci": "Rhododendron arboreum",
+   "leaf": "#b23a48",
+   "front": [
+    "Nepal's national flower",
+    "नेपालको राष्ट्रिय फूल"
+   ],
+   "back": [
+    "Turns the higher hills red in spring. Its flowers are made into juice and pickle, and it is a symbol of Nepal's hill forests.",
+    "वसन्तमा उच्च पहाडलाई रातो बनाउँछ। यसको फूलबाट जुस र अचार बनाइन्छ; नेपालका पहाडी वनको प्रतीक हो।"
+   ]
+  }
+ ],
+ "calc": [
+  {
+   "key": "sal",
+   "en": "Sal (Shorea robusta)",
+   "ne": "साल (Shorea robusta)",
+   "a": -2.4554,
+   "b": 1.9026,
+   "c": 0.8352,
+   "rho": 880
+  },
+  {
+   "key": "asna",
+   "en": "Asna / Saj (Terminalia tomentosa)",
+   "ne": "असना / साज (Terminalia tomentosa)",
+   "a": -2.4616,
+   "b": 1.8497,
+   "c": 0.88,
+   "rho": 950
+  },
+  {
+   "key": "banjhi",
+   "en": "Banjhi (Anogeissus latifolia)",
+   "ne": "बाँझी (Anogeissus latifolia)",
+   "a": -2.272,
+   "b": 1.7499,
+   "c": 0.9174,
+   "rho": 880
+  },
+  {
+   "key": "bhurkul",
+   "en": "Bhurkul (Hymenodictyon excelsum)",
+   "ne": "भुडकुल (Hymenodictyon excelsum)",
+   "a": -2.585,
+   "b": 1.9437,
+   "c": 0.7902,
+   "rho": 513
+  },
+  {
+   "key": "botdhainro",
+   "en": "Botdhainro (Lagerstroemia parviflora)",
+   "ne": "बोटधयरो (Lagerstroemia parviflora)",
+   "a": -2.3411,
+   "b": 1.7246,
+   "c": 0.9702,
+   "rho": 850
+  },
+  {
+   "key": "champ",
+   "en": "Champ (Michelia champaca)",
+   "ne": "चाँप (Michelia champaca)",
+   "a": -2.0152,
+   "b": 1.8555,
+   "c": 0.763,
+   "rho": 497
+  },
+  {
+   "key": "chilaune",
+   "en": "Chilaune (Schima wallichii)",
+   "ne": "चिलाउने (Schima wallichii)",
+   "a": -2.7385,
+   "b": 1.8155,
+   "c": 1.0072,
+   "rho": 689
+  },
+  {
+   "key": "fir",
+   "en": "Fir (Abies pindrow)",
+   "ne": "फर (Abies pindrow)",
+   "a": -2.4453,
+   "b": 1.722,
+   "c": 1.0757,
+   "rho": 480
+  },
+  {
+   "key": "blue",
+   "en": "Gobre salla / Blue pine (Pinus wallichiana)",
+   "ne": "गोब्रे सल्ला (Pinus wallichiana)",
+   "a": -2.8195,
+   "b": 1.725,
+   "c": 1.1623,
+   "rho": 400
+  },
+  {
+   "key": "gutel",
+   "en": "Gutel (Trewia nudiflora)",
+   "ne": "गुटेल (Trewia nudiflora)",
+   "a": -2.4585,
+   "b": 1.8043,
+   "c": 0.922,
+   "rho": 352
+  },
+  {
+   "key": "jamun",
+   "en": "Jamun (Eugenia jambolana)",
+   "ne": "जामुन (Eugenia jambolana)",
+   "a": -2.5693,
+   "b": 1.8816,
+   "c": 0.8498,
+   "rho": 770
+  },
+  {
+   "key": "karma",
+   "en": "Karma (Adina cordifolia)",
+   "ne": "कर्मा (Adina cordifolia)",
+   "a": -2.5626,
+   "b": 1.8598,
+   "c": 0.8783,
+   "rho": 670
+  },
+  {
+   "key": "khair",
+   "en": "Khair (Acacia catechu)",
+   "ne": "खयर (Acacia catechu)",
+   "a": -2.3256,
+   "b": 1.6476,
+   "c": 1.0552,
+   "rho": 960
+  },
+  {
+   "key": "chir",
+   "en": "Khote salla / Chir pine (Pinus roxburghii)",
+   "ne": "खोटे सल्ला (Pinus roxburghii)",
+   "a": -2.977,
+   "b": 1.9235,
+   "c": 1.0019,
+   "rho": 650
+  },
+  {
+   "key": "oak",
+   "en": "Oak / Khasru (Quercus spp.)",
+   "ne": "फलाँट / खस्रु (Quercus spp.)",
+   "a": -2.36,
+   "b": 1.968,
+   "c": 0.7469,
+   "rho": 860
+  },
+  {
+   "key": "simal",
+   "en": "Simal (Bombax ceiba)",
+   "ne": "सिमल (Bombax ceiba)",
+   "a": -2.3865,
+   "b": 1.7414,
+   "c": 1.0063,
+   "rho": 368
+  },
+  {
+   "key": "siris",
+   "en": "Siris (Albizia spp.)",
+   "ne": "सिरिस (Albizia spp.)",
+   "a": -2.4284,
+   "b": 1.7609,
+   "c": 0.9662,
+   "rho": 673
+  },
+  {
+   "key": "sissoo",
+   "en": "Sissoo (Dalbergia sissoo)",
+   "ne": "सिसौ (Dalbergia sissoo)",
+   "a": -2.1959,
+   "b": 1.6567,
+   "c": 0.9899,
+   "rho": 780
+  },
+  {
+   "key": "hemlock",
+   "en": "Thingre salla / Hemlock (Tsuga spp.)",
+   "ne": "ठिङ्ग्रे सल्ला (Tsuga spp.)",
+   "a": -2.5293,
+   "b": 1.7815,
+   "c": 1.0369,
+   "rho": 450
+  },
+  {
+   "key": "toon",
+   "en": "Tooni (Cedrela toona)",
+   "ne": "तुनी (Cedrela toona)",
+   "a": -2.1832,
+   "b": 1.8679,
+   "c": 0.7569,
+   "rho": 480
+  },
+  {
+   "key": "utis",
+   "en": "Utis (Alnus nepalensis)",
+   "ne": "उत्तिस (Alnus nepalensis)",
+   "a": -2.7761,
+   "b": 1.9006,
+   "c": 0.9428,
+   "rho": 390
+  },
+  {
+   "key": "terai",
+   "en": "Other Terai species",
+   "ne": "तराईका अन्य प्रजाति",
+   "a": -2.3993,
+   "b": 1.7836,
+   "c": 0.9546,
+   "rho": 645,
+   "avg": true
+  },
+  {
+   "key": "hill",
+   "en": "Other hill species",
+   "ne": "पहाडका अन्य प्रजाति",
+   "a": -2.3204,
+   "b": 1.8507,
+   "c": 0.8223,
+   "rho": 645,
+   "avg": true
+  }
+ ],
+ "photos": [
+  {
+   "src": "images/plot.jpg",
+   "size": "b",
+   "caption": [
+    "Laying out a sample plot for forest inventory",
+    "वन सर्वेक्षणका लागि नमुना प्लट नाप्दै"
+   ],
+   "where": [
+    "Purwanchal Geo Solution · Sindhuli",
+    "पूर्वाञ्चल जियो सोलुसन · सिन्धुली"
+   ]
+  },
+  {
+   "src": "images/fodder.jpg",
+   "size": "t",
+   "caption": [
+    "Carrying fodder home through the morning fog",
+    "बिहानको कुहिरोमा घाँस बोकेर घर फर्किंदै"
+   ],
+   "where": [
+    "SIAS project fieldwork",
+    "SIAS परियोजनाको फिल्ड कार्य"
+   ]
+  },
+  {
+   "src": "images/tree.jpg",
+   "size": "t",
+   "caption": [
+    "An old forest giant, seen from below",
+    "तलबाट देखिएको पुरानो विशाल रुख"
+   ],
+   "where": [
+    "Mid-hill forest",
+    "पहाडी वन"
+   ]
+  },
+  {
+   "src": "images/survey.jpg",
+   "size": "w",
+   "caption": [
+    "Talking with a respondent after a household survey",
+    "घरधुरी सर्वेक्षणपछि उत्तरदातासँग कुराकानी"
+   ],
+   "where": [
+    "SIAS project",
+    "SIAS परियोजना"
+   ]
+  },
+  {
+   "src": "images/bsc.jpg",
+   "size": "w",
+   "caption": [
+    "With forest users during fieldwork in a sal forest",
+    "साल वनमा फिल्ड कार्यका क्रममा वन उपभोक्तासँग"
+   ],
+   "where": [
+    "BSc fieldwork",
+    "बी.एस्सी. फिल्ड कार्य"
+   ]
+  },
+  {
+   "src": "images/gps.jpg",
+   "size": "t",
+   "caption": [
+    "GPS on the riverbed, on the way to a sample plot",
+    "नमुना प्लट जाँदै गर्दा खोलाको बगरमा GPS"
+   ],
+   "where": [
+    "Field inventory",
+    "वन सर्वेक्षण"
+   ]
+  },
+  {
+   "src": "images/planting.jpg",
+   "size": "t",
+   "caption": [
+    "Planting a seedling",
+    "बिरुवा रोप्दै"
+   ],
+   "where": [
+    "Plantation",
+    "वृक्षारोपण"
+   ]
+  },
+  {
+   "src": "images/fecofun.jpg",
+   "size": "w",
+   "caption": [
+    "Legal awareness workshop with community forest users",
+    "सामुदायिक वन उपभोक्तासँग कानुनी सचेतना गोष्ठी"
+   ],
+   "where": [
+    "FECOFUN Ramechhap",
+    "फेकोफन रामेछाप"
+   ]
+  },
+  {
+   "src": "images/kubir.jpg",
+   "size": "w",
+   "caption": [
+    "Field team on the riverbed after a day of inventory",
+    "दिनभरको वन सर्वेक्षणपछि खोलाको बगरमा फिल्ड टोली"
+   ],
+   "where": [
+    "Kubir Fit · Sindhuli",
+    "कुबिर फिट · सिन्धुली"
+   ]
+  },
+  {
+   "src": "images/clouds.jpg",
+   "size": "t",
+   "caption": [
+    "A sea of clouds below Manungkot",
+    "मनुङकोटमुनि बादलको समुद्र"
+   ],
+   "where": [
+    "Manungkot",
+    "मनुङकोट"
+   ]
+  },
+  {
+   "src": "images/spring.jpg",
+   "size": "",
+   "caption": [
+    "A forest spring in the monsoon",
+    "वर्षायाममा वनभित्रको मूल"
+   ],
+   "where": [
+    "Nature",
+    "प्रकृति"
+   ]
+  }
+ ],
+ "writing": [
+  {
+   "type": "Blog",
+   "date": [
+    "Nov 2026",
+    "नोभेम्बर २०२६"
+   ],
+   "slug": "monkeys-modi-parbat",
+   "draft": false,
+   "title": [
+    "Monkeys and Farms in Modi: Working Together Toward Solutions",
+    "मोदीमा बाँदर र खेती: समाधानतर्फ सँगै"
+   ],
+   "summary": [
+    "How farmers in Parbat's Modi Rural Municipality, community forests and policy makers can work together on monkey crop raiding.",
+    "पर्वतको मोदी गाउँपालिकामा बाँदरले गर्ने बाली क्षति समाधानमा किसान, सामुदायिक वन र नीति निर्माता कसरी सँगै काम गर्न सक्छन्।"
+   ],
+   "body": [
+    "<p>In Modi Rural Municipality, where the Modi River flows through the hills of Parbat, farming is a way of life. Potatoes are the main cash crop, grown alongside maize, wheat and winter vegetables on terraced fields. In recent years, farmers here have faced a growing challenge: troops of monkeys visiting their fields.</p><p>&quot;We used to chase them away with dogs,&quot; says Bhul Prasad Paudel, a farmer from Ward 1. &quot;Now the monkeys are bolder, and it is harder to keep them out.&quot;</p><p>Modi covers 143.6 square kilometres across eight wards, and most of its 18,794 residents (2021 census) depend on farming. In Ward 6, Prem Sunuwar has moved away from growing potatoes for the past three years.</p><h2>A shared challenge in the mid-hills</h2><p>Nepal has three monkey species: the rhesus macaque, the Assamese macaque and the Hanuman langur. Rhesus macaques are the species most often involved in crop raiding. A 2022 nationwide study led by primatologist Sabina Koirala found that nearly 44 percent of Nepal&#x27;s land is suitable habitat for rhesus macaques, which is why many hill communities share this concern.</p><p>Modi is not alone, and nearby areas have already taken action. Mahashila Rural Municipality in Parbat moved around 350 monkeys to Chitwan National Park, and Rupa Rural Municipality in Kaski reported relief for around four years after relocating monkeys in 2017–18.</p><p>In Modi, monkeys usually arrive early in the morning as crops ripen. &quot;One visit can take a month&#x27;s work,&quot; says Ganga Timilsina, who runs an agricultural farm, sells seeds to local farmers and is a member of her community forest user group. Farmers protect their fields with nets, noise and by keeping watch.</p><h2>Working with national policy</h2><p>Local authorities are coordinating with national-level policy makers to find a lasting solution. The Ministry of Forests and Environment has declared the rhesus macaque an animal harmful to agriculture, most recently in early 2026, allowing farmers to protect their crops on private land under conditions set by the ministry, while the Assamese macaque remains protected. A government task force on crop raiding was also formed in May 2026.</p><h2>Steps that can help</h2><p>As a forester who prepares operational plans with community forest user groups, I see three practical steps.</p><p><strong>Use the community forests.</strong> Many of Modi&#x27;s fields border community forests. When their operational plans are revised, they can include native fruit-bearing trees inside the forest and a buffer of crops monkeys avoid at the forest edge. Koirala&#x27;s research recommends buffer crops and collective monitoring.</p><p><strong>Keep a simple record.</strong> A ward-level record of monkey visits and crop losses would help the municipality plan support and share clear information with national programmes.</p><p><strong>Share the rules clearly.</strong> Farmers benefit from simple guidance on what the rhesus declaration allows and whom to contact for help.</p><p>With farmers, community forest user groups, local government and national policy makers working together, Modi can protect both its harvests and its forests. Hill communities have long found ways to live alongside the forest, and with the right support, Modi can do it again.</p>",
+    "<p>पर्वतका पहाड हुँदै बग्ने मोदी खोलाको किनारमा रहेको मोदी गाउँपालिकामा खेती जीवनशैली नै हो। गराहरूमा मकै, गहुँ र हिउँदे तरकारीसँगै आलु यहाँको मुख्य नगदे बाली हो। पछिल्ला वर्षहरूमा यहाँका किसानले नयाँ चुनौती सामना गरिरहेका छन्: खेतमा आउने बाँदरका हुल।</p><p>&quot;पहिले कुकुर लगाएर धपाउँथ्यौँ,&quot; वडा नं. १ का किसान भुलप्रसाद पौडेल भन्छन्, &quot;अहिले बाँदर निडर भएका छन्, खेतबाट टाढा राख्न गाह्रो भएको छ।&quot;</p><p>आठ वडा र १४३.६ वर्ग किलोमिटरमा फैलिएको मोदीका १८,७९४ बासिन्दा (जनगणना २०७८) मध्ये धेरैजसो खेतीमा निर्भर छन्। वडा ६ का प्रेम सुनुवारले पछिल्ला तीन वर्षदेखि आलुको सट्टा अन्य बाली लगाउन थालेका छन्।</p><h2>मध्यपहाडको साझा चुनौती</h2><p>नेपालमा तीन प्रजातिका बाँदर छन्: रातो बाँदर (रेसस), आसामी बाँदर र लङ्गुर। बाली क्षतिमा प्रायः रातो बाँदर देखिन्छन्। प्राइमेटविद् सविना कोइरालाको नेतृत्वमा २०२२ मा भएको राष्ट्रव्यापी अध्ययनले नेपालको झन्डै ४४ प्रतिशत भूभाग रातो बाँदरका लागि उपयुक्त बासस्थान रहेको देखाएको छ, त्यसैले धेरै पहाडी समुदायले यो चिन्ता साझा गर्छन्।</p><p>मोदी एक्लो छैन, र छिमेकी क्षेत्रले कदम चालिसकेका छन्। पर्वतकै महाशिला गाउँपालिकाले करिब ३५० बाँदर चितवन राष्ट्रिय निकुञ्जमा पठायो, र कास्कीको रूपा गाउँपालिकाले २०७४/७५ मा बाँदर स्थानान्तरण गरेपछि करिब चार वर्ष राहत पाएको जनाएको छ।</p><p>मोदीमा बाली पाक्न थालेपछि बाँदर प्रायः बिहानै आइपुग्छन्। &quot;एक पटकको आगमनले महिनाभरको मेहनत सकिन सक्छ,&quot; कृषि फार्म सञ्चालन गर्ने, स्थानीय किसानलाई बीउ बिक्री गर्ने र सामुदायिक वन उपभोक्ता समूहकी सदस्य गंगा तिमिल्सिना भन्छिन्। किसानहरू जाली, आवाज र पालो गरेर खेत रुँगेर बाली जोगाउँछन्।</p><h2>राष्ट्रिय नीतिसँग समन्वय</h2><p>स्थानीय निकायहरू दिगो समाधान खोज्न राष्ट्रिय स्तरका नीति निर्मातासँग समन्वय गरिरहेका छन्। वन तथा वातावरण मन्त्रालयले रातो बाँदरलाई कृषिमा हानि गर्ने वन्यजन्तु घोषणा गरेको छ, पछिल्लो पटक सन् २०२६ को सुरुमा, जसले मन्त्रालयले तोकेका सर्तभित्र निजी जग्गामा बाली जोगाउन किसानलाई अनुमति दिन्छ; आसामी बाँदर भने संरक्षित नै छ। बाली क्षतिसम्बन्धी सरकारी कार्यदल पनि २०२६ मेमा गठन भएको छ।</p><h2>सहयोग पुग्ने कदमहरू</h2><p>सामुदायिक वन उपभोक्ता समूहसँग कार्ययोजना बनाउने वनविद्का रूपमा म तीनवटा व्यावहारिक कदम देख्छु।</p><p><strong>सामुदायिक वनको उपयोग।</strong> मोदीका धेरै खेत सामुदायिक वनसँग जोडिएका छन्। कार्ययोजना परिमार्जन गर्दा वनभित्र फल दिने रैथाने प्रजाति र वनको किनारमा बाँदरले मन नपराउने बालीको बफर राख्न सकिन्छ। कोइरालाको अनुसन्धानले बफर बाली र सामूहिक निगरानी सिफारिस गरेको छ।</p><p><strong>सरल अभिलेख राखौँ।</strong> वडास्तरमा बाँदर आगमन र बाली क्षतिको सरल अभिलेखले गाउँपालिकालाई सहयोग योजना बनाउन र राष्ट्रिय कार्यक्रमसँग स्पष्ट सूचना साझा गर्न मद्दत गर्छ।</p><p><strong>नियम स्पष्ट रूपमा बुझाऔँ।</strong> रातो बाँदरसम्बन्धी घोषणाले के अनुमति दिन्छ र सहयोगका लागि कसलाई सम्पर्क गर्ने भन्ने सरल जानकारी किसानका लागि उपयोगी हुन्छ।</p><p>किसान, सामुदायिक वन उपभोक्ता समूह, स्थानीय सरकार र राष्ट्रिय नीति निर्माता मिलेर काम गरे मोदीले आफ्नो बाली र वन दुवै जोगाउन सक्छ। पहाडी समुदायले वनसँगै बाँच्ने बाटो सधैँ खोजेका छन्, र उचित सहयोग पाए मोदीले फेरि त्यो गर्न सक्छ।</p>"
+   ]
+  },
+  {
+   "type": "Article",
+   "date": [
+    "The Rising Nepal",
+    "द राइजिङ नेपाल"
+   ],
+   "title": [
+    "A Community's Fight to Protect Precious Tree",
+    "A Community's Fight to Protect Precious Tree"
+   ],
+   "summary": [
+    "Opinion piece on a community standing up for its trees.",
+    "एउटा समुदायले आफ्नो बहुमूल्य रुख जोगाउन गरेको सङ्घर्षबारे विचार लेख।"
+   ],
+   "url": "https://risingnepaldaily.com/news/70748"
+  },
+  {
+   "type": "Article",
+   "date": [
+    "The Rising Nepal",
+    "द राइजिङ नेपाल"
+   ],
+   "title": [
+    "Red Panda Protection Drive in Khotang",
+    "Red Panda Protection Drive in Khotang"
+   ],
+   "summary": [
+    "Opinion piece on local efforts to protect red pandas in Khotang.",
+    "खोटाङमा रेड पाण्डा जोगाउने स्थानीय प्रयासबारे विचार लेख।"
+   ],
+   "url": "https://risingnepaldaily.com/news/68179"
+  }
+ ],
+ "goatcounter": "sailendraneupane",
+ "testimonials": []
+}
+</script>
+<!-- ============ END CONTENT ============ -->
+<script type="application/json" id="mapdata">{"w":1000,"h":570.7,"d":{"Humla":{"p":"M165.7,12.1 169.0,8.9 165.5,7.0 166.8,3.7 176.5,9.2 184.4,10.4 185.3,2.7 190.9,4.5 193.0,0.0 208.5,8.0 222.0,9.2 229.9,13.6 232.9,12.2 238.3,17.5 241.1,14.2 246.0,15.5 249.1,12.0 252.4,14.0 254.6,20.0 251.5,29.2 258.0,35.4 261.6,35.3 261.5,39.4 264.3,40.8 259.9,45.2 262.0,46.5 260.2,52.6 269.7,51.4 275.6,56.5 280.0,55.6 283.5,60.3 287.6,58.6 300.5,69.0 295.3,77.0 294.4,86.2 288.5,90.0 288.9,102.6 268.0,104.0 267.9,109.0 253.6,112.3 246.8,97.4 244.1,97.0 233.5,107.1 226.0,108.4 221.5,115.4 213.6,114.2 211.7,117.4 207.5,117.0 203.1,112.1 202.5,107.3 208.9,84.0 213.8,83.1 214.1,75.0 204.6,74.3 201.1,69.2 195.5,69.4 180.3,72.6 177.9,77.2 173.8,77.3 172.9,61.8 166.0,59.0 160.5,60.8 149.9,55.5 152.0,46.9 148.0,41.5 154.1,39.1 157.3,40.9 165.1,32.9 164.8,27.1 167.5,23.4 165.6,21.3 168.1,19.1 165.3,17.5 165.7,12.1Z","c":[220.3,58.7]},"Darchula":{"p":"M130.0,49.6 121.2,60.2 116.8,71.6 121.5,78.3 121.5,84.1 125.1,86.4 123.5,95.8 113.4,100.9 109.0,99.0 97.0,105.7 84.8,103.0 77.6,103.3 74.9,106.7 64.8,106.0 54.7,114.6 44.1,117.4 45.6,112.8 41.5,107.7 39.3,97.5 47.2,89.7 54.5,91.0 62.7,81.2 67.7,68.3 76.9,68.1 85.7,60.9 87.7,55.3 101.4,44.3 100.6,37.6 106.5,29.4 120.0,28.5 122.1,37.0 126.8,41.6 126.9,47.7 130.0,49.6Z","c":[91.0,72.6]},"Bajhang":{"p":"M127.8,54.5 135.1,60.3 146.2,60.4 146.1,57.4 149.9,55.5 160.5,60.8 166.0,59.0 172.9,61.8 174.5,65.9 172.3,68.7 172.4,76.0 178.8,76.6 184.4,80.4 185.3,94.6 183.3,97.2 179.6,96.8 179.9,106.3 168.6,112.2 165.7,123.3 161.3,125.5 152.6,135.4 153.9,137.9 147.6,143.6 135.8,147.8 118.4,142.9 109.1,146.1 97.7,133.5 91.3,132.2 85.0,126.5 88.7,124.3 90.5,116.3 87.4,109.9 91.3,105.8 97.2,105.6 109.0,99.0 113.4,100.9 124.0,95.2 125.1,86.4 121.5,84.1 121.5,78.3 116.8,71.6 121.2,60.2 127.8,54.5Z","c":[142.3,101.0]},"Mugu":{"p":"M295.3,77.0 304.2,66.3 308.1,68.5 312.9,77.3 317.9,80.1 315.6,84.8 324.3,82.4 327.9,84.8 329.1,88.2 324.5,91.3 323.6,95.1 331.5,94.8 332.6,99.7 339.6,101.4 340.8,111.0 337.0,114.1 339.5,123.5 335.5,129.3 328.9,131.2 329.4,136.7 326.6,142.1 318.8,147.3 315.8,142.6 302.2,142.4 300.8,132.7 292.5,139.5 289.9,138.9 287.0,132.0 282.6,133.1 279.6,130.5 276.7,132.4 275.4,139.6 268.8,140.5 265.8,144.4 259.2,143.3 255.4,136.5 251.8,137.4 248.8,134.2 237.4,135.7 230.6,140.4 215.4,137.7 212.3,130.7 214.5,124.2 211.7,116.9 213.4,114.3 221.5,115.4 226.0,108.4 233.5,107.1 244.1,97.0 246.8,97.4 253.6,112.3 267.9,109.0 268.0,104.0 273.7,104.7 281.1,101.7 287.6,104.0 289.9,100.2 288.6,89.6 294.4,86.2 295.3,77.0Z","c":[304.3,106.9]},"Bajura":{"p":"M178.8,76.6 180.3,72.6 200.8,69.1 204.6,74.3 214.5,75.4 213.6,83.6 208.9,84.0 202.5,107.9 204.3,114.2 214.5,121.1 212.3,130.7 215.2,142.0 207.8,155.1 197.5,157.2 195.3,151.6 192.0,149.9 184.9,151.9 174.3,163.7 165.5,162.2 158.3,155.5 149.9,159.7 147.1,152.4 138.0,147.0 147.6,143.6 153.9,137.9 152.6,135.4 165.7,123.3 168.6,112.2 179.9,106.3 179.2,97.4 185.3,94.6 183.6,90.4 185.7,83.3 178.8,76.6Z","c":[187.5,116.4]},"Baitadi":{"p":"M44.1,117.4 54.7,114.6 64.8,106.0 90.0,104.0 91.3,105.8 87.4,110.2 90.5,116.3 89.3,122.7 85.0,126.5 105.4,139.8 98.5,144.7 97.9,149.2 92.6,150.6 78.4,142.4 73.5,148.0 63.0,143.5 58.9,147.0 53.0,145.5 39.1,152.9 33.8,158.5 28.0,153.2 23.6,139.7 30.9,138.6 29.4,134.9 36.2,129.8 37.7,127.5 36.1,124.5 40.4,123.3 44.1,117.4Z","c":[62.4,130.8]},"Dolpa":{"p":"M340.6,105.6 353.7,103.3 356.3,109.4 362.8,108.3 371.9,117.5 376.2,114.2 381.2,115.2 383.2,119.1 388.4,117.2 388.9,120.0 396.0,122.8 393.1,124.3 394.6,130.8 404.2,132.8 407.1,141.6 412.4,142.6 415.7,158.4 418.9,163.2 421.2,162.4 424.7,165.8 425.3,171.1 439.2,179.4 443.4,177.0 445.3,184.0 437.9,187.6 439.6,191.8 437.3,203.5 434.9,203.7 423.6,218.1 421.5,231.1 409.6,234.7 406.4,238.5 395.8,240.2 390.6,237.2 375.6,237.4 371.9,231.0 359.4,228.6 355.3,224.9 332.4,227.1 329.9,222.6 325.1,221.1 325.9,215.6 318.8,204.1 312.1,204.3 301.9,199.1 295.5,202.6 288.1,200.5 290.4,182.6 297.3,178.9 307.0,178.5 310.6,175.3 305.0,168.6 307.2,162.0 311.5,158.3 306.5,148.5 307.8,144.1 315.8,142.6 318.8,147.3 326.8,141.9 329.4,136.7 328.9,131.2 335.5,129.3 339.5,123.5 337.0,114.1 340.8,111.0 340.6,105.6Z","c":[366.3,171.8]},"Jumla":{"p":"M307.8,144.1 306.5,148.5 311.5,158.3 304.9,166.7 306.2,172.1 310.6,175.0 309.4,177.3 293.5,180.1 290.3,182.8 289.6,188.1 273.1,184.1 271.3,187.3 259.7,192.3 250.0,205.2 244.5,203.2 240.2,196.9 240.9,188.7 233.3,183.6 227.6,177.3 228.0,172.6 219.1,165.7 224.1,163.7 230.5,155.4 230.6,140.4 237.4,135.7 248.4,134.2 251.8,137.4 254.6,136.2 257.2,141.8 262.2,144.8 275.4,139.6 278.8,130.5 282.6,133.1 287.0,132.0 289.9,138.9 292.5,139.5 300.8,132.7 302.2,142.4 307.8,144.1Z","c":[263.7,168.0]},"Kalikot":{"p":"M230.6,140.4 230.5,155.4 224.1,163.7 219.1,165.7 228.0,172.6 227.6,177.3 233.3,183.6 241.2,189.1 239.2,198.9 233.2,203.6 222.8,205.8 212.7,199.0 204.7,198.8 201.2,194.6 191.8,196.5 186.2,194.3 187.8,183.4 177.6,180.1 175.6,173.6 177.1,165.5 174.2,163.8 184.4,152.2 188.4,150.7 193.6,150.0 197.5,157.2 207.8,155.1 215.1,142.3 215.4,137.7 230.6,140.4Z","c":[201.6,171.5]},"Doti":{"p":"M105.4,139.8 109.1,146.1 118.4,142.9 135.5,147.7 133.2,158.7 128.5,165.3 130.9,171.9 120.2,175.2 132.4,190.3 134.9,201.3 129.3,206.6 122.4,205.0 110.9,210.4 103.6,210.3 102.2,206.3 98.7,204.7 95.2,211.3 92.2,205.2 85.7,200.4 74.3,198.1 67.3,191.2 62.4,190.9 58.4,187.1 63.5,184.8 61.8,181.9 66.6,178.2 80.3,174.2 80.2,169.5 86.8,164.2 84.0,159.7 88.4,159.3 87.4,151.1 97.9,149.2 98.5,144.7 105.4,139.8Z","c":[98.4,175.5]},"Dadeldhura":{"p":"M90.0,150.6 87.4,151.1 88.4,159.3 84.0,159.7 86.8,164.2 80.2,169.5 80.3,174.2 66.6,178.2 61.8,181.9 63.5,184.8 58.5,186.9 62.5,191.0 57.9,192.7 59.4,199.0 56.8,201.7 52.3,201.5 50.1,196.1 45.7,197.5 31.7,193.3 22.0,194.9 12.7,186.2 16.9,182.4 23.6,184.9 27.2,181.6 24.1,171.6 30.0,173.8 32.7,158.0 52.4,145.6 58.9,147.0 63.0,143.5 73.5,148.0 78.4,142.4 87.1,146.3 90.0,150.6Z","c":[55.4,172.3]},"Achham":{"p":"M135.5,147.7 147.1,152.4 149.9,159.7 158.3,155.5 165.5,162.2 171.2,161.9 177.0,165.1 176.3,177.5 186.1,183.8 174.2,190.9 167.1,202.0 181.8,221.6 187.6,235.6 180.7,236.7 180.5,228.8 173.3,222.0 173.6,216.7 169.4,214.3 159.8,216.9 153.6,212.0 148.8,215.1 142.3,214.8 129.3,206.6 134.8,202.1 134.5,196.5 132.4,190.3 120.3,175.0 130.9,171.9 128.5,165.3 133.2,158.7 135.5,147.7Z","c":[152.8,192.0]},"Mustang":{"p":"M445.4,183.5 442.3,173.0 449.3,167.6 459.5,166.6 461.7,159.4 473.1,156.1 481.2,155.5 484.7,157.6 483.4,159.8 487.4,161.3 489.9,159.4 498.7,162.0 498.4,166.6 501.0,167.9 509.2,167.5 508.8,171.6 504.8,175.3 506.3,183.2 509.4,184.5 507.8,194.8 512.5,194.3 515.5,198.2 511.8,216.5 507.2,215.6 504.1,219.1 496.7,217.2 494.6,222.4 486.8,229.1 478.1,225.0 477.3,230.7 473.0,232.6 468.5,239.5 453.0,245.2 444.8,260.1 433.2,259.3 427.3,244.9 430.5,234.0 421.8,230.7 421.3,223.3 434.6,204.0 437.3,203.5 439.6,191.8 437.9,187.6 445.4,183.5Z","c":[472.5,208.1]},"Dailekh":{"p":"M229.5,204.5 229.9,211.8 224.2,221.5 227.9,232.0 224.2,236.8 218.1,238.7 211.7,252.5 199.7,246.3 191.3,249.1 185.7,244.8 184.2,241.7 187.9,232.9 167.1,202.0 174.2,190.9 187.4,182.9 186.2,194.3 191.8,196.5 201.2,194.6 204.7,198.8 212.7,199.0 220.8,205.4 229.5,204.5Z","c":[202.3,217.7]},"Jajarkot":{"p":"M289.6,188.1 288.5,200.9 295.5,202.6 301.9,199.1 309.7,203.1 302.4,207.6 299.2,219.0 288.4,223.6 282.9,230.5 275.1,231.6 273.6,244.3 269.4,241.8 263.8,246.0 261.7,254.2 249.5,254.8 246.0,251.3 224.6,250.8 217.0,240.3 227.9,232.0 224.2,221.5 229.9,211.8 229.5,204.5 240.5,196.9 245.7,204.4 250.3,205.1 259.7,192.3 271.3,187.3 273.1,184.1 289.6,188.1Z","c":[259.5,219.8]},"Kanchanpur":{"p":"M55.6,202.1 57.4,211.3 54.7,218.8 56.7,227.1 61.1,231.8 60.2,238.2 62.5,240.0 60.2,241.2 61.2,244.4 55.5,248.2 58.9,261.3 57.6,263.6 48.0,252.6 38.0,252.5 33.3,247.9 32.6,243.7 25.8,239.9 24.9,235.4 19.7,235.1 8.5,225.3 3.0,225.6 1.3,223.0 2.5,219.2 0.3,215.5 12.7,186.2 22.0,194.9 31.7,193.3 45.7,197.5 50.1,196.1 52.1,201.3 55.6,202.1Z","c":[29.8,225.0]},"Kailali":{"p":"M57.9,192.7 67.3,191.2 74.3,198.1 85.7,200.4 92.2,205.2 94.7,211.2 99.1,204.6 103.8,210.4 113.1,209.5 118.7,212.5 129.1,223.0 134.0,219.5 135.8,225.3 141.4,227.0 141.9,221.1 146.1,228.0 144.9,230.8 151.9,250.4 144.2,256.3 137.0,268.0 126.9,277.7 123.9,285.4 118.6,282.5 120.9,281.2 118.3,280.3 118.5,277.9 113.6,280.1 114.0,277.3 105.6,276.6 103.5,269.8 97.0,271.6 90.5,267.3 87.2,261.6 79.2,259.2 75.5,250.8 66.7,250.1 66.0,245.7 60.7,243.4 62.5,240.0 60.2,238.2 61.1,231.8 56.7,227.1 54.6,217.5 57.4,211.3 55.6,202.1 59.4,199.0 57.9,192.7Z","c":[104.5,237.7]},"Rukum":{"p":"M309.7,203.1 320.0,205.0 325.9,215.6 325.1,221.1 329.9,222.6 333.0,227.4 339.4,224.8 345.4,226.8 346.6,224.6 355.3,224.9 359.4,228.6 371.9,231.0 375.6,237.4 379.2,237.6 380.2,242.6 375.8,253.0 357.8,254.3 356.8,258.4 360.3,261.9 358.8,265.3 352.3,262.0 351.4,267.3 347.0,268.9 350.7,274.5 341.3,274.0 329.1,268.9 316.4,271.1 306.4,267.7 304.3,263.2 300.0,263.7 295.9,268.1 287.1,267.5 284.8,261.8 280.5,258.9 261.9,254.0 263.8,246.0 269.4,241.8 270.6,241.9 272.2,243.9 273.6,244.3 275.1,231.6 282.9,230.5 288.4,223.6 299.2,219.0 302.4,207.6 309.7,203.1Z","c":[326.6,238.6]},"Surkhet":{"p":"M129.3,206.6 142.3,214.8 148.8,215.1 153.6,212.0 159.3,216.8 167.4,213.8 173.3,216.4 173.3,222.0 180.5,228.8 180.5,236.4 186.2,235.8 184.2,242.2 190.9,249.0 198.9,246.1 211.9,252.5 217.0,240.3 221.7,244.3 224.0,250.6 243.6,251.4 242.0,255.4 239.7,255.6 238.8,260.9 242.2,271.7 237.2,278.7 234.7,278.4 237.7,285.5 237.0,290.2 228.7,295.5 219.5,287.7 206.0,287.8 170.7,263.0 167.6,257.7 155.7,252.0 149.2,242.4 144.8,230.3 146.1,228.0 141.9,221.1 141.4,227.0 135.8,225.3 134.0,219.5 129.1,223.0 114.5,210.1 122.4,205.0 129.3,206.6Z","c":[180.5,250.2]},"Manang":{"p":"M507.2,215.6 533.0,221.0 533.6,224.8 538.1,226.1 538.4,233.5 544.9,238.0 544.3,241.0 548.6,244.4 554.7,269.2 552.9,274.4 545.4,276.5 538.6,269.7 533.2,277.0 522.9,272.9 518.7,275.1 511.9,273.8 501.5,265.8 495.1,265.6 481.5,256.7 469.0,254.9 464.2,247.4 459.0,244.2 471.1,237.0 473.0,232.6 477.3,230.7 478.1,225.0 486.8,229.1 494.6,222.4 496.7,217.2 504.1,219.1 507.2,215.6Z","c":[505.2,246.2]},"Myagdi":{"p":"M421.8,230.7 430.2,233.2 427.3,244.9 433.2,259.3 444.8,260.1 453.6,244.9 461.9,245.8 469.0,254.9 460.5,259.6 463.6,266.6 454.5,275.0 452.2,284.9 446.7,285.2 442.7,292.4 438.3,287.4 432.1,288.8 432.0,293.4 436.0,299.1 417.0,295.1 405.8,289.2 399.2,291.3 397.1,289.3 398.6,282.7 396.3,279.5 399.0,276.7 396.1,272.3 390.1,269.1 378.5,271.9 377.5,267.0 374.8,265.3 375.1,253.6 376.6,247.3 380.2,243.8 379.8,236.8 390.6,237.2 395.8,240.2 406.4,238.5 409.6,234.7 421.8,230.7Z","c":[419.1,264.7]},"Gorkha":{"p":"M544.9,238.0 552.5,236.0 561.3,238.3 570.8,247.2 570.0,252.0 589.3,260.6 605.8,257.6 614.3,245.6 622.1,245.3 631.2,253.2 628.8,258.0 629.8,266.1 619.2,277.5 622.7,285.9 620.8,292.0 613.0,295.5 611.4,301.7 602.5,310.9 603.7,314.4 601.2,323.2 596.3,326.3 587.8,324.9 584.4,339.9 575.9,347.0 574.7,355.0 580.1,366.2 574.2,369.1 567.0,366.3 561.0,357.9 552.4,360.2 551.0,352.9 536.5,346.8 544.8,332.2 543.6,328.6 551.4,326.5 562.8,313.9 564.4,300.1 569.8,290.8 562.5,279.0 558.6,278.3 554.1,272.8 551.3,253.3 548.6,244.4 544.1,240.5 544.9,238.0Z","c":[587.8,302.6]},"Bardiya":{"p":"M151.8,247.3 195.9,281.5 210.5,289.1 207.7,296.9 202.6,294.7 198.4,302.2 181.9,313.6 177.9,320.9 180.6,329.1 178.4,331.1 175.6,328.9 175.9,324.3 169.1,316.8 162.7,316.3 161.8,320.8 155.6,322.0 156.7,319.8 153.7,317.5 156.3,317.0 155.7,313.1 145.4,300.8 142.8,291.0 123.9,285.4 126.9,277.7 137.0,268.0 144.2,256.3 151.6,251.0 151.8,247.3Z","c":[172.7,289.2]},"Salyan":{"p":"M261.9,254.0 280.5,258.9 284.8,261.8 286.5,267.2 290.1,266.8 287.2,275.7 284.8,276.7 285.3,280.5 282.1,281.8 286.1,288.6 283.8,293.8 290.7,306.9 286.8,314.3 278.3,309.9 276.9,305.9 257.8,307.0 251.1,304.8 245.2,307.1 239.8,318.6 228.0,308.3 222.3,307.0 219.2,302.4 213.8,301.6 208.0,296.6 211.8,286.9 224.8,290.2 225.3,294.5 228.7,295.5 237.0,290.2 237.7,285.5 234.7,278.4 237.2,278.7 242.2,271.7 238.8,260.9 242.7,252.0 246.0,251.3 249.5,254.8 261.9,254.0Z","c":[260.5,284.9]},"Baglung":{"p":"M347.5,274.4 351.3,274.1 347.0,268.9 351.4,267.3 351.6,262.4 359.1,264.9 360.1,261.3 356.5,257.6 357.8,254.3 374.9,252.6 374.8,265.3 377.5,267.0 378.5,271.9 390.1,269.1 398.4,275.5 396.3,279.5 398.6,282.7 397.4,289.8 399.9,291.3 405.8,289.2 417.0,295.1 432.4,297.0 436.0,299.1 438.3,305.6 444.3,308.9 444.3,312.4 434.0,329.7 430.3,329.4 424.8,323.0 418.2,325.2 413.6,323.0 412.2,316.3 408.4,317.7 406.0,313.3 395.8,314.6 384.1,302.1 378.1,306.0 373.9,304.8 370.1,296.6 356.6,290.3 347.5,274.4Z","c":[379.7,291.1]},"Kaski":{"p":"M518.7,275.1 511.3,285.6 507.9,299.9 510.9,303.9 511.0,309.4 508.3,313.8 511.3,315.6 512.7,326.9 506.7,328.7 497.9,325.8 492.6,328.9 485.8,325.8 483.0,321.0 476.3,320.3 471.7,314.0 462.0,310.8 460.1,308.9 463.1,304.8 456.8,303.0 457.2,298.2 447.9,285.4 452.2,284.9 454.5,275.0 463.6,266.6 460.8,259.2 469.0,254.9 481.5,256.7 495.1,265.6 501.5,265.8 508.5,272.7 518.7,275.1Z","c":[481.6,292.0]},"Rolpa":{"p":"M290.1,267.1 295.9,268.1 300.0,263.7 304.3,263.2 306.4,267.7 316.4,271.1 329.1,268.9 347.5,274.4 356.6,290.3 353.4,291.8 347.9,302.5 343.4,305.1 338.8,314.5 332.8,315.5 324.5,311.0 323.3,314.7 314.7,316.8 312.6,327.3 307.3,320.2 303.0,321.2 302.2,318.2 298.7,322.4 296.7,320.2 294.0,322.7 286.9,313.5 290.7,306.9 285.2,297.9 283.8,293.8 286.1,288.6 282.2,282.3 285.3,280.5 284.8,276.7 287.2,275.7 290.1,267.1Z","c":[318.7,295.3]},"Lamjung":{"p":"M554.1,272.8 558.6,278.3 562.5,279.0 569.7,290.3 564.4,300.1 563.1,313.1 558.9,319.3 551.1,326.7 543.6,328.6 544.0,332.6 533.5,322.8 525.7,323.0 513.6,329.8 511.3,315.6 508.3,313.8 511.2,306.6 507.9,299.9 515.2,278.9 522.3,272.8 533.6,276.9 538.2,269.8 545.4,276.5 554.1,272.8Z","c":[536.6,301.2]},"Parbat":{"p":"M437.6,304.8 432.0,293.4 432.1,288.8 438.3,287.4 442.7,292.4 447.9,284.9 457.2,298.2 456.8,303.0 463.1,304.8 459.6,312.1 456.1,312.9 455.8,317.0 448.7,322.7 452.3,326.8 448.6,329.3 450.2,332.1 447.6,337.1 440.8,340.8 431.3,335.7 431.7,331.5 440.1,321.8 444.8,310.5 437.6,304.8Z","c":[449.8,312.9]},"Rasuwa":{"p":"M622.0,294.0 629.1,295.4 631.7,293.5 638.1,299.7 649.0,298.6 653.2,302.1 658.3,295.1 669.3,294.3 680.1,298.1 682.0,305.1 688.2,298.7 691.4,287.5 694.2,287.0 698.5,306.5 704.5,314.1 684.3,323.0 681.6,319.2 673.3,317.7 667.5,321.2 667.2,325.8 647.5,342.6 641.1,346.0 629.4,344.3 629.9,338.1 623.8,336.1 624.9,331.7 622.2,326.5 626.8,324.1 626.4,321.2 631.1,317.5 634.0,308.9 622.0,294.0Z","c":[666.7,316.5]},"Pyuthan":{"p":"M356.6,290.3 370.1,296.6 374.1,302.6 371.9,308.0 365.3,307.9 363.4,310.2 367.0,313.0 366.0,318.5 369.0,323.9 361.2,327.7 358.8,331.5 358.5,339.4 356.1,340.8 361.7,343.7 363.6,350.9 354.9,350.0 351.7,353.6 340.8,353.4 338.0,357.5 331.8,348.1 334.4,343.3 324.8,338.6 327.3,333.9 315.9,330.7 312.6,327.3 314.8,322.0 313.2,320.5 316.9,315.3 323.3,314.7 324.5,311.0 332.8,315.5 338.8,314.5 343.4,305.1 347.9,302.5 353.4,291.8 356.6,290.3Z","c":[341.3,323.8]},"Dhading":{"p":"M620.3,292.7 633.9,309.7 631.1,317.5 626.4,321.2 626.6,324.4 622.4,326.2 622.2,329.0 610.4,336.7 605.7,336.7 608.9,342.1 608.7,367.3 612.3,366.6 622.4,374.0 639.0,371.4 639.8,375.8 636.0,376.7 630.2,385.4 624.9,386.9 612.2,381.1 600.8,384.4 595.7,382.8 592.5,387.0 586.2,383.8 582.6,386.7 581.6,381.7 577.2,377.8 568.1,378.7 568.8,373.5 565.0,368.1 567.0,366.3 574.2,369.1 580.1,366.6 574.4,351.5 576.1,346.7 584.4,339.9 587.8,324.9 596.3,326.3 601.2,323.2 603.7,314.4 602.5,310.9 611.4,301.7 613.0,295.5 620.3,292.7Z","c":[595.8,339.8]},"Banke":{"p":"M241.0,318.4 246.8,326.0 256.8,329.2 256.5,332.5 262.8,335.7 263.1,346.6 249.2,347.5 247.3,351.6 235.6,350.7 228.4,360.7 215.0,354.0 202.1,342.4 195.4,341.6 178.4,331.1 180.6,329.1 177.9,320.9 181.9,313.6 198.4,302.2 202.8,294.6 219.2,302.4 222.3,307.0 228.0,308.3 241.0,318.4Z","c":[215.5,327.6]},"Gulmi":{"p":"M368.3,324.8 369.3,322.6 365.9,318.0 367.0,313.0 363.7,309.8 384.1,302.1 395.8,314.6 406.0,313.3 408.4,317.7 412.2,316.3 413.6,323.0 427.1,324.6 430.0,329.2 433.3,329.8 431.3,335.7 436.6,339.2 432.5,344.4 425.8,345.6 421.6,343.3 416.0,349.6 411.8,350.0 407.5,346.9 404.3,347.7 403.7,351.1 397.1,351.1 398.7,345.5 392.8,342.4 390.2,334.1 384.8,329.8 376.5,332.9 371.9,331.7 368.3,324.8Z","c":[399.5,326.8]},"Dang":{"p":"M241.0,318.4 245.2,307.1 251.1,304.8 257.8,307.0 277.4,306.1 278.3,309.9 287.1,313.8 294.0,322.7 296.7,320.2 298.7,322.4 302.2,318.2 303.0,321.2 307.3,320.2 315.9,330.7 327.3,333.9 324.7,336.4 325.5,339.3 334.4,343.3 331.8,348.1 338.5,358.5 332.0,363.4 331.9,366.2 347.0,370.0 338.0,374.6 335.3,371.6 329.5,371.7 325.1,374.3 325.6,380.2 320.8,379.3 296.5,385.5 292.2,384.0 264.1,362.0 253.8,359.0 249.6,354.5 247.5,351.4 248.4,347.9 263.1,346.6 262.8,335.7 256.5,332.5 256.8,329.2 246.8,326.0 241.0,318.4Z","c":[298.3,345.2]},"Syangja":{"p":"M460.1,308.9 471.7,314.0 476.7,320.6 485.0,322.5 479.1,328.7 479.9,334.5 483.6,334.0 488.4,338.1 482.0,342.8 481.9,354.4 475.7,358.7 469.1,356.5 465.0,359.1 456.4,353.7 444.9,351.0 441.2,354.6 432.4,349.1 426.0,351.0 424.2,349.0 421.5,351.4 416.0,349.7 421.6,343.3 425.8,345.6 432.5,344.4 436.9,339.0 440.8,340.8 447.6,337.1 450.2,332.1 448.6,329.3 452.3,326.8 448.7,322.7 455.8,317.0 455.2,314.3 459.3,312.4 460.1,308.9Z","c":[463.8,334.0]},"Sindhupalchok":{"p":"M661.4,329.0 667.2,325.8 667.5,321.2 673.3,317.7 681.6,319.2 684.3,323.0 695.1,316.8 702.7,316.2 704.6,313.1 710.6,315.2 713.8,323.7 717.0,325.8 717.5,333.2 726.8,341.6 722.8,348.8 737.4,355.1 731.0,364.4 734.6,375.1 725.4,377.0 722.1,381.4 722.4,386.8 718.9,387.1 719.3,390.8 716.3,394.3 706.8,386.8 696.9,386.1 693.8,390.9 687.4,380.4 676.9,375.5 673.8,370.6 665.1,370.9 662.3,366.2 662.7,358.5 666.9,352.3 667.8,336.7 661.4,329.0Z","c":[699.9,353.8]},"Dolakha":{"p":"M793.2,346.7 798.5,352.1 796.5,366.7 789.7,367.3 783.9,364.5 780.8,369.7 782.0,379.4 771.7,384.7 766.7,395.1 754.7,399.0 744.5,413.9 741.7,410.0 728.7,408.8 726.3,396.7 722.8,397.1 721.8,401.9 711.4,399.2 719.3,390.8 718.9,387.1 722.4,386.8 722.1,381.4 725.4,377.0 734.6,375.1 731.1,364.0 738.1,353.0 745.0,350.2 739.3,338.2 741.3,331.9 739.5,328.1 745.2,327.1 751.6,320.6 751.4,316.9 756.8,326.7 754.8,329.6 758.5,344.6 765.3,344.0 768.4,348.0 770.7,345.9 772.2,349.3 775.7,349.2 780.6,353.7 793.2,346.7Z","c":[757.3,365.3]},"Tanahu":{"p":"M485.0,324.5 492.6,328.9 497.9,325.8 506.7,328.7 511.6,326.8 513.6,329.8 525.7,323.0 534.1,323.0 543.6,332.7 536.6,347.2 551.0,352.9 552.7,362.9 547.6,366.4 538.4,366.0 537.5,369.8 541.9,374.5 539.8,373.6 537.2,376.7 530.8,371.4 526.1,376.4 520.1,363.3 500.1,362.2 500.1,360.3 494.7,358.6 491.2,361.3 478.0,358.6 477.3,356.2 481.9,354.4 482.0,342.8 488.4,338.1 484.2,334.2 479.6,334.1 479.2,328.2 485.0,324.5Z","c":[512.2,349.7]},"Arghakhanchi":{"p":"M368.3,324.8 371.9,331.7 376.5,332.9 385.6,330.2 390.2,334.1 392.8,342.4 398.7,345.5 396.1,350.3 399.9,351.0 398.3,353.0 402.9,357.7 397.4,364.6 390.5,365.3 395.3,370.3 383.8,370.7 380.1,366.5 370.8,363.5 353.5,370.6 335.6,368.7 331.9,366.2 332.0,363.4 338.0,360.2 336.5,359.2 340.8,353.4 351.7,353.6 354.9,350.0 363.5,351.5 362.8,345.3 356.1,340.8 358.5,339.4 358.8,331.5 361.2,327.7 368.3,324.8Z","c":[380.9,347.7]},"Solukhumbu":{"p":"M793.2,346.7 792.9,340.5 800.4,324.9 807.7,330.5 814.0,325.5 820.1,326.0 823.4,329.9 822.6,335.4 832.0,338.3 836.2,336.9 843.3,342.1 844.5,345.7 850.9,347.3 848.9,353.9 851.6,359.9 850.4,364.6 853.8,366.5 850.2,375.2 853.9,378.5 846.9,395.4 848.7,403.5 845.6,408.6 848.0,412.7 845.2,417.1 841.4,419.6 830.9,418.6 821.9,424.6 813.6,424.9 810.2,432.2 801.0,431.9 786.0,416.9 783.6,411.5 773.6,406.5 776.0,400.9 783.3,395.3 786.0,386.5 795.7,383.3 800.0,374.7 799.5,367.9 796.3,366.2 798.5,352.1 793.2,346.7Z","c":[826.0,378.7]},"Nuwakot":{"p":"M622.5,328.7 624.9,331.7 623.8,336.1 629.9,338.1 629.4,344.3 641.1,346.0 656.5,335.0 660.9,329.2 664.9,332.2 667.8,336.7 666.9,352.3 662.7,358.5 662.2,366.6 645.2,366.7 640.1,371.5 622.4,374.0 612.3,366.6 608.7,367.3 608.9,342.1 605.7,336.7 610.4,336.7 622.5,328.7Z","c":[637.5,351.4]},"Sankhuwasabha":{"p":"M934.2,363.4 934.4,372.7 931.1,381.0 926.7,386.3 921.2,383.1 917.5,397.0 912.0,401.2 907.3,424.3 915.9,438.5 911.2,445.1 909.5,452.3 902.6,457.3 902.2,460.8 896.4,453.2 884.7,455.1 878.3,446.8 875.0,435.6 875.9,430.4 868.2,424.0 869.2,417.0 865.3,415.3 853.8,419.2 845.6,415.8 848.0,412.7 845.8,407.9 848.7,403.5 846.9,395.4 853.9,378.5 850.2,375.2 853.8,366.5 850.4,364.6 851.6,359.9 848.9,353.9 851.1,347.1 857.4,348.0 865.4,358.1 865.9,362.0 872.7,365.0 880.3,365.5 884.3,361.3 896.2,364.5 903.7,360.1 905.2,362.2 902.0,363.8 907.6,365.2 912.2,362.1 918.3,362.3 921.3,359.0 927.3,366.7 934.2,363.4Z","c":[880.4,403.8]},"Palpa":{"p":"M398.3,353.0 403.7,351.1 404.6,347.4 408.4,346.8 411.8,350.0 421.5,351.4 424.2,349.0 426.0,351.0 432.4,349.1 440.8,354.6 444.9,351.0 456.4,353.7 461.5,358.6 469.1,356.5 487.2,360.1 487.9,364.4 483.3,375.3 475.4,378.6 465.2,378.0 463.8,381.0 453.6,379.8 450.9,384.6 448.1,385.0 441.0,379.5 432.4,381.6 409.8,375.9 407.5,377.7 402.5,373.3 395.3,373.1 390.5,365.3 397.4,364.6 402.9,357.7 398.3,353.0Z","c":[439.2,365.8]},"Taplejung":{"p":"M934.0,367.5 942.0,367.2 954.9,347.7 957.5,348.1 958.3,352.9 966.5,352.3 972.6,356.3 978.6,353.8 985.1,355.4 986.7,359.3 992.2,357.3 1000.0,362.9 996.6,365.7 999.0,370.2 994.4,377.6 992.9,387.4 984.7,399.2 980.5,410.6 983.9,419.3 979.7,423.1 975.4,434.7 969.0,440.6 948.1,442.0 937.9,439.5 932.3,442.6 919.9,440.2 913.4,436.4 908.7,428.3 907.2,423.5 912.0,401.2 917.5,397.0 921.2,383.1 926.7,386.3 931.1,381.0 934.4,372.7 934.0,367.5Z","c":[953.4,395.0]},"Chitwan":{"p":"M567.0,366.3 564.6,368.7 568.8,373.5 566.9,377.6 569.2,379.4 577.2,377.8 582.2,384.8 573.1,390.3 575.2,394.8 574.2,398.8 568.4,403.4 569.4,416.3 572.7,420.0 564.4,420.4 553.4,415.8 550.1,422.2 551.9,423.3 550.8,426.3 542.6,430.6 520.3,426.4 515.8,417.5 510.5,418.5 509.7,414.5 502.7,412.2 502.2,407.9 497.0,407.8 491.2,418.1 487.3,419.7 476.2,417.7 480.8,408.0 475.0,408.0 475.3,404.2 497.5,403.5 509.3,391.5 525.6,382.6 531.8,384.5 536.7,381.9 536.5,377.0 542.5,373.9 537.5,369.8 539.1,365.6 547.8,366.3 557.2,357.7 563.9,360.2 567.0,366.3Z","c":[540.4,394.3]},"Nawalparasi":{"p":"M488.2,360.5 491.5,361.3 494.7,358.6 500.1,360.3 500.1,362.2 520.1,363.3 524.7,375.6 532.8,372.0 537.2,376.5 537.2,381.0 531.8,384.5 525.6,382.6 509.3,391.5 497.5,403.5 475.3,404.2 475.0,408.0 479.2,406.7 480.9,408.9 477.6,411.5 476.4,417.4 468.5,420.4 469.2,425.3 473.1,427.5 468.4,431.4 437.5,414.8 433.9,406.3 433.8,395.5 438.3,383.1 441.8,384.2 442.6,382.0 450.2,384.8 453.6,379.8 463.8,381.0 465.2,378.0 475.4,378.6 483.3,375.3 488.2,360.5Z","c":[469.4,395.2]},"Kapilbastu":{"p":"M347.0,369.3 362.3,368.7 364.7,364.3 370.8,363.5 387.3,370.5 390.5,394.0 387.3,401.8 390.5,407.6 389.0,421.7 384.7,416.7 366.0,417.5 355.9,414.4 353.0,410.2 329.4,409.7 331.8,398.0 326.8,387.6 325.1,374.3 330.2,371.4 338.4,374.5 347.0,369.3Z","c":[360.1,392.8]},"Ramechhap":{"p":"M773.6,406.5 762.4,416.4 757.6,424.9 756.5,433.2 759.4,439.4 754.8,444.7 748.7,446.0 728.4,432.9 725.6,425.8 723.7,426.8 709.6,419.2 705.3,410.0 709.1,404.4 709.2,399.5 720.1,399.9 721.8,401.9 722.8,397.1 726.3,396.7 728.7,408.8 741.7,410.0 744.5,413.9 754.7,399.0 766.7,395.1 771.7,384.7 782.0,379.4 780.8,369.7 783.9,364.5 799.3,367.6 800.1,374.3 797.3,381.1 786.0,386.5 783.3,395.3 776.0,400.9 773.6,406.5Z","c":[761.5,405.1]},"Kathmandu":{"p":"M639.0,371.4 644.8,366.7 662.3,366.2 671.3,378.6 658.1,379.6 650.4,387.0 644.3,383.9 641.8,390.8 643.0,395.7 639.8,400.2 635.3,398.0 636.1,393.7 632.3,392.2 634.8,388.5 630.2,385.4 636.0,376.7 639.8,375.8 639.0,371.4Z","c":[642.6,383.2]},"Rupandehi":{"p":"M387.3,370.5 395.3,370.3 395.3,373.1 402.5,373.3 407.5,377.7 409.8,375.9 435.0,381.8 441.7,379.6 442.3,384.0 438.3,383.1 433.8,395.5 433.9,406.3 437.5,414.8 409.9,413.4 411.1,416.2 409.0,418.8 411.7,422.2 408.9,427.9 403.3,433.4 397.2,432.7 395.1,426.8 388.8,421.9 390.5,407.6 387.3,401.8 390.6,394.6 387.3,370.5Z","c":[411.1,401.6]},"Kavre":{"p":"M668.4,372.2 673.8,370.6 676.9,375.5 687.4,380.4 693.8,390.9 696.9,386.1 706.8,386.8 714.4,394.1 708.8,399.8 709.1,404.4 705.3,410.0 707.5,417.2 702.3,424.3 694.7,423.9 693.2,432.2 670.9,431.2 658.0,422.2 657.5,417.4 661.3,413.4 661.2,406.2 655.0,401.2 657.7,394.2 667.2,389.7 671.3,383.2 671.8,379.2 668.4,376.8 668.4,372.2Z","c":[682.1,401.8]},"Bhaktapur":{"p":"M671.3,378.6 671.3,383.2 664.5,391.7 658.4,393.6 650.9,386.8 658.1,379.6 671.3,378.6Z","c":[659.8,386.0]},"Makwanpur":{"p":"M630.2,385.4 634.8,388.5 632.3,392.2 636.1,393.7 635.5,398.4 639.7,399.7 636.1,404.4 639.7,416.9 665.8,427.5 659.1,435.4 669.2,449.5 669.7,452.2 666.1,454.7 668.8,455.4 667.6,456.9 664.1,457.2 650.3,449.1 639.9,448.7 637.8,445.3 630.1,445.6 618.0,429.5 600.9,429.7 582.5,419.2 573.1,419.4 569.4,416.3 568.3,404.0 574.2,398.8 575.2,394.8 573.1,390.3 581.1,384.7 582.6,386.7 587.0,383.8 592.5,387.0 595.7,382.8 600.8,384.4 612.2,381.1 624.9,386.9 630.2,385.4Z","c":[614.4,419.3]},"Lalitpur":{"p":"M658.4,393.6 655.0,401.2 661.2,406.2 661.2,413.8 657.3,417.8 658.6,423.3 639.7,416.9 636.1,404.4 643.0,395.7 641.8,390.8 643.8,384.4 651.2,386.7 658.4,393.6Z","c":[647.1,403.8]},"Okhaldhunga":{"p":"M773.6,406.5 783.6,411.5 786.0,416.9 800.3,431.7 809.3,432.4 813.3,428.6 812.1,442.1 782.4,459.3 772.2,451.6 771.4,447.7 762.4,443.7 758.1,446.7 754.8,444.9 759.4,439.4 756.5,433.2 757.6,424.9 762.4,416.4 773.6,406.5Z","c":[785.0,432.9]},"Bhojpur":{"p":"M845.6,415.8 853.8,419.2 865.3,415.3 869.2,417.0 868.2,424.0 875.9,430.4 875.0,435.6 877.6,445.5 885.9,456.0 885.6,460.4 874.8,470.5 876.7,480.1 872.4,485.3 871.1,491.2 852.5,495.6 846.5,493.4 849.2,484.0 846.5,476.1 848.6,473.3 846.6,468.6 840.3,464.7 843.8,451.0 840.3,444.4 846.3,443.0 850.8,437.3 844.3,430.3 841.7,423.1 841.4,419.6 845.6,415.8Z","c":[864.0,455.5]},"Parsa":{"p":"M564.4,420.4 582.5,419.2 595.2,427.7 601.6,429.2 600.4,432.9 604.2,442.3 601.1,457.5 602.2,462.3 593.7,476.2 597.2,475.5 596.8,477.3 591.5,482.7 587.2,477.0 581.9,480.6 580.2,477.6 577.8,479.5 564.0,473.6 567.5,466.1 569.0,447.9 561.1,433.2 543.2,430.1 550.8,426.3 551.9,423.3 550.1,422.2 553.4,415.8 564.4,420.4Z","c":[586.2,449.1]},"Sindhuli":{"p":"M707.5,417.2 723.7,426.8 725.6,425.8 728.4,432.9 748.2,445.9 753.8,444.4 758.1,446.7 762.4,443.7 771.9,448.1 772.2,451.6 777.4,454.7 775.0,459.9 772.2,459.7 767.6,464.8 773.8,466.4 773.1,470.5 776.9,475.2 774.5,483.8 765.2,486.5 761.9,491.6 752.5,482.4 743.7,477.9 728.8,476.4 721.9,462.8 716.0,459.8 713.1,462.1 709.6,456.9 696.5,453.1 685.3,460.4 667.1,459.9 669.0,455.5 666.1,454.7 669.7,452.2 669.3,449.7 666.1,442.6 660.0,438.8 659.7,433.2 667.6,427.3 670.1,430.9 676.3,432.5 693.2,432.2 694.7,423.9 702.3,424.3 707.5,417.2Z","c":[738.9,454.4]},"Khotang":{"p":"M841.4,419.6 844.3,430.3 850.8,437.1 846.3,443.0 840.3,444.4 843.8,451.0 840.3,464.7 848.1,471.0 846.5,476.1 849.2,484.4 846.5,493.4 829.2,497.6 825.2,495.7 821.4,477.3 811.8,463.0 801.3,458.6 787.3,465.3 782.2,460.6 798.0,448.6 806.0,446.7 812.1,442.1 813.4,425.0 821.9,424.6 830.9,418.6 841.4,419.6Z","c":[813.4,458.3]},"Panchthar":{"p":"M983.9,419.3 980.5,428.0 983.1,433.9 979.3,440.4 974.2,465.2 965.6,466.1 948.2,477.7 943.2,477.6 936.7,484.2 937.8,492.7 935.3,497.4 924.5,499.5 917.4,495.1 917.0,486.4 913.0,482.7 918.8,477.3 918.5,473.6 925.3,465.8 939.1,458.9 940.4,454.2 944.3,451.4 936.4,440.8 969.0,440.6 975.4,434.7 979.7,423.1 983.9,419.3Z","c":[957.3,459.4]},"Bara":{"p":"M601.6,429.2 618.0,429.5 626.3,442.7 631.0,446.1 637.8,445.3 639.9,448.7 635.6,461.2 631.1,465.3 630.2,473.2 632.4,475.8 628.0,482.5 629.5,490.1 627.5,495.5 629.3,498.3 610.6,500.2 613.9,495.6 603.2,491.5 602.6,485.8 591.5,482.7 596.8,477.3 597.2,475.5 593.7,476.2 602.2,462.3 601.1,457.5 604.2,442.3 600.4,432.9 601.6,429.2Z","c":[615.7,464.9]},"Tehrathum":{"p":"M915.9,438.5 935.6,442.3 944.4,451.1 940.4,454.2 939.1,458.9 925.3,465.8 915.0,481.7 906.2,484.3 906.8,479.6 901.3,468.5 902.0,458.5 909.5,452.3 911.2,445.1 915.9,438.5Z","c":[918.0,461.5]},"Rautahat":{"p":"M639.9,448.7 650.3,449.1 664.1,457.2 669.0,455.5 655.5,476.9 656.8,489.4 648.2,505.7 647.4,515.4 632.1,512.7 629.0,506.4 631.1,499.0 627.5,495.5 629.5,490.1 628.0,482.5 632.4,475.8 630.2,473.2 631.1,465.3 635.6,461.2 639.9,448.7Z","c":[642.4,481.6]},"Dhankuta":{"p":"M902.2,460.8 901.3,468.5 906.8,479.6 906.2,484.3 913.1,482.7 917.0,486.4 917.4,495.1 924.7,499.5 914.1,500.1 905.1,495.9 898.0,501.5 889.1,497.7 872.8,497.1 870.7,489.0 876.8,479.8 874.7,470.9 885.6,460.4 885.2,455.1 896.4,453.2 902.2,460.8Z","c":[890.8,477.3]},"Sarlahi":{"p":"M707.4,457.5 704.3,459.8 703.1,469.2 699.0,475.0 691.1,501.9 686.4,500.9 684.6,497.7 679.3,501.3 678.3,499.5 667.6,508.0 662.4,510.4 657.5,508.9 647.4,515.4 648.2,505.7 656.8,489.4 655.5,476.9 667.1,459.9 685.3,460.4 696.5,453.1 707.4,457.5Z","c":[677.0,484.3]},"Udayapur":{"p":"M782.9,459.1 782.2,461.1 787.3,465.3 801.3,458.6 811.8,463.0 821.1,476.5 826.8,496.8 831.1,497.6 844.1,493.2 853.5,495.5 869.8,490.6 873.0,496.7 868.0,506.9 855.6,519.3 848.5,519.6 842.0,512.4 840.6,517.5 834.2,523.0 831.7,520.0 822.6,523.7 819.9,520.3 813.1,523.4 810.9,520.6 811.6,516.1 803.8,511.1 803.4,505.2 798.6,495.8 785.5,495.7 763.7,489.3 767.4,485.5 773.5,484.9 776.9,475.2 773.1,470.5 773.6,466.1 767.7,464.6 772.2,459.7 775.0,459.9 777.2,454.7 782.9,459.1Z","c":[793.7,489.1]},"Mahottari":{"p":"M721.9,462.8 723.1,471.4 719.5,474.1 720.8,475.6 716.3,493.8 720.2,500.8 716.8,512.8 716.3,520.9 718.4,524.6 711.7,534.7 708.0,535.4 697.3,528.3 697.2,508.4 690.5,498.9 694.2,493.0 699.0,475.0 703.1,469.2 704.3,459.8 709.0,456.6 713.1,462.1 716.0,459.8 721.9,462.8Z","c":[704.6,496.0]},"Ilam":{"p":"M974.2,465.2 977.9,467.9 979.7,474.7 984.7,475.1 991.4,482.2 989.9,486.8 992.9,491.1 992.0,494.2 996.6,498.6 997.6,510.3 993.9,507.1 988.7,517.1 986.5,507.5 982.3,509.8 981.5,514.5 978.3,512.6 972.9,519.0 968.3,519.0 966.1,526.7 960.5,524.3 955.8,527.5 951.7,523.3 948.0,523.9 936.9,517.0 933.2,505.6 925.6,499.2 936.3,496.8 937.8,492.2 936.2,485.6 943.2,477.6 948.2,477.7 965.6,466.1 974.2,465.2Z","c":[965.5,496.3]},"Dhanusa":{"p":"M761.9,491.6 757.1,495.3 748.7,489.1 746.1,493.5 749.7,501.2 748.0,511.9 754.0,521.7 748.1,534.4 738.5,528.0 727.3,527.5 724.4,528.8 723.1,533.4 711.5,539.9 711.8,533.0 718.4,524.6 716.3,520.9 716.8,512.8 720.2,500.8 716.3,493.8 720.8,475.6 719.5,474.1 723.1,471.4 722.6,467.5 728.8,476.4 743.7,477.9 752.5,482.4 761.9,491.6Z","c":[734.6,503.6]},"Siraha":{"p":"M757.1,495.3 763.7,489.3 785.5,495.7 795.5,495.8 794.1,515.6 791.9,518.5 792.0,535.4 789.4,542.9 770.9,533.2 761.6,533.7 758.3,537.2 753.7,536.5 753.1,533.7 748.1,534.4 754.0,521.7 748.0,511.9 749.7,501.2 746.1,493.5 748.7,489.1 757.1,495.3Z","c":[772.1,516.0]},"Saptari":{"p":"M855.6,519.3 841.7,551.3 833.3,557.7 824.3,555.4 819.0,560.2 788.9,541.3 792.0,535.4 791.9,518.5 794.1,515.6 796.0,495.6 800.4,497.8 803.8,511.1 811.6,516.1 810.9,520.6 813.1,523.4 819.9,520.3 822.6,523.7 831.7,520.0 834.2,523.0 840.6,517.5 842.0,512.4 848.5,519.6 855.6,519.3Z","c":[821.5,527.9]},"Morang":{"p":"M924.7,499.5 932.1,503.8 936.8,516.4 931.7,527.6 933.2,532.8 931.0,537.4 931.3,548.1 935.8,561.9 926.0,566.3 919.5,560.9 909.3,558.2 897.5,562.6 894.9,570.7 885.4,567.5 884.8,562.4 882.1,561.4 881.9,553.3 884.0,544.9 887.8,543.4 889.8,533.2 888.1,527.1 894.3,516.2 892.1,510.2 895.2,501.2 898.6,501.4 905.6,495.9 914.1,500.1 924.7,499.5Z","c":[911.4,533.4]},"Sunsari":{"p":"M895.2,501.2 892.1,510.2 894.4,515.9 888.1,527.1 889.7,533.5 887.8,543.4 883.3,546.4 882.1,561.4 873.1,563.0 863.8,556.8 861.3,537.9 858.1,537.6 854.4,545.0 844.6,547.0 843.6,551.2 841.7,551.3 855.9,518.5 868.0,506.9 872.8,497.1 889.1,497.7 895.2,501.2Z","c":[869.3,530.0]},"Jhapa":{"p":"M997.6,510.3 998.3,517.1 995.2,530.2 986.9,548.6 987.2,558.5 978.8,568.6 975.1,568.3 974.5,564.7 966.9,561.2 962.0,551.7 956.6,558.4 949.6,554.1 946.0,562.3 937.8,558.8 935.4,560.7 931.3,548.1 931.0,537.4 933.2,532.8 931.7,527.6 936.9,517.0 948.0,523.9 951.7,523.3 955.8,527.5 960.5,524.3 966.1,526.7 968.3,519.0 972.9,519.0 978.3,512.6 981.5,514.5 982.3,509.8 986.5,507.5 988.7,517.1 993.9,507.1 997.6,510.3Z","c":[961.3,538.0]}},"outline":"M647.2,515.3 632.1,512.7 629.0,506.4 630.9,498.4 619.9,498.0 617.2,500.4 611.2,500.5 611.1,497.9 613.9,495.6 608.2,494.5 607.1,492.3 603.2,491.5 604.0,488.3 602.6,485.8 593.5,484.1 589.6,481.5 589.6,478.8 587.2,477.0 584.4,477.5 581.9,480.6 580.2,477.6 577.8,479.5 564.2,473.8 563.9,470.4 567.5,466.1 569.3,449.3 561.1,433.2 520.6,426.5 518.5,424.8 515.8,417.5 513.0,416.6 510.5,418.5 509.7,414.5 502.7,412.2 502.2,407.9 497.0,407.8 496.0,411.7 493.1,413.2 491.2,418.1 487.3,419.7 476.4,417.4 468.9,419.7 469.2,425.3 473.1,426.0 473.1,427.5 468.0,431.5 437.5,414.8 409.9,413.4 411.1,416.2 409.0,418.8 411.6,422.9 405.2,432.5 400.8,433.6 397.2,432.7 394.9,429.8 395.1,426.8 384.7,416.7 366.0,417.5 355.9,414.4 353.0,410.2 329.4,409.7 331.2,407.0 329.9,403.5 331.8,398.0 329.6,394.7 329.8,390.8 326.8,387.6 326.1,379.7 320.8,379.3 306.6,384.0 295.3,385.4 287.8,381.2 283.4,375.8 264.1,362.0 253.8,359.0 247.5,351.4 235.6,350.7 230.4,357.6 230.2,360.0 225.3,360.7 218.2,354.6 215.0,354.0 202.1,342.4 195.4,341.6 176.3,329.7 175.9,324.3 172.3,322.0 169.9,317.2 162.7,316.3 161.8,320.8 155.6,322.0 156.7,319.8 153.7,317.5 156.3,317.0 155.7,313.1 145.4,300.8 145.4,295.6 142.8,291.0 127.0,287.4 121.5,283.3 120.9,285.3 118.6,282.5 120.9,281.2 120.2,279.8 118.3,280.3 118.5,277.9 113.6,280.1 112.2,280.0 114.0,277.3 110.9,278.5 108.4,277.0 109.5,275.4 105.6,276.6 104.9,271.4 102.7,269.4 99.7,269.7 99.9,272.4 97.0,271.6 94.2,268.4 90.5,267.3 87.2,261.6 79.2,259.2 75.5,250.8 73.5,251.9 66.7,250.1 65.4,248.3 66.0,245.7 61.7,244.2 56.8,246.7 55.4,248.7 58.9,261.3 57.2,263.7 54.7,260.1 52.0,259.3 48.8,253.1 38.3,252.7 33.3,247.9 32.6,243.7 25.8,239.9 24.9,235.4 19.7,235.1 8.1,225.1 3.0,225.6 1.1,222.2 2.4,218.8 0.0,217.3 7.0,202.8 11.5,187.6 16.9,182.4 23.6,184.9 27.2,181.6 23.9,173.2 24.4,170.9 30.1,173.6 29.5,169.4 32.7,158.0 28.0,153.2 27.5,147.0 23.5,144.1 23.5,139.9 27.7,137.8 30.9,138.6 29.2,135.4 30.5,133.4 32.3,134.0 32.7,131.8 37.6,127.9 36.1,124.5 40.2,123.4 44.0,118.8 45.6,112.8 41.5,107.7 39.3,97.5 42.6,96.0 43.9,91.4 47.2,89.7 54.5,91.0 55.6,87.7 62.7,81.2 64.1,73.9 67.7,68.3 76.9,68.1 85.7,60.9 87.7,55.3 94.4,48.5 97.0,48.2 101.4,44.3 100.6,37.6 106.9,29.2 120.0,28.5 122.1,37.0 126.8,41.6 126.9,47.7 130.0,49.6 127.8,54.6 132.4,59.6 146.7,60.2 147.5,58.9 145.8,57.8 149.9,55.5 152.1,50.0 151.9,46.4 148.0,41.5 154.1,39.1 155.2,41.0 157.3,40.9 165.1,32.9 164.8,27.1 167.5,23.4 165.6,21.3 168.1,19.1 165.3,17.5 166.2,14.8 164.9,10.9 169.0,8.9 165.5,7.0 166.8,3.7 171.1,4.2 176.5,9.2 184.4,10.4 185.3,2.7 190.9,4.5 193.0,0.0 205.6,5.0 208.5,8.0 222.0,9.2 229.9,13.6 232.9,12.2 238.3,17.5 241.1,14.2 246.0,15.5 249.6,12.1 252.4,14.0 254.6,20.0 251.5,29.2 255.0,30.7 258.0,35.4 261.6,35.3 261.5,39.4 264.3,40.8 259.9,45.2 262.0,46.5 259.6,50.6 260.6,53.0 269.7,51.4 273.8,53.4 275.6,56.5 280.0,55.6 283.5,60.3 285.5,60.2 285.9,58.1 287.6,58.6 300.8,69.3 304.2,66.3 308.0,68.3 312.9,77.3 317.9,80.1 315.3,84.6 324.4,82.4 328.0,85.0 328.7,89.2 324.5,91.3 323.6,95.1 331.5,94.8 332.6,99.7 339.6,101.4 339.0,103.7 340.5,105.6 344.8,106.1 353.7,103.3 355.6,108.8 362.8,108.3 371.5,117.3 376.2,114.2 380.3,114.8 381.7,115.9 381.3,118.5 384.0,118.8 385.7,116.5 388.4,117.2 388.9,120.0 395.8,122.4 396.2,123.7 393.2,123.9 392.9,125.5 394.6,130.8 400.7,130.8 404.2,132.8 404.0,136.6 406.5,138.8 407.1,141.6 412.4,142.6 414.0,145.3 412.3,148.7 412.8,151.4 416.2,153.6 416.3,159.6 418.9,163.2 421.2,162.4 424.7,165.8 425.3,171.1 431.4,173.1 432.9,176.6 436.4,176.4 439.2,179.4 440.7,179.0 442.8,176.3 442.3,173.0 445.8,171.7 449.3,167.6 459.5,166.6 459.5,162.5 461.7,159.4 466.0,159.6 472.6,156.1 478.0,157.1 481.2,155.5 484.7,157.6 483.4,159.8 487.6,161.4 489.9,159.4 493.0,161.4 495.8,160.5 499.2,162.5 498.6,166.8 509.4,167.7 508.8,171.6 504.8,175.3 506.3,183.2 509.4,184.5 507.8,194.8 512.5,194.3 515.5,198.2 511.8,216.5 516.6,215.9 524.4,220.5 526.4,219.3 528.2,221.1 533.1,221.0 534.4,222.1 533.6,224.8 538.1,226.1 538.4,233.5 541.0,235.7 544.9,238.0 552.5,236.0 554.6,238.2 561.3,238.3 566.4,245.3 570.8,247.2 570.0,252.0 589.3,260.6 599.6,257.4 601.2,259.5 605.8,257.6 606.0,255.0 614.3,245.6 617.1,247.1 622.1,245.3 626.1,250.6 630.0,251.1 631.2,253.5 628.8,258.0 630.5,261.2 629.8,266.1 627.8,266.5 626.0,272.5 622.1,272.9 619.2,277.5 621.0,278.9 622.7,285.9 620.3,292.7 621.3,293.7 629.1,295.4 631.7,293.5 638.1,299.7 642.0,300.9 649.0,298.6 653.2,302.1 658.3,295.1 669.3,294.3 680.1,298.1 682.0,305.1 688.2,298.7 687.4,296.5 689.2,292.6 691.2,292.1 691.4,287.5 694.2,287.0 696.7,293.1 698.8,307.3 702.4,311.9 710.6,315.2 713.8,323.7 717.0,325.8 717.5,333.2 726.8,341.6 722.8,348.8 729.1,353.1 737.4,355.1 738.1,353.0 745.0,350.2 739.3,338.2 741.3,331.9 739.5,328.1 745.2,327.1 747.0,323.3 751.6,320.6 750.9,317.6 752.2,316.7 756.8,326.7 754.8,329.6 757.3,336.4 757.7,343.8 765.6,344.1 768.4,348.0 770.7,345.9 772.2,349.3 775.7,349.2 779.9,353.6 783.7,353.6 787.0,350.6 787.2,348.2 793.2,346.7 792.9,340.5 795.3,333.7 799.0,330.9 799.1,325.4 803.6,326.3 804.3,329.9 807.7,330.5 812.0,326.3 817.8,325.5 821.4,326.8 823.4,329.9 821.8,333.5 822.6,335.4 832.0,338.3 836.2,336.9 838.8,340.5 843.3,342.1 844.5,345.7 857.1,347.8 865.4,358.1 865.9,362.0 873.6,365.2 880.3,365.5 884.3,361.3 891.6,364.8 896.2,364.5 898.0,362.2 903.7,360.1 905.2,362.2 902.0,363.8 907.6,365.2 912.2,362.1 918.3,362.3 921.3,359.0 924.1,360.7 924.7,365.5 927.3,366.7 930.2,363.8 934.0,363.3 934.0,367.5 941.3,367.7 948.0,359.5 948.7,354.9 953.6,351.6 954.9,347.7 957.5,348.1 958.3,352.9 966.5,352.3 972.6,356.3 978.6,353.8 982.7,356.4 985.1,355.4 986.7,359.3 992.2,357.3 1000.0,362.9 996.6,365.7 999.0,370.2 997.1,376.0 994.4,377.6 992.9,387.4 990.0,390.7 988.8,395.5 984.7,399.2 982.4,408.6 980.5,410.6 984.2,420.3 981.3,423.0 980.5,428.0 983.1,433.5 979.3,440.4 976.8,449.9 977.4,456.2 974.0,462.1 974.2,465.3 977.9,467.9 977.3,469.6 979.6,474.6 984.7,475.1 986.3,478.8 991.4,482.2 989.9,486.8 992.9,491.1 992.0,494.2 996.6,498.6 995.9,502.3 998.5,511.8 995.2,530.2 993.0,532.8 991.5,539.2 988.5,541.8 986.9,548.6 988.5,553.4 987.2,558.5 978.5,568.8 975.1,568.3 974.5,564.7 966.9,561.2 965.3,559.2 966.2,557.4 963.4,556.8 964.2,555.4 962.0,551.7 958.1,554.7 956.6,558.4 949.6,554.1 946.3,562.2 943.9,561.0 942.8,562.6 936.0,558.9 935.8,561.9 932.7,562.6 932.4,564.5 926.4,566.3 919.5,560.9 912.2,558.5 900.4,560.7 897.3,562.9 896.4,569.2 894.4,570.7 890.7,567.9 884.9,567.1 884.0,561.8 873.1,563.0 864.3,557.3 861.4,538.4 860.0,537.6 858.1,537.6 854.0,545.2 844.4,547.1 843.6,551.2 839.3,551.6 839.4,554.7 831.9,558.0 824.3,555.4 819.7,560.3 814.2,556.3 806.9,554.1 805.0,551.5 799.9,550.1 796.0,544.1 790.6,543.7 777.7,536.4 771.8,534.9 770.9,533.2 763.4,533.2 759.6,534.6 758.3,537.2 755.4,536.9 753.7,536.5 753.1,533.7 748.1,534.4 746.7,531.9 732.7,526.7 724.9,528.3 723.1,533.4 720.8,533.1 711.7,540.0 711.7,534.7 707.4,535.2 705.8,532.4 697.5,528.6 696.3,505.8 693.3,503.0 686.4,500.9 684.6,497.7 679.3,501.3 677.8,499.8 667.6,508.0 662.4,510.4 657.5,508.9 653.2,513.2 647.2,515.3Z"}</script>
+
+<script>
+const C = JSON.parse(document.getElementById('data').textContent);
+const MAP = JSON.parse(document.getElementById('mapdata').textContent);
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const store = { get(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }, set(k,v){ try { localStorage.setItem(k,v); } catch(e){} } };
+C.ui.brand = ['Sailendra Neupane', 'शैलेन्द्र न्यौपाने'];
+const SEASONS = {
+  spring:  {leaf: ['#2f7d4f', '#6fae6a', '#2f7d4f'], flower: '#d7263d', keep: 1, fall: .015},
+  summer:  {leaf: ['#8a9a3a', '#c9a23a', '#a5662e'], flower: null, keep: .8, fall: .09},
+  monsoon: {leaf: ['#1d6b45', '#2f8f55', '#45a865'], flower: null, keep: 1, fall: .008, rain: true},
+  autumn:  {leaf: ['#2f7a4a', '#6fae6a', '#d0a030'], flower: null, keep: 1, fall: .035},
+  winter:  {leaf: ['#5d7b4c', '#8f8d4a', '#a8743a'], flower: null, keep: .5, fall: .05}
+};
+function seasonNow(){ const d = new Date(Date.now() + 345 * 60000); const m = d.getUTCMonth() + 1;
+  return m === 3 || m === 4 ? 'spring' : m === 5 ? 'summer' : m >= 6 && m <= 9 ? 'monsoon' : m === 10 || m === 11 ? 'autumn' : 'winter'; }
+const autoSeason = seasonNow();
+let season = autoSeason;
+
+let lang = store.get('lang') === 'ne' ? 'ne' : 'en';
+const L = () => lang === 'ne' ? 1 : 0;
+const t = k => (C.ui[k] || [k, k])[L()];
+const pick = v => Array.isArray(v) ? v[L()] : v;
+const DEV = '०१२३४५६७८९';
+const num = s => lang === 'ne' ? String(s).replace(/[0-9]/g, d => DEV[d]) : String(s);
+const fmt = (x, dp) => num(x.toLocaleString('en-US', {minimumFractionDigits: dp, maximumFractionDigits: dp}));
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* ---------- theme: day/night by Nepal time ---------- */
+function nepalHour(){ const d = new Date(); return ((d.getUTCHours() * 60 + d.getUTCMinutes() + 345) % 1440) / 60; }
+let theme = store.get('theme') || ((nepalHour() >= 18 || nepalHour() < 6) ? 'dark' : 'light');
+function applyTheme(){
+  document.documentElement.setAttribute('data-theme', theme);
+  const b = document.getElementById('theme-btn');
+  b.textContent = theme === 'dark' ? '☀' : '☾';
+  b.setAttribute('aria-label', t(theme === 'dark' ? 'theme_night' : 'theme_day'));
+  b.title = b.getAttribute('aria-label');
+  const night = theme === 'dark';
+  document.getElementById('banner-quote').textContent = t(night ? 'quote_night' : 'quote_day');
+  document.getElementById('banner-label').textContent = t(night ? 'label_night' : 'label_day');
+}
+document.getElementById('theme-btn').addEventListener('click', () => { theme = theme === 'dark' ? 'light' : 'dark'; store.set('theme', theme); applyTheme(); });
+
+/* ---------- rendering ---------- */
+const ringsSVG = `<svg class="rings" viewBox="0 0 100 100" aria-hidden="true" fill="none" stroke="var(--line)" stroke-width="1.2">${[8,15,21,28,34,39,45].map((r,i)=>`<ellipse cx="50" cy="50" rx="${r+(i%2)}" ry="${r}"/>`).join('')}</svg>`;
+
+function renderStatic(){
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-t]').forEach(el => { el.textContent = t(el.dataset.t); });
+  document.querySelectorAll('[data-th]').forEach(el => { el.innerHTML = t(el.dataset.th); });
+  const lb = document.getElementById('lang-btn');
+  lb.innerHTML = lang === 'ne' ? 'EN' : '<span class="ne-font">ने</span>';
+  lb.title = lang === 'ne' ? 'Switch to English' : 'नेपालीमा हेर्नुहोस्';
+  // rotator words
+  document.getElementById('rot-words').innerHTML = ['r1','r2','r3','r4'].map(k => `<b>${esc(t(k))}</b>`).join('');
+  placeRot();
+  // stats numbers (final values)
+  document.querySelectorAll('[data-count]').forEach(el => { el.textContent = statText(el, +el.dataset.count); });
+}
+function statText(el, v){ const s = el.dataset.suffix || ''; return num(v) + (s === 'yrs' ? t('yrs') : s); }
+
+function renderResearch(){
+  document.getElementById('research-list').innerHTML = C.research.map(r => `
+    <article class="card reveal">${ringsSVG}
+      <div class="meta"><span class="pill">${esc(pick(r.status))}</span><span class="label">${esc(num(r.year))}</span></div>
+      <h3>${esc(pick(r.title))}</h3><p>${esc(pick(r.summary))}</p>
+      <div class="meta">${pick(r.tags).map(x => `<span class="label">#${esc(x)}</span>`).join('')}</div>
+    </article>`).join('');
+}
+function renderWork(){
+  document.getElementById('work-list').innerHTML = '<span class="fill" aria-hidden="true"></span>' + C.work.map(w => `
+    <li class="reveal"><div class="when">${esc(pick(w.when))}</div>
+    <div><h3>${esc(pick(w.role))}</h3><div class="org">${esc(pick(w.org))}</div><p>${esc(pick(w.text))}</p></div></li>`).join('');
+  document.getElementById('skills').innerHTML = C.skills.map(s => { const [h, d] = s[L()]; return `<div><strong>${esc(h)}</strong>${esc(d)}</div>`; }).join('');
+}
+
+let wFilter = 'all';
+function renderWriting(){
+  const items = C.writing.filter(w => wFilter === 'all' || w.type === wFilter);
+  document.getElementById('writing-list').innerHTML = items.map(w => {
+    const href = w.slug ? `#post-${w.slug}` : (w.url || '');
+    const inner = `<span class="where">${esc(t('type_' + w.type))} · ${esc(pick(w.date))}</span>
+      <div><h3>${esc(pick(w.title))}</h3><p>${esc(pick(w.summary))}</p></div>
+      <span class="arrow">${w.draft ? `<span class="pill plan">${esc(t('draft'))}</span>` : (w.slug ? '→' : '↗')}</span>`;
+    return `<li><a class="row" href="${esc(href)}">${inner}</a></li>`;
+  }).join('') || `<li style="padding:18px 8px;color:var(--muted)">${esc(t('nothing'))}</li>`;
+}
+document.querySelectorAll('.filters button').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('.filters button').forEach(x => x.setAttribute('aria-pressed', x === b));
+  wFilter = b.dataset.f; renderWriting();
+}));
+
+/* ---------- gallery + lightbox ---------- */
+const P = C.photos;
+function renderGallery(){
+  document.getElementById('gallery').innerHTML = P.map((p, i) => `<figure class="${esc(p.size)} reveal" tabindex="0" data-i="${i}">
+    <img src="${esc(p.src)}" alt="${esc(pick(p.caption))}" loading="lazy">
+    <figcaption>${esc(pick(p.caption))}<small>${esc(pick(p.where))}</small></figcaption></figure>`).join('');
+}
+(function(){
+  const g = document.getElementById('gallery'), lb = document.getElementById('lightbox'), img = document.getElementById('lb-img'), cap = document.getElementById('lb-cap');
+  let cur = 0, opener = null;
+  const show = i => { cur = (i + P.length) % P.length; const p = P[cur]; img.src = p.src; img.alt = pick(p.caption); cap.innerHTML = `${esc(pick(p.caption))}<small>${esc(pick(p.where))}</small>`; };
+  const open = (i, el) => { opener = el; show(i); lb.classList.add('open'); document.body.style.overflow = 'hidden'; lb.querySelector('.lb-close').focus(); };
+  const close = () => { lb.classList.remove('open'); document.body.style.overflow = ''; opener && opener.focus(); };
+  g.addEventListener('click', e => { const f = e.target.closest('figure'); if (f) open(+f.dataset.i, f); });
+  g.addEventListener('keydown', e => { const f = e.target.closest('figure'); if (f && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); open(+f.dataset.i, f); } });
+  lb.querySelector('.lb-close').onclick = close;
+  lb.querySelector('.lb-prev').onclick = () => show(cur - 1);
+  lb.querySelector('.lb-next').onclick = () => show(cur + 1);
+  lb.addEventListener('click', e => { if (e.target === lb) close(); });
+  addEventListener('keydown', e => { if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') close(); if (e.key === 'ArrowLeft') show(cur - 1); if (e.key === 'ArrowRight') show(cur + 1); });
+})();
+
+/* ---------- map ---------- */
+let selDist = null;
+function buildMap(){
+  const svg = document.getElementById('nepal');
+  svg.setAttribute('viewBox', `0 0 ${MAP.w} ${MAP.h}`);
+  const worked = Object.keys(C.districts);
+  let html = '';
+  Object.entries(MAP.d).forEach(([n, v]) => { if (!worked.includes(n)) html += `<path class="dist" d="${v.p}"/>`; });
+  worked.forEach((n, i) => { const v = MAP.d[n]; html += `<path class="dist on" d="${v.p}" data-n="${n}" tabindex="0" role="button" style="animation-delay:${i * 120}ms"><title>${n}</title></path>`; });
+  html += `<path class="outline" d="${MAP.outline}"/>`;
+  worked.forEach(n => { const [x, y] = MAP.d[n].c; html += `<circle class="pulse" cx="${x}" cy="${y}" r="7"/><circle class="pin" cx="${x}" cy="${y}" r="4.5"/><text class="dlabel" data-l="${n}" x="${x + 9}" y="${y + 4}"></text>`; });
+  svg.innerHTML = html;
+  const choose = n => { selDist = n; renderMapPanel(); };
+  svg.addEventListener('mouseover', e => { const p = e.target.closest('.on'); if (p) choose(p.dataset.n); });
+  svg.addEventListener('click', e => { const p = e.target.closest('.on'); if (p) choose(p.dataset.n); });
+  svg.addEventListener('focusin', e => { const p = e.target.closest('.on'); if (p) choose(p.dataset.n); });
+  svg.addEventListener('keydown', e => { const p = e.target.closest('.on'); if (p && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); choose(p.dataset.n); } });
+}
+function renderMapPanel(){
+  document.querySelectorAll('#nepal .dlabel').forEach(el => { const n = el.dataset.l; el.textContent = lang === 'ne' ? C.districts[n].ne : n; });
+  document.querySelectorAll('#nepal .on').forEach(p => p.classList.toggle('sel', p.dataset.n === selDist));
+  const chips = `<div class="chips">${Object.keys(C.districts).map(n => `<button type="button" data-n="${n}" class="${n === selDist ? 'sel' : ''}">${esc(lang === 'ne' ? C.districts[n].ne : n)}</button>`).join('')}</div>`;
+  const panel = document.getElementById('map-panel');
+  if (!selDist) { panel.innerHTML = `<div class="label">${esc(t('map_pick'))}</div><p style="margin:10px 0 0;color:var(--muted)">${esc(t('map_hint'))}</p>${chips}`; }
+  else { const d = C.districts[selDist];
+    panel.innerHTML = `<div class="label">${esc(t('nav_map'))} · ${esc(t('nepal'))}</div><h3>${esc(lang === 'ne' ? d.ne : selDist)}</h3><ul>${d.items.map(i => `<li>${esc(i[L()])}</li>`).join('')}</ul>${chips}`; }
+  panel.querySelectorAll('.chips button').forEach(b => b.onclick = () => { selDist = b.dataset.n; renderMapPanel(); });
+}
+
+/* ---------- species flip cards ---------- */
+function leafSVG(col){ return `<svg class="leafart" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 8C78 22 88 50 72 76 62 92 38 92 28 76 12 50 22 22 50 8z" fill="${col}" opacity=".9"/><path d="M50 14V90M50 34l-14 10M50 34l14 10M50 52l-16 12M50 52l16 12M50 70l-12 9M50 70l12 9" stroke="rgba(255,255,255,.55)" stroke-width="2" fill="none" stroke-linecap="round"/></svg>`; }
+function renderSpecies(){
+  document.getElementById('species').innerHTML = C.species.map((s, i) => `
+    <button type="button" class="flip reveal" aria-pressed="false" data-i="${i}">
+      <span class="flip-inner">
+        <span class="face front">${leafSVG(s.leaf)}
+          <span class="local">${esc(lang === 'ne' ? s.ne : s.en)}</span>
+          <span class="sci">${esc(s.sci)}${lang === 'ne' ? '' : ` · ${esc(s.ne)}`}</span>
+          <span class="tag">${esc(pick(s.front))}</span>
+          <span class="hint">${esc(t('flip'))}</span></span>
+        <span class="face back"><strong>${esc(lang === 'ne' ? s.ne : s.en)}</strong><p>${esc(pick(s.back))}</p></span>
+      </span></button>`).join('');
+}
+document.getElementById('species').addEventListener('click', e => { const b = e.target.closest('.flip'); if (!b) return; b.classList.toggle('flipped'); b.setAttribute('aria-pressed', b.classList.contains('flipped')); });
+
+/* ---------- calculator ---------- */
+const $ = id => document.getElementById(id);
+function renderCalcSelect(){
+  const cur = $('c-sp').value || 'sal';
+  $('c-sp').innerHTML = C.calc.map(s => `<option value="${s.key}">${esc(lang === 'ne' ? s.ne : s.en)}</option>`).join('');
+  $('c-sp').value = cur;
+}
+function calc(){
+  const s = C.calc.find(x => x.key === $('c-sp').value) || C.calc[0];
+  const D = parseFloat($('c-d').value), H = parseFloat($('c-h').value), rho = parseFloat($('c-rho').value);
+  if (!(D > 0 && H > 0)) { ['o-vol','o-bio','o-c','o-co2'].forEach(id => $(id).textContent = '–'); $('o-cft').textContent = ''; return; }
+  const v = Math.exp(s.a + s.b * Math.log(D) + s.c * Math.log(H)) / 1000; // m³
+  $('o-vol').textContent = fmt(v, 3) + ' m³';
+  $('o-cft').textContent = fmt(v * 35.3147, 1) + ' cft';
+  if (rho > 0) {
+    const bio = v * rho, c = bio * 0.47, co2 = c * 44 / 12;
+    $('o-bio').textContent = fmt(bio, 0) + ' kg'; $('o-c').textContent = fmt(c, 0) + ' kg'; $('o-co2').textContent = fmt(co2, 0) + ' kg';
+  } else { ['o-bio','o-c','o-co2'].forEach(id => $(id).textContent = '–'); $('o-bio').nextElementSibling; }
+  const k = Math.min(1, 0.35 + Math.sqrt(v) * 0.4);
+  $('mini').style.transform = `scale(${k})`;
+}
+function setRho(){ const s = C.calc.find(x => x.key === $('c-sp').value) || C.calc[0]; $('c-rho').value = s.rho; $('c-rho-out').textContent = fmt(s.rho, 0) + ' kg/m³'; $('c-rho-src').textContent = t(s.avg ? 'c_rho_avg' : 'c_rho_src'); }
+$('c-sp').addEventListener('change', () => { setRho(); calc(); });
+[['c-dr','c-d'],['c-hr','c-h']].forEach(([r, n]) => {
+  $(r).addEventListener('input', () => { $(n).value = $(r).value; calc(); });
+  $(n).addEventListener('input', () => { $(r).value = $(n).value; calc(); });
+});
+
+/* ---------- contact form ---------- */
+$('cform').addEventListener('submit', async e => {
+  e.preventDefault();
+  const st = $('f-status'), name = $('f-name').value.trim(), email = $('f-email').value.trim(), msg = $('f-msg').value.trim();
+  st.className = 'status';
+  if (!name || !email || !msg) { st.textContent = t('form_missing'); st.classList.add('err'); return; }
+  if (C.formEndpoint) {
+    $('f-send').disabled = true; st.textContent = t('form_sending');
+    try {
+      const r = await fetch(C.formEndpoint, {method:'POST', headers:{'Accept':'application/json','Content-Type':'application/json'}, body: JSON.stringify({name, email, message: msg})});
+      if (!r.ok) throw new Error(r.status);
+      st.textContent = t('form_ok'); st.classList.add('ok'); $('cform').reset();
+    } catch (err) { st.textContent = t('form_err'); st.classList.add('err'); }
+    $('f-send').disabled = false;
+  } else {
+    const href = `mailto:${C.email}?subject=${encodeURIComponent('Website message from ' + name)}&body=${encodeURIComponent(msg + '\n\n— ' + name + ' (' + email + ')')}`;
+    location.href = href;
+    st.textContent = t('form_mail'); st.classList.add('ok');
+  }
+});
+
+/* ---------- routing + blog posts with share ---------- */
+function renderPost(p){
+  const url = location.href, title = pick(p.title);
+  const enc = encodeURIComponent;
+  document.getElementById('post').innerHTML = `
+    <a class="back" href="#writing">${esc(t('back'))}</a>
+    ${p.draft ? `<div class="note" style="margin-top:20px">${esc(t('draft_note'))}</div>` : ''}
+    <div class="label" style="margin-top:20px">${esc(t('type_' + p.type))} · ${esc(pick(p.date))}</div>
+    <h1>${esc(title)}</h1><p class="deck">${esc(pick(p.summary))}</p>
+    <div class="body">${pick(p.body)}</div>
+    <div class="share"><div class="label">${esc(t('share'))}</div><div class="row">
+      <a href="https://www.facebook.com/sharer/sharer.php?u=${enc(url)}" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.linkedin.com/sharing/share-offsite/?url=${enc(url)}" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://twitter.com/intent/tweet?url=${enc(url)}&text=${enc(title)}" target="_blank" rel="noopener">X</a>
+      <a href="https://wa.me/?text=${enc(title + ' ' + url)}" target="_blank" rel="noopener">WhatsApp</a>
+      <button type="button" id="copy-link">${esc(t('copy'))}</button></div></div>`;
+  $('copy-link').onclick = async () => { try { await navigator.clipboard.writeText(url); $('copy-link').textContent = t('copied'); } catch (e) { $('copy-link').textContent = url; } };
+}
+function route(){
+  const h = location.hash.slice(1);
+  if (h.startsWith('post-')) {
+    const p = C.writing.find(w => w.slug === h.slice(5));
+    if (p) { renderPost(p); document.body.classList.add('reading'); window.scrollTo(0, 0); return; }
+  }
+  document.body.classList.remove('reading');
+  const el = h && document.getElementById(h);
+  if (el) el.scrollIntoView();
+}
+addEventListener('hashchange', route);
+
+/* ---------- rotator ---------- */
+let rotI = 0;
+function placeRot(){ const words = [...document.querySelectorAll('#rot-words b')];
+  words.forEach((w, j) => { const d = (j - rotI + words.length) % words.length; w.style.transform = d === 0 ? 'none' : (d === words.length - 1 ? 'translateY(-110%)' : 'translateY(110%)'); }); }
+if (!reduce) setInterval(() => { rotI = (rotI + 1) % 4; placeRot(); }, 2600);
+
+/* ---------- seasons (Nepal time) ---------- */
+function renderSeasons(){
+  document.getElementById('seasons').innerHTML = Object.keys(SEASONS).map(k => `<button type="button" data-s="${k}" aria-pressed="${k === season}">${esc(t('s_' + k))}</button>`).join('');
+  document.getElementById('tree-hint').textContent = (season === autoSeason ? t('s_now') + ' ' : '') + t('s_' + season + '_d') + ' · ' + t('tree_hint');
+}
+document.getElementById('seasons').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; season = b.dataset.s; Tree.setSeason(season); renderSeasons(); });
+
+/* ---------- testimonials (shown only when added) ---------- */
+function renderQuotes(){
+  const Q = C.testimonials || [], sec = document.getElementById('testimonials');
+  sec.hidden = !Q.length;
+  document.getElementById('quotes').innerHTML = Q.map(q => `<figure class="quote reveal"><blockquote>${esc(pick(q.quote))}</blockquote><figcaption><strong>${esc(pick(q.name))}</strong>${esc(pick(q.role))}</figcaption></figure>`).join('');
+}
+
+/* ---------- visitor counter (GoatCounter, live site only, no cookies) ---------- */
+if (C.goatcounter && /(^|\.)sailendraneupane\.com\.np$|github\.io$/.test(location.hostname)) {
+  const g = document.createElement('script'); g.async = true; g.src = 'https://gc.zgo.at/count.js';
+  g.dataset.goatcounter = `https://${C.goatcounter}.goatcounter.com/count`; document.head.appendChild(g);
+}
+
+/* ---------- render all ---------- */
+function renderAll(){
+  renderStatic(); renderSeasons(); renderQuotes(); renderResearch(); renderWork(); renderWriting(); renderGallery(); renderSpecies(); renderCalcSelect(); renderMapPanel(); applyTheme();
+  setRho();
+  calc();
+  if (document.body.classList.contains('reading')) route();
+}
+document.getElementById('lang-btn').addEventListener('click', () => { lang = lang === 'ne' ? 'en' : 'ne'; store.set('lang', lang); renderAll(); setupReveal(); onScroll(); });
+buildMap();
+renderAll();
+route();
+
+/* ---------- scroll effects ---------- */
+const progress = document.getElementById('progress');
+const navLinks = [...document.querySelectorAll('nav a')];
+function onScroll(){
+  const max = document.documentElement.scrollHeight - innerHeight;
+  progress.style.transform = `scaleX(${max > 0 ? scrollY / max : 0})`;
+  const tl = document.getElementById('work-list'), fill = tl.querySelector('.fill');
+  const r = tl.getBoundingClientRect();
+  fill.style.transform = `scaleY(${Math.min(1, Math.max(0, (innerHeight * 0.6 - r.top) / r.height))})`;
+  tl.querySelectorAll('li').forEach(li => li.classList.toggle('lit', li.getBoundingClientRect().top < innerHeight * 0.6));
+  let cur = '';
+  ['work','map','field','trees','writing','contact'].forEach(id => { const s = document.getElementById(id); if (s.getBoundingClientRect().top < innerHeight * 0.4) cur = id; });
+  navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
+}
+let scrollQueued = false;
+addEventListener('scroll', () => { if (!scrollQueued) { scrollQueued = true; requestAnimationFrame(() => { scrollQueued = false; onScroll(); }); } }, {passive:true});
+
+let io;
+function setupReveal(){
+  if (reduce || !('IntersectionObserver' in window)) return;
+  io && io.disconnect();
+  io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.remove('pending'); io.unobserve(e.target); } }), {rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    if (el.getBoundingClientRect().top > innerHeight) { el.classList.add('pending'); el.style.transitionDelay = (i % 3) * 80 + 'ms'; io.observe(el); }
+  });
+}
+setupReveal();
+onScroll();
+if (!reduce && 'IntersectionObserver' in window) {
+  const co = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return; co.unobserve(e.target);
+    const el = e.target, end = +el.dataset.count, t0 = performance.now();
+    (function tick(tt){ const k = Math.min(1, (tt - t0) / 1400); el.textContent = statText(el, Math.round(end * (1 - Math.pow(1 - k, 3)))); if (k < 1) requestAnimationFrame(tick); })(t0);
+  }), {threshold:.6});
+  document.querySelectorAll('[data-count]').forEach(el => co.observe(el));
+}
+
+/* ---------- banner parallax ---------- */
+(function(){
+  const box = document.querySelector('.banner'), ims = box.querySelectorAll('img');
+  if (reduce) return;
+  const tick = () => { const r = box.getBoundingClientRect();
+    if (r.bottom > 0 && r.top < innerHeight) { const k = (r.top + r.height/2 - innerHeight/2) / innerHeight; ims.forEach(im => im.style.transform = `translateY(${k * -10}%)`); } };
+  let q = false; addEventListener('scroll', () => { if (!q) { q = true; requestAnimationFrame(() => { q = false; tick(); }); } }, {passive:true}); tick();
+})();
+
+/* ---------- background contours ---------- */
+function drawContours(){
+  const c = document.getElementById('contours'), ctx = c.getContext('2d');
+  const r = c.getBoundingClientRect(), dpr = Math.min(devicePixelRatio || 1, 1.5);
+  c.width = r.width * dpr; c.height = r.height * dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+  ctx.strokeStyle = css('--contour');
+  [[r.width*0.78, r.height*0.95, 1.2], [r.width*0.05, r.height*0.1, 0.8]].forEach(([cx, cy, s], pi) => {
+    for (let k = 1; k <= 18; k++) {
+      const base = k * 24 * s; ctx.beginPath();
+      for (let a = 0; a <= Math.PI*2 + 0.01; a += 0.04) {
+        const wob = 1 + 0.12*Math.sin(3*a + k*0.35 + pi) + 0.06*Math.sin(5*a - k*0.2);
+        const x = cx + Math.cos(a)*base*1.6*wob, y = cy + Math.sin(a)*base*wob;
+        a === 0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+      }
+      ctx.lineWidth = k % 5 === 0 ? 1.6 : 0.9; ctx.stroke();
+    }
+  });
+}
+
+/* ---------- the growing tree ---------- */
+const Tree = (function(){
+  const c = document.getElementById('tree'); let ctx = c.getContext('2d');
+  let cache = null, still = false, DPR = 1, W = 0, H = 0, root, born = 0, colors = {}, falling = [], wind = 0, lastX = null, tips = [];
+  const STEP = 0.16, GROW = 0.42; // seconds per depth level, duration of one branch
+
+  function rng(seed){ return () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+  function build(seed){
+    const R = rng(seed);
+    const MAX = W < 700 ? 8 : 9;
+    function node(len, ang, width, depth){
+      const n = {len, ang, width, depth, phase: R()*6.28, kids: [], leaves: []};
+      if (depth < MAX) {
+        const count = depth < 2 ? 2 + (R() < .5 ? 1 : 0) : (R() < .78 ? 2 : 3);
+        for (let i = 0; i < count; i++) {
+          const spread = (count === 2 ? (i ? 1 : -1) : (i - 1)) * (0.28 + R()*0.32) + (R() - .5)*0.18;
+          n.kids.push(node(len*(0.68 + R()*0.14), spread, width*0.7, depth + 1));
+        }
+      }
+      if (depth >= MAX - 3 || !n.kids.length) {
+        const k = n.kids.length ? 1 : 2 + Math.floor(R()*2);
+        for (let i = 0; i < k; i++) n.leaves.push({a: (R()-.5)*2.4, s: 0.7 + R()*0.6, c: R() < .16 ? 2 : (R() < .5 ? 1 : 0), d: R()*0.5, k: R()});
+      }
+      return n;
+    }
+    return node(1, 0, 1, 0);
+  }
+  function readColors(){ cache = null; const S = SEASONS[season]; colors = {bark: css('--bark'), leaf: S.leaf, flower: S.flower, line: css('--contour')}; }
+  let drops = [];
+  function size(){
+    const r = c.getBoundingClientRect(), dpr = Math.min(devicePixelRatio || 1, 1.5); DPR = dpr; cache = null;
+    W = r.width; H = r.height; c.width = W*dpr; c.height = H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+  function plant(seed){ cache = null; root = build(seed); born = performance.now(); falling = []; }
+
+  function leaf(x, y, ang, s, col, alpha){
+    ctx.save(); ctx.translate(x, y); ctx.rotate(ang); ctx.globalAlpha = alpha;
+    ctx.fillStyle = col; ctx.beginPath();
+    ctx.moveTo(0, 0); ctx.quadraticCurveTo(s*0.55, -s*0.45, s*1.3, 0); ctx.quadraticCurveTo(s*0.55, s*0.45, 0, 0);
+    ctx.fill(); ctx.restore();
+  }
+  function blossom(x, y, r, ph){
+    ctx.save(); ctx.translate(x, y); ctx.rotate(ph * 0.0004); ctx.fillStyle = colors.flower; ctx.globalAlpha = .95;
+    for (let i = 0; i < 5; i++) { ctx.rotate(Math.PI * 2 / 5); ctx.beginPath(); ctx.ellipse(r * 0.6, 0, r * 0.6, r * 0.38, 0, 0, Math.PI * 2); ctx.fill(); }
+    ctx.fillStyle = '#f6d35b'; ctx.beginPath(); ctx.arc(0, 0, r * 0.25, 0, Math.PI * 2); ctx.fill(); ctx.restore();
+  }
+  function draw(n, x, y, ang, t, now, scale){
+    const start = n.depth * STEP, k = Math.min(1, Math.max(0, (t - start) / GROW));
+    if (k <= 0) return;
+    const ease = 1 - Math.pow(1 - k, 3);
+    const sway = still ? 0 : Math.sin(now*0.0011 + n.phase + n.depth*0.5) * (0.010 + wind*0.02) * n.depth;
+    const a = ang + n.ang + sway;
+    const L = n.len * scale * ease;
+    const x2 = x + Math.sin(a)*L, y2 = y - Math.cos(a)*L;
+    const bp = BR[n.depth] || (BR[n.depth] = {w: 0, p: []});
+    bp.w = Math.max(0.8, n.width * scale * 0.075 * (0.6 + 0.4*ease)); bp.p.push(x, y, x2, y2);
+    if (n.leaves.length) {
+      n.leaves.forEach(lf => {
+        const lk = Math.min(1, Math.max(0, (t - start - GROW*0.6 - lf.d) / 0.5));
+        if (lk > 0 && lf.k <= SEASONS[season].keep) {
+          const ls = (6 + 6*lf.s) * Math.min(1.1, scale/110) * lk;
+          if (colors.flower && lf.c === 2) { BL.push([x2, y2, ls * 0.42, now + lf.a * 900]); return; }
+          LV[lf.c].push(x2, y2, a + lf.a - Math.PI/2 + (still ? 0 : Math.sin(now*0.002 + lf.a*4)*0.15), ls);
+          if (lk >= 1 && tips.length < 600) tips.push([x2, y2, colors.leaf[lf.c]]);
+        }
+      });
+    }
+    n.kids.forEach(kid => draw(kid, x2, y2, a, t, now, scale));
+  }
+  let BR = [], LV = [[], [], []], BL = [];
+  function flush(){
+    ctx.strokeStyle = colors.bark; ctx.lineCap = 'round';
+    BR.forEach(b => { if (!b) return; ctx.lineWidth = b.w; ctx.beginPath();
+      for (let i = 0; i < b.p.length; i += 4) { ctx.moveTo(b.p[i], b.p[i+1]); ctx.lineTo(b.p[i+2], b.p[i+3]); } ctx.stroke(); });
+    ctx.globalAlpha = 0.9;
+    LV.forEach((L, ci) => { if (!L.length) return; ctx.fillStyle = colors.leaf[ci]; ctx.beginPath();
+      for (let i = 0; i < L.length; i += 4) {
+        const x = L[i], y = L[i+1], r = L[i+2], sz = L[i+3], co = Math.cos(r), si = Math.sin(r);
+        const P = (u, v) => [x + u*co - v*si, y + u*si + v*co];
+        const c1 = P(sz*0.55, -sz*0.45), e = P(sz*1.3, 0), c2 = P(sz*0.55, sz*0.45);
+        ctx.moveTo(x, y); ctx.quadraticCurveTo(c1[0], c1[1], e[0], e[1]); ctx.quadraticCurveTo(c2[0], c2[1], x, y);
+      } ctx.fill(); });
+    ctx.globalAlpha = 1;
+    BL.forEach(b => blossom(b[0], b[1], b[2], b[3]));
+  }
+  let visible = true, running = false, lastDraw = 0;
+  function loop(now){
+    if (!visible || document.hidden) { running = false; return; }
+    const t = (now - born) / 1000;
+    if (t < 2.6 || now - lastDraw > 32) { lastDraw = now; frame(now); }
+    requestAnimationFrame(loop);
+  }
+  function start(){ if (!running && !reduce) { running = true; requestAnimationFrame(loop); } }
+  function frame(now){
+    const t = Math.max(0, (now - born) / 1000);
+    ctx.clearRect(0, 0, W, H);
+    const scale = Math.min(H * 0.19, W * 0.19);
+    const baseX = W * 0.5, baseY = H - 28;
+    // ground: contour rings around the trunk
+    ctx.strokeStyle = colors.line;
+    for (let i = 1; i <= 4; i++) { ctx.lineWidth = 1; ctx.beginPath(); ctx.ellipse(baseX, baseY, 34*i*Math.min(1, t*1.5), 6*i*Math.min(1, t*1.5), 0, 0, Math.PI*2); ctx.stroke(); }
+    if (t >= 3.2) {
+      if (!cache) {
+        cache = document.createElement('canvas'); cache.width = c.width; cache.height = c.height;
+        const live = ctx; ctx = cache.getContext('2d'); ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+        still = true; tips = []; BR = []; LV = [[], [], []]; BL = [];
+        draw(root, baseX, baseY, 0, 99, 0, scale); flush();
+        still = false; ctx = live;
+      }
+      const sk = Math.sin(now * 0.0011) * 0.014 + Math.sin(now * 0.0035) * wind * 0.04;
+      ctx.save(); ctx.translate(baseX, baseY); ctx.transform(1, 0, -sk, 1, 0, 0); ctx.translate(-baseX, -baseY);
+      ctx.drawImage(cache, 0, 0, W, H); ctx.restore();
+    } else {
+      tips = []; BR = []; LV = [[], [], []]; BL = [];
+      draw(root, baseX, baseY, 0, t, now, scale); flush();
+    }
+    // falling leaves once the tree is grown
+    if (!reduce && t > 2.4 && tips.length && Math.random() < SEASONS[season].fall + wind*0.15 && falling.length < 24) {
+      const p = tips[Math.floor(Math.random()*tips.length)];
+      falling.push({x: p[0], y: p[1], c: p[2], vx: (Math.random() - .3)*0.4, vy: 0.4 + Math.random()*0.5, r: Math.random()*6, s: 6 + Math.random()*5, life: 1});
+    }
+    falling = falling.filter(f => {
+      f.x += f.vx + Math.sin(now*0.002 + f.r)*0.6 + wind*1.5; f.y += f.vy; f.r += 0.03;
+      if (f.y > baseY) f.life -= 0.02;
+      leaf(f.x, Math.min(f.y, baseY), f.r, f.s, f.c, Math.max(0, f.life)*0.85);
+      return f.life > 0 && f.x > -20 && f.x < W + 20;
+    });
+    if (SEASONS[season].rain && !reduce) {
+      while (drops.length < 70) drops.push({x: Math.random() * W, y: Math.random() * H, v: 6 + Math.random() * 5, l: 8 + Math.random() * 10});
+      ctx.strokeStyle = 'rgba(96,140,170,.5)'; ctx.lineWidth = 1.3; ctx.beginPath();
+      drops.forEach(d => { d.y += d.v; d.x -= 1 + wind; if (d.y > baseY) { d.y = -20; d.x = Math.random() * W * 1.1; } ctx.moveTo(d.x, d.y); ctx.lineTo(d.x - 2, d.y + d.l); });
+      ctx.stroke();
+    } else drops = [];
+    wind *= 0.96;
+  }
+  function init(){
+    readColors(); size(); plant(20261122);
+    if (reduce) { born = performance.now() - 10000; frame(performance.now()); }
+    else start();
+    if ('IntersectionObserver' in window) new IntersectionObserver(es => { visible = es[0].isIntersecting; if (visible) start(); }).observe(c);
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) start(); });
+    const again = () => { plant(Math.floor(Math.random()*1e9)); start(); if (reduce) { born = performance.now() - 10000; frame(performance.now()); } };
+    c.addEventListener('click', again);
+    c.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); again(); } });
+    document.querySelector('.hero').addEventListener('pointermove', e => {
+      if (lastX !== null) wind = Math.min(1.2, wind + Math.abs(e.clientX - lastX) * 0.004);
+      lastX = e.clientX;
+    });
+  }
+  function setSeason(k){ season = k; readColors(); plant(Math.floor(Math.random()*1e9)); start(); if (reduce) { born = performance.now() - 10000; frame(performance.now()); } }
+  return {init, size, readColors, setSeason, redraw: () => { if (reduce) frame(performance.now()); }};
+})();
+
+
+drawContours();
+Tree.init();
+addEventListener('resize', () => { drawContours(); Tree.size(); Tree.redraw(); });
+const retheme = () => { drawContours(); Tree.readColors(); Tree.redraw(); };
+new MutationObserver(retheme).observe(document.documentElement, {attributes:true, attributeFilter:['data-theme']});
+</script>
+</body>
+</html>
