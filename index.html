@@ -518,6 +518,20 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 /* pause looping animations while their section is off-screen */
 .offscreen,.offscreen *,.offscreen *::before,.offscreen *::after{animation-play-state:paused!important}
 @media (prefers-reduced-motion: reduce){.kicker .dot::after,.fieldsheet .fs-ok .dot::after{animation:none;opacity:0}}
+/* game photo zoom */
+.g-photo{cursor:zoom-in}
+.g-zoom{position:absolute;right:10px;bottom:10px;width:38px;height:38px;border-radius:50%;border:0;background:rgba(0,0,0,.55);color:#fff;display:grid;place-items:center;cursor:zoom-in;transition:transform .2s,background .2s}
+.g-zoom:hover{transform:scale(1.08);background:rgba(0,0,0,.72)}
+.g-zoom svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.zoom{position:fixed;inset:0;z-index:200;background:rgba(8,14,11,.94);display:none;align-items:center;justify-content:center;overflow:hidden;touch-action:none}
+.zoom.on{display:flex;animation:zIn .2s ease}
+@keyframes zIn{from{opacity:0}}
+.zoom img{width:100vw;height:100vh;object-fit:contain;transform-origin:center;touch-action:none;user-select:none;-webkit-user-drag:none;transition:transform .12s ease-out;will-change:transform}
+.zoom .z-bar{position:absolute;left:0;right:0;top:0;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 14px;padding-top:max(12px,env(safe-area-inset-top));color:#e8efe9;font-family:var(--display);background:linear-gradient(rgba(0,0,0,.55),transparent)}
+.zoom .z-btns{display:flex;gap:8px}
+.zoom .z-btns button{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.4);color:#fff;font-size:20px;line-height:1;cursor:pointer}
+.zoom .z-tip{position:absolute;bottom:max(14px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);width:max-content;max-width:calc(100% - 24px);background:rgba(0,0,0,.6);padding:6px 12px;border-radius:999px;text-align:center;margin:0;font-family:var(--mono);font-size:12px;color:rgba(232,239,233,.75);pointer-events:none}
+@media (prefers-reduced-motion: reduce){.zoom.on{animation:none}.zoom img{transition:none}}
 </style>
 </head>
 <body>
@@ -1362,6 +1376,14 @@ input[type=range]{width:100%;accent-color:var(--accent)}
   "fs_stamp": [
    "Available",
    "उपलब्ध"
+  ],
+  "g_zoom": [
+   "Zoom photo",
+   "फोटो ठूलो पार्नुहोस्"
+  ],
+  "g_zoom_tip": [
+   "Tap or double-click to zoom · drag to move · pinch or scroll · Esc to close",
+   "ठूलो पार्न ट्याप गर्नुहोस् · सार्न तान्नुहोस् · बन्द गर्न Esc"
   ]
  },
  "research": [
@@ -3350,6 +3372,46 @@ if (C.goatcounter && /(^|\.)sailendraneupane\.com\.np$|github\.io$/.test(locatio
 }
 
 /* ---------- render all ---------- */
+/* ---------- photo zoom: tap / double-click to zoom, drag to pan, pinch or wheel ---------- */
+const Zoom = (() => {
+  let ov, img, cap, open = false, sc = 1, tx = 0, ty = 0, ptrs = new Map(), pinch0 = 0, sc0 = 1, moved = false, lastFocus;
+  function build(){
+    ov = document.createElement('div'); ov.className = 'zoom'; ov.setAttribute('role', 'dialog'); ov.setAttribute('aria-modal', 'true');
+    ov.innerHTML = '<img alt=""><div class="z-bar"><span class="z-cap"></span><span class="z-btns"><button type="button" data-z="out" aria-label="−">−</button><button type="button" data-z="in" aria-label="+">+</button><button type="button" data-z="close" class="z-x">✕</button></span></div><p class="z-tip"></p>';
+    document.body.appendChild(ov); img = ov.querySelector('img'); cap = ov.querySelector('.z-cap');
+    ov.addEventListener('click', e => { const b = e.target.closest('[data-z]'); if (b) { e.stopPropagation(); b.dataset.z === 'close' ? close() : step(b.dataset.z === 'in' ? 1.6 : 1/1.6); } });
+    img.addEventListener('pointerdown', e => { img.setPointerCapture(e.pointerId); ptrs.set(e.pointerId, [e.clientX, e.clientY]); moved = false;
+      if (ptrs.size === 2) { const [a, b] = [...ptrs.values()]; pinch0 = Math.hypot(a[0]-b[0], a[1]-b[1]); sc0 = sc; } });
+    img.addEventListener('pointermove', e => { if (!ptrs.has(e.pointerId)) return; const p = ptrs.get(e.pointerId), dx = e.clientX - p[0], dy = e.clientY - p[1];
+      ptrs.set(e.pointerId, [e.clientX, e.clientY]);
+      if (ptrs.size === 2) { const [a, b] = [...ptrs.values()]; set(sc0 * Math.hypot(a[0]-b[0], a[1]-b[1]) / pinch0); moved = true; }
+      else if (sc > 1) { tx += dx; ty += dy; if (Math.abs(dx) + Math.abs(dy) > 2) moved = true; apply(); } });
+    const up = e => { ptrs.delete(e.pointerId);
+      if (!moved && e.type === 'pointerup' && ptrs.size === 0) { if (sc > 1) set(1); else zoomAt(e.clientX, e.clientY, 2.5); } };
+    img.addEventListener('pointerup', up); img.addEventListener('pointercancel', up);
+    ov.addEventListener('wheel', e => { e.preventDefault(); zoomAt(e.clientX, e.clientY, sc * (e.deltaY < 0 ? 1.2 : 1/1.2)); }, {passive: false});
+    ov.addEventListener('pointerdown', e => { if (e.target === ov) close(); });
+    addEventListener('keydown', e => { if (!open) return; if (e.key === 'Escape') close(); else if (e.key === '+' || e.key === '=') step(1.6); else if (e.key === '-') step(1/1.6); });
+  }
+  function clamp(){ const r = img.getBoundingClientRect(), w = r.width / sc, h = r.height / sc, mx = Math.max(0, (w * sc - w) / 2), my = Math.max(0, (h * sc - h) / 2);
+    tx = Math.max(-mx, Math.min(mx, tx)); ty = Math.max(-my, Math.min(my, ty)); }
+  function apply(){ clamp(); img.style.transform = `translate(${tx}px,${ty}px) scale(${sc})`; img.style.cursor = sc > 1 ? 'grab' : 'zoom-in'; }
+  function set(s){ sc = Math.max(1, Math.min(5, s)); if (sc === 1) { tx = ty = 0; } apply(); }
+  function zoomAt(x, y, s){ const r = img.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2, ns = Math.max(1, Math.min(5, s)), k = ns / sc;
+    tx += (1 - k) * (x - cx); ty += (1 - k) * (y - cy); sc = ns; if (sc === 1) tx = ty = 0; apply(); }
+  function step(k){ const r = img.getBoundingClientRect(); zoomAt(r.left + r.width / 2, r.top + r.height / 2, sc * k); }
+  function openZ(p, have, name){
+    if (!ov) build(); lastFocus = document.activeElement; open = true; sc = 1; tx = ty = 0;
+    img.src = have; img.alt = name || t('g_alt'); apply();
+    const hi = p.u.includes('/960px-') ? p.u.replace('/960px-', '/1280px-') : '';
+    if (hi) { const pre = new Image(); pre.onload = () => { if (open && img.src === have) img.src = hi; }; pre.src = hi; }
+    cap.textContent = name || ''; ov.querySelector('.z-tip').textContent = t('g_zoom_tip');
+    ov.classList.add('on'); document.documentElement.style.overflow = 'hidden'; ov.querySelector('.z-x').focus({preventScroll: true});
+  }
+  function close(){ if (!open) return; open = false; ov.classList.remove('on'); document.documentElement.style.overflow = ''; lastFocus && lastFocus.focus && lastFocus.focus({preventScroll: true}); }
+  return {open: openZ, isOpen: () => open};
+})();
+
 /* ---------- tree identification game ---------- */
 const Game = (() => {
   const G = C.game, ROUNDS = Math.min(10, C.game.species.length), box = document.getElementById('game');
@@ -3358,6 +3420,11 @@ const Game = (() => {
   const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.random() * (i + 1) | 0; [a[i], a[j]] = [a[j], a[i]]; } return a; };
   const fileURL = (f, w) => 'https://commons.wikimedia.org/wiki/Special:FilePath/' + encodeURIComponent(f) + (w ? '?width=' + w : '');
   const small = p => p.u.replace('/960px-', '/330px-');
+  const mid = p => p.u.replace('/960px-', '/500px-');
+  const big = p => p.u.replace('/960px-', '/1280px-');
+  const srcset = p => p.u.includes('/960px-') ? `${mid(p)} 500w, ${p.u} 960w` : '';
+  // load the photo at the size this screen needs (phones get the 500 px version)
+  const fit = p => (p.u.includes('/960px-') && innerWidth < 700) ? mid(p) : p.u;   // zoom loads 1280 px when detail is needed
   const pageURL = f => 'https://commons.wikimedia.org/wiki/File:' + encodeURIComponent(f.replace(/ /g, '_'));
   let st = {phase: 'intro'};
   let best = +store.get('treeGameBest') || 0;
@@ -3377,10 +3444,13 @@ const Game = (() => {
       const rest = shuffle(G.species.filter(x => x.key !== k && !same.includes(x))).slice(0, 3 - same.length);
       return {k, p, opts: shuffle([k, ...same.map(x => x.key), ...rest.map(x => x.key)]), hint: false, pick: null};
     })};
-    render(); preload(1);
+    preloadRound(); render();
     box.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block: 'start'});
   }
-  function preload(i){ const q = st.q && st.q[i]; if (q) { const im = new Image(); im.src = q.p.u; } }
+  const loaded = new Set();
+  function warm(p){ const u = fit(p); if (loaded.has(u)) return; loaded.add(u); const im = new Image(); im.decoding = 'async'; im.src = u; }
+  function preload(i){ (st.q || []).slice(i, i + 3).forEach(q => warm(q.p)); }
+  function preloadRound(){ preload(0); const rest = () => st.q.slice(3).forEach(q => warm(q.p)); 'requestIdleCallback' in window ? requestIdleCallback(rest, {timeout: 4000}) : setTimeout(rest, 1500); }
   function cur(){ return st.q[st.i]; }
   function answer(k){
     const q = cur(); if (q.pick) return;
@@ -3429,9 +3499,10 @@ const Game = (() => {
     box.innerHTML = head + `<div class="g-body">
       <div>
         <div class="g-photo">
-          <img class="bg" src="${esc(q.p.u)}" alt="" aria-hidden="true">
+          <img class="bg" src="${esc(small(q.p))}" alt="" aria-hidden="true" decoding="async">
           <span class="wait">${esc(t('g_loading'))}</span>
-          <img class="main" src="${esc(q.p.u)}" alt="${esc(done ? nm(s) : t('g_alt'))}">
+          <img class="main" src="${esc(fit(q.p))}" alt="${esc(done ? nm(s) : t('g_alt'))}" fetchpriority="high" decoding="async">
+          <button type="button" class="g-zoom" aria-label="${esc(t('g_zoom'))}" title="${esc(t('g_zoom'))}"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21M10.5 7.5v6M7.5 10.5h6"/></svg></button>
           <span class="qn">${esc(t('g_q'))} ${num(st.i + 1)}/${num(ROUNDS)}</span>
         </div>
         <div class="g-credit">${credit(q.p)}</div>
@@ -3458,9 +3529,12 @@ const Game = (() => {
     const shown = () => { main.classList.add('ok'); wait.hidden = true; };
     main.addEventListener('load', shown);
     main.addEventListener('error', () => { if (!main.dataset.fb) { main.dataset.fb = 1; main.src = bg.src = fileURL(q.p.f, 960); } else wait.textContent = t('g_imgerr'); });
+    box.querySelector('.g-photo').addEventListener('click', e => { if (main.classList.contains('ok')) Zoom.open(q.p, main.currentSrc || main.src, done ? nm(s) : ''); });
     if (main.complete && main.naturalWidth) shown();
   }
+  if (box && 'IntersectionObserver' in window) { const pio = new IntersectionObserver(es => { if (es[0].isIntersecting) { mosaic.forEach(p => { const im = new Image(); im.src = small(p); }); pio.disconnect(); } }, {rootMargin: '600px'}); pio.observe(box); }
   box && box.addEventListener('click', e => {
+    if (e.target.closest('.g-zoom')) return;
     const b = e.target.closest('button'); if (!b) return;
     if (b.classList.contains('g-start')) newGame();
     else if (b.classList.contains('g-opt')) answer(b.dataset.k);
@@ -3474,7 +3548,7 @@ const Game = (() => {
     }
   });
   addEventListener('keydown', e => {
-    if (st.phase !== 'play' || e.altKey || e.ctrlKey || e.metaKey || /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) return;
+    if (st.phase !== 'play' || Zoom.isOpen() || e.altKey || e.ctrlKey || e.metaKey || /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) return;
     const r = box.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return;
     const q = cur();
     if (!q.pick && /^[1-4]$/.test(e.key)) { e.preventDefault(); answer(q.opts[+e.key - 1]); }
