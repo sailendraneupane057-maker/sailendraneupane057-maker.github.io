@@ -330,8 +330,8 @@ nav a{white-space:nowrap}
 .calc .inputs{padding:28px;display:grid;gap:18px;border-right:1px solid var(--line)}
 .calc h3{font-size:26px}
 .calc .intro{margin:6px 0 0;color:var(--muted);font-size:16px}
-.field label{display:block;font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin-bottom:6px}
-:root[lang="ne"] .field label{font-family:"Mukta",sans-serif;font-size:14.5px;text-transform:none;letter-spacing:0}
+.field label,.field .lbl{display:block;font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin-bottom:6px}
+:root[lang="ne"] .field label,:root[lang="ne"] .field .lbl{font-family:"Mukta",sans-serif;font-size:14.5px;text-transform:none;letter-spacing:0}
 .field select,.field input[type=number],.cform input,.cform textarea{width:100%;font:inherit;font-size:16px;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
 .field select:focus,.field input:focus,.cform input:focus,.cform textarea:focus{outline:2px solid var(--accent);outline-offset:1px}
 .range-row{display:grid;grid-template-columns:1fr 92px;gap:12px;align-items:center}
@@ -636,7 +636,7 @@ input[type=range]{width:100%;accent-color:var(--accent)}
             <div class="range-row"><input type="range" id="c-dr" min="5" max="150" step="1" value="40" aria-label="Diameter slider"><input type="number" id="c-d" min="1" max="300" step="0.1" value="40"></div></div>
           <div class="field"><label for="c-h" data-t="c_h"></label>
             <div class="range-row"><input type="range" id="c-hr" min="2" max="50" step="0.5" value="22" aria-label="Height slider"><input type="number" id="c-h" min="1" max="80" step="0.1" value="22"></div></div>
-          <div class="field"><label for="c-rho" data-t="c_rho"></label><div class="rho-box"><output id="c-rho-out" for="c-sp">–</output><small id="c-rho-src"></small></div><input type="hidden" id="c-rho"></div>
+          <div class="field"><span class="lbl" id="c-rho-l" data-t="c_rho"></span><div class="rho-box"><output id="c-rho-out" for="c-sp" aria-labelledby="c-rho-l">–</output><small id="c-rho-src"></small></div><input type="hidden" id="c-rho"></div>
         </div>
         <div class="outputs">
           <div class="mini-tree" aria-hidden="true"><svg id="mini" viewBox="0 0 100 120"><rect x="46" y="70" width="8" height="50" rx="2" fill="var(--bark)"/><ellipse cx="50" cy="52" rx="34" ry="40" fill="var(--accent)" opacity=".85"/><ellipse cx="38" cy="44" rx="16" ry="18" fill="var(--leaf-3)" opacity=".7"/></svg></div>
